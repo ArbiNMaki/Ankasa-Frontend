@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# ankasa-frontend
-=======
 # ankasa
->>>>>>> 9dbbd859ea7c62b97680d91be15041b7e3a7bb30
 
 ## Project setup
 ```

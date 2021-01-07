@@ -223,250 +223,244 @@ export default {
 
 <style lang="scss" scoped>
 .topfromto {
-  margin-left: 3%;
+    margin-left: 3%;
 }
 .flight-detail {
-  font-family: Poppins;
-font-size: 12px;
-font-weight: 300;
-color: white;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 300;
+    color: white;
 }
 .top1 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .fromto {
-  font-family: Poppins;
-font-size: 12px;
-font-weight: 400;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
 }
 .location {
-  font-family: Poppins;
-font-size: 16px;
-font-weight: 600;
-
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
 }
 .toloc {
-  text-align: right;
+    text-align: right;
 }
 .fromtoloc {
-  display: flex;
-  flex-direction: row;
-  width: 250px;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
 }
 .detail {
-  margin-top: 3%;
-  font-family: Poppins;
-font-size: 16px;
-font-weight: 600;
-color: #2395FF;
-cursor: pointer
+    margin-top: 3%;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2395FF;
+    cursor: pointer
 }
 .pricetot {
-  font-family: Poppins;
-font-size: 16px;
-color: #2395FF;
-font-weight: 800;
+    font-family: Poppins;
+    font-size: 16px;
+    color: #2395FF;
+    font-weight: 800;
 }
 .timeto, .time-detail {
-  font-family: Poppins;
-font-size: 12px;
-font-weight: 400;
-color: #6B6B6B;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    color: #6B6B6B;
 }
 .country {
-  font-family: Poppins;
-font-size: 24px;
-font-weight: 500;
-color: black;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 500;
+    color: black;
 }
 .selectbtn button{
-  height: 50px;
-width: 150px;
-border-radius: 10px;
-background-color: #2395FF;
-font-family: Poppins;
-font-size: 16px;
-font-weight: 700;
-color: white;
-border: none;
-outline: none;
-cursor: pointer;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: #2395FF;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 .col3 i {
-  margin-left: 5%;
+    margin-left: 5%;
 }
 .col4 {
-  text-align: center;
+    text-align: center;
 }
 .col3 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 20%;
 }
 .selectbtn {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .time {
-  text-align: center;
-  font-family: Poppins;
-font-size: 16px;
-font-weight: 400;
-color: #595959;
-
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    color: #595959;
 }
 .center {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 .col1 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 150px;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 150px;
+    justify-content: space-between;
 }
 .top-ticket {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .top-ticket p {
-  font-family: Poppins;
-font-size: 16px;
-font-weight: 500;
-color: #595959;
-margin-left: 5%;
-margin-top: 2%;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    color: #595959;
+    margin-left: 5%;
+    margin-top: 2%;
 }
 .airline-logo {
-  height: 57px;
-width: 100px;
-overflow: hidden;
+    height: 57px;
+    width: 100px;
+    overflow: hidden;
 }
 .airline-logo img {
-  width: 100%;
+    width: 100%;
 }
 .ticket {
-  height: 240px;
-width: 100%;
-border-radius: 15px;
-background-color: #FFFFFF;
-padding: 5%;
-margin-bottom: 3%;
-
+    height: 240px;
+    width: 100%;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+    padding: 5%;
+    margin-bottom: 3%;
 }
 .range-title, .value {
-  margin-top: 2%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  font-family: Poppins;
-font-size: 12px;
-font-weight: 400;
-color: #6B6B6B;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    color: #6B6B6B;
 }
 .value {
-font-family: Poppins;
-font-size: 16px;
-font-weight: 600;
-color: #2395FF;
-
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2395FF;
 }
 .range {
-  margin-top: 5%;
+    margin-top: 5%;
 }
 .filter, .select {
-  font-family: Poppins;
-font-size: 24px;
-font-weight: 600;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 600;
 }
 .reset, .sort {
-  font-family: Poppins;
-font-size: 16px;
-font-weight: 600;
-color: #2395FF;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2395FF;
 }
 .sort {
-  cursor: pointer;
+    cursor: pointer;
 }
 .dropdown-toggle {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-family: Poppins;
-font-size: 16px;
-font-weight: 600;
-margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 5%;
 }
 .menu {
-  border-bottom: 1px solid #E5E5E5
+    border-bottom: 1px solid #E5E5E5
 }
 .opt {
-  // border: 2px solid green;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-family: Poppins;
-font-size: 14px;
-font-weight: 400;
-margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 5%;
 }
 .topside {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .left, .right {
-  height: 1400px;
+    height: 1400px;
 }
 .right {
-  overflow: auto;
+    overflow: auto;
 }
 .option {
-  display: flex;
+    display: flex;
 }
 .top {
-  height: 176px;
-width: 100%;
-background-color: #2395FF;
-border-radius: 0px 0px 30px 30px;
-background-image: url('../../assets/image/vector 3.png');
-background-repeat: no-repeat;
+    height: 176px;
+    width: 100%;
+    background-color: #2395FF;
+    border-radius: 0px 0px 30px 30px;
+    background-image: url('../../assets/image/vector 3.png');
+    background-repeat: no-repeat;
 }
 .container {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 .sidebar {
-  width: 100%;
-  min-height: 1250px;
-border-radius: 15px;
-background-color: white;
-padding-right: 5%;
-padding-left: 5%;
-padding-top: 5%;
+    width: 100%;
+    min-height: 1250px;
+    border-radius: 15px;
+    background-color: white;
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 5%;
 }
 .all {
-  // border: 5px solid red;
-  height: 100%;
+    height: 100%;
 }
 .ctnr {
-  height: 100%;
-  margin-top: 3%;
+    height: 100%;
+    margin-top: 3%;
 }
 </style>

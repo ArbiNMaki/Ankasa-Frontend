@@ -325,8 +325,8 @@ input[type="date"], input[type="number"] {
 
 .trip input[type="radio"]:checked+label,
 .Checked+label {
-  background: #2395FF;
-  color: white;
+    background: #2395FF;
+    color: white;
 }
 
 .trip label {
@@ -395,8 +395,8 @@ input[type="date"], input[type="number"] {
 }
 .children-title, .adults-title {
     font-family: Poppins;
-font-size: 14px;
-font-weight: 500;
+    font-size: 14px;
+    font-weight: 500;
 }
 @media screen and (max-width: 991px) {
     .list {

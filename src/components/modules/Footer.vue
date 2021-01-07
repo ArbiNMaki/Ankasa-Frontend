@@ -52,8 +52,8 @@ export default {
 }
 .title {
     font-family: Poppins;
-font-size: 16px;
-font-weight: 800;
+    font-size: 16px;
+    font-weight: 800;
 }
 .features .feature {
     margin-top: 20%;
@@ -135,7 +135,7 @@ font-weight: 800;
         flex-direction: column;
     }
     .features .feature {
-    margin-top: 1%;
+        margin-top: 1%;
     }
     .col1 {
         width: 100%;
@@ -155,22 +155,22 @@ font-weight: 800;
         text-align: center;
     }
     .button {
-    margin-top: 2%;
+        margin-top: 2%;
     }
     .socmed {
         width: 100%;
         text-align: center;
     }
     .logo {
-    margin-top: 2%;
-    width: 100%;
-    justify-content: center;
-}
-.socmed-option {
-    margin-right: 5%;
-}
-.brand {
-    justify-content: center;
-}
+        margin-top: 2%;
+        width: 100%;
+        justify-content: center;
+    }
+    .socmed-option {
+        margin-right: 5%;
+    }
+    .brand {
+        justify-content: center;
+    }
 }
 </style>

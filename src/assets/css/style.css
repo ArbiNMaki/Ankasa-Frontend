@@ -1,0 +1,74 @@
+.container-fluid {
+  background-color: #2395ff;
+  height: 100vh;
+}
+.container {
+  width: 60%;
+}
+.img-left {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-left img {
+  width: 300px;
+  height: 300px;
+}
+.right-side {
+  background-color: #fff;
+  height: 100vh;
+}
+h5 img {
+  width: 12%;
+}
+h3 {
+  font-weight: 600;
+}
+input[type="text"],
+input[type="password"] {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(210, 194, 255, 0.68);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn-login {
+  color: #fff;
+  font-weight: bold;
+  background-color: #2395ff;
+  box-shadow: 0px 8px 10px rgba(35, 149, 255, 0.3);
+  padding: 12px;
+  border-radius: 10px;
+}
+.btn-login:hover {
+  color: #fff;
+}
+.btn-sign {
+  background-color: #fff;
+  color: #2395ff;
+  border: 1.5px solid #2395ff;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.sign {
+  margin: 5px;
+}
+.sign img {
+  padding: 5px 20px 5px 20px;
+}
+@media (max-width: 768px) {
+  .container {
+    width: 80%;
+  }
+  .sign img {
+    padding: 5px;
+  }
+}

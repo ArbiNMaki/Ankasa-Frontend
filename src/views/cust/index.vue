@@ -24,6 +24,5 @@ export default {
 .content {
   background-color: #F5F6FA;
   min-height: 1600px;
-
 }
 </style>

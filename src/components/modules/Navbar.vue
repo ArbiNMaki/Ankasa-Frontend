@@ -140,6 +140,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.navbar-nav {
+    position: relative;
+    z-index: 999;
+    background-color: white;
+}
 .nav-item {
     cursor: pointer;
 }

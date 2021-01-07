@@ -463,4 +463,15 @@ export default {
     height: 100%;
     margin-top: 3%;
 }
+@media screen and (max-width: 767px) {
+    .center {
+        flex-direction: column;
+    }
+    .ticket {
+      height: auto;
+    }
+    .col4 {
+        margin-top: 5%;
+    }
+}
 </style>

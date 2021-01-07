@@ -86,7 +86,7 @@ font-weight: 800;
     cursor: pointer;
 }
 .footer {
-    height: 300px;
+    min-height: 300px;
     width: 100%;
     padding-top: 3%;
     background-color:white;
@@ -129,5 +129,48 @@ font-weight: 800;
 .features li {
     padding: 0;
     margin: 0;
+}
+@media screen and (max-width: 822px) {
+    .footer {
+        flex-direction: column;
+    }
+    .features .feature {
+    margin-top: 1%;
+    }
+    .col1 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5%;
+        margin-left: 0%;
+    }
+    .col2 {
+        width: 100%;
+        margin-bottom: 5%;
+        text-align: center;
+    }
+    .col3 {
+        width: 100%;
+        margin-bottom: 5%;
+        align-items: center;
+        text-align: center;
+    }
+    .button {
+    margin-top: 2%;
+    }
+    .socmed {
+        width: 100%;
+        text-align: center;
+    }
+    .logo {
+    margin-top: 2%;
+    width: 100%;
+    justify-content: center;
+}
+.socmed-option {
+    margin-right: 5%;
+}
+.brand {
+    justify-content: center;
+}
 }
 </style>

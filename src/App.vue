@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 #app {
@@ -15,5 +15,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+body, html {
+  margin: 0;
+  padding: 0;
 }
 </style>

@@ -1,4 +1,4 @@
-# ankasa-frontend
+# ankasa
 
 ## Project setup
 ```

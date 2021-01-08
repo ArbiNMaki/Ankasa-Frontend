@@ -1,9 +1,7 @@
 <template>
     <div>
         <Navbar />
-        <div class="content">
-          <router-view/>
-        </div>
+        <router-view/>
         <Footer />
     </div>
 </template>
@@ -21,8 +19,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
-  background-color: #F5F6FA;
-  min-height: 1600px;
-}
 </style>

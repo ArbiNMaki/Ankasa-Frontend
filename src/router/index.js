@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
+import ForgotPass from '../views/ForgotPass.vue'
 import Cust from '../views/cust/index.vue'
 import SearchResult from '../views/cust/searchresult/index.vue'
 import FlighDetail from '../views/cust/flightdetail/index.vue'
@@ -47,6 +50,21 @@ const routes = [
         component: Chat
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
+  },
+  {
+    path: '/forgot',
+    name: 'ForgotPass',
+    component: ForgotPass
   }
 ]
 

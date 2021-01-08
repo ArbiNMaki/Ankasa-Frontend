@@ -1,15 +1,25 @@
 <template>
-    <div>
-        <h1>Profile</h1>
+    <div class="row">
+      <div class="col-4">
+        <CardProfile />
+      </div>
+      <div class="col-8">
+        <CardProfile2 />
+      </div>
     </div>
 </template>
 
 <script>
+import CardProfile from '../../../components/CardProfile'
+import CardProfile2 from '../../../components/CardProfile2'
+
 export default {
-  name: 'Profile'
+  components: {
+    CardProfile,
+    CardProfile2
+  }
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped src="../../../assets/css/style.css">
 </style>

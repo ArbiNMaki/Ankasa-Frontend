@@ -15,21 +15,6 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register
-  },
-  {
-    path: '/forgot',
-    name: 'ForgotPass',
-    component: ForgotPass
-  },
-  {
     path: '/cust',
     name: 'Cust',
     component: Cust,
@@ -65,6 +50,21 @@ const routes = [
         component: Chat
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
+  },
+  {
+    path: '/forgot',
+    name: 'ForgotPass',
+    component: ForgotPass
   }
 ]
 

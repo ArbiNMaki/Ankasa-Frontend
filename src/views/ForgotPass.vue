@@ -3,14 +3,14 @@
     <div class="row">
       <div class="col-sm-6 d-none d-sm-block">
         <div class="img-left">
-          <img src="../assets/img/illustrationWhite.png" />
+          <img src="../assets/image/illustrationWhite.png" />
         </div>
       </div>
 
       <div class="right-side col-sm-6">
         <div class="container">
           <h5 class="mt-3 mb-5">
-            <img src="../assets/img/planeBlue.png" alt="logo" /> Ankasa
+            <img src="../assets/image/planeBlue.png" alt="logo" /> Ankasa
           </h5>
           <h3 class="mb-5">Reset Password</h3>
           <form class="text-center">

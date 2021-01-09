@@ -42,6 +42,10 @@
                         <input type="checkbox" id="transitopt" name="transitopt" v-model="transit" value="transit"/>
                       </div>
                       <div class="opt">
+                        <label for="direct2+">Direct 2+</label>
+                        <input type="checkbox" id="direct2+" name="transit" v-model="transit" value="direct2+"/>
+                      </div>
+                      <div class="opt">
                         <label for="transit2+">Transit 2+</label>
                         <input type="checkbox" id="transit2+" name="transit" v-model="transit" value="transit2+"/>
                       </div>

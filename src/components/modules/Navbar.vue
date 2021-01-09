@@ -58,9 +58,14 @@
                                 </div>
                             </div>
                             {{triptype}}
-                            <p class="departure">Departure</p>
-                            <input type="date" v-model="date"/>
-                            {{date}}
+                            <p class="departure">Departure Date</p>
+                            <input type="date" v-model="departuredate"/>
+                            {{departuredate}}
+                            <div v-if="triptype !== 'oneway'">
+                                <p class="return">Return Date</p>
+                                <input type="date" v-model="returndate"/>
+                            {{returndate}}
+                            </div>
                             <p class="person">How Many Persons?</p>
                             <div class="total">
                                 <div class="children">
@@ -117,8 +122,9 @@ export default {
   name: 'Navbar',
   data: function () {
     return {
-      date: '',
-      triptype: '',
+      departuredate: '',
+      returndate: '',
+      triptype: 'oneway',
       selectedfrom: '',
       selectedto: '',
       children: '',
@@ -182,7 +188,7 @@ select {
     margin-top: 5%;
     margin-bottom: 5%;
 }
-.departure, .person, .class-title {
+.departure, .return, .person, .class-title {
     margin-top: 8%;
     font-family: Poppins;
     font-size: 14px;

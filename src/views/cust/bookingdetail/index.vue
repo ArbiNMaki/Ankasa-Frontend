@@ -10,7 +10,7 @@
               </h4></b-col>
             <b-col>
               <h3 class="text-info d-none d-md-block">
-                <i class="bi bi-three-dots-vertical"></i>
+                <i class="fas fa-ellipsis-v"></i>
               </h3>
             </b-col>
           </b-row>

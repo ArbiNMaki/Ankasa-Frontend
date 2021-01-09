@@ -13,9 +13,9 @@
             <img src="../assets/image/planeBlue.png" alt="logo" /> Ankasa
           </h5>
           <h3 class="mb-5">Login</h3>
-          <form class="text-center">
-            <input type="text" class="form-control mb-4" placeholder="Username"  required />
-            <input type="password" class="form-control mb-4" placeholder="Password"  required >
+          <form class="text-center" @submit.prevent="login()">
+            <input type="text" class="form-control mb-4" placeholder="Email" autofocus required v-model="form.email" />
+            <input type="password" class="form-control mb-5" placeholder="Password" required v-model="form.password"/>
             <button type="submit" class="btn btn-block btn-login" >Sign In</button>
             <p class="small text-muted mt-3 mb-3">
               Did you forget your password? <br />
@@ -41,8 +41,60 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+import { mapActions } from 'vuex'
 export default {
-  name: 'Login'
+  name: 'Login',
+  data () {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    ...mapActions({
+      onLogin: 'auth/onLogin'
+    }),
+    login () {
+      this.onLogin(this.form).then((result) => {
+        if (result === "Cannot read property 'password' of undefined") {
+          this.alertExist()
+          localStorage.removeItem('token')
+          localStorage.removeItem('id')
+          localStorage.removeItem('username')
+        } else if (result === 'Incorrect password! Please try again') {
+          this.alertMatch()
+          localStorage.removeItem('token')
+          localStorage.removeItem('id')
+          localStorage.removeItem('username')
+        } else {
+          window.location = 'cust/profile'
+        }
+      }).catch(err => this.alertError(err.message))
+    },
+    alertExist () {
+      Swal.fire({
+        icon: 'error',
+        title: 'Username Doesnt Exist!',
+        text: 'Please check your personal info or create a new one'
+      })
+    },
+    alertMatch () {
+      Swal.fire({
+        icon: 'question',
+        title: 'Username and Password Doesnt Match!'
+      })
+    },
+    alertError () {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!'
+      })
+    }
+  }
 }
 </script>
 

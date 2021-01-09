@@ -75,6 +75,9 @@
                   </div>
                   <p class="info">Get Travel Compensation Up To Rp1000000  </p>
                 </div>
+                <div class="proceed">
+                    <button>Proceed to Payment</button>
+                </div>
             </div>
             <div class="col-lg-4 right">
               <div class="topside">
@@ -450,6 +453,25 @@ input:checked + .slider:before {
 }
 .pass {
   width: 50%;
+}
+.proceed button {
+    height: 57px;
+    width: 319px;
+    border-radius: 10px;
+    background-color: #2395FF;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.proceed {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 5%;
 }
 @media screen and (max-width: 991px) {
   .row {

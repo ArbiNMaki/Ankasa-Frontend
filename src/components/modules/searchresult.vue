@@ -42,6 +42,10 @@
                         <input type="checkbox" id="transitopt" name="transitopt" v-model="transit" value="transit"/>
                       </div>
                       <div class="opt">
+                        <label for="direct2+">Direct 2+</label>
+                        <input type="checkbox" id="direct2+" name="transit" v-model="transit" value="direct2+"/>
+                      </div>
+                      <div class="opt">
                         <label for="transit2+">Transit 2+</label>
                         <input type="checkbox" id="transit2+" name="transit" v-model="transit" value="transit2+"/>
                       </div>
@@ -138,7 +142,7 @@
                   <p>Highest</p>
                 </div>
                 <div class="range">
-                  <vue-range-slider v-model="value" :min="min" :max="max" :enable-cross="enableCross" :step="step"></vue-range-slider>
+                  <vue-slider v-model="value" :min="min" :max="max" :enable-cross="enableCross" :step="step" />
                 </div>
                 <div class="value">
                   <p>Rp{{value[0]}}</p>
@@ -190,228 +194,6 @@
                     <button>Select</button>
                   </div>
                 </div>
-                <div class="ticket">
-                  <div class="top-ticket">
-                    <div class="airline-logo">
-                      <img src="https://seeklogo.com/images/G/garuda-indonesia-logo-8A90F09D68-seeklogo.com.png" alt="">
-                  </div>
-                  <p>Garuda Indonesia</p>
-                  </div>
-                  <div class="center">
-                      <div class="col1">
-                        <div class="from">
-                      <p class="country">IDN</p>
-                      <p class="timeto">12.33</p>
-                    </div>
-                    <i class="fas fa-plane"></i>
-                    <div class="to">
-                      <p class="country">JPN</p>
-                      <p class="timeto">15.21</p>
-                    </div>
-                      </div>
-                    <div class="col2">
-                      <p class="time">3 hours 11 minutes <br><span class="time-detail">(1 transit)</span></p>
-                    </div>
-                    <div class="col3">
-                      <i class="fas fa-suitcase"></i>
-                      <i class="fas fa-utensils"></i>
-                      <i class="fas fa-wifi"></i>
-                    </div>
-                    <div class="col4">
-                      <!-- <p class="pricetot">Rp</p> -->
-                      <p class="pricetot">Rp15000000000</p>
-                    </div>
-                  </div>
-                  <div class="selectbtn">
-                    <p class="detail" type="button">View Detail <i class="fas fa-sort-down"></i></p>
-                    <button>Select</button>
-                  </div>
-                </div>
-                <div class="ticket">
-                  <div class="top-ticket">
-                    <div class="airline-logo">
-                      <img src="https://seeklogo.com/images/G/garuda-indonesia-logo-8A90F09D68-seeklogo.com.png" alt="">
-                  </div>
-                  <p>Garuda Indonesia</p>
-                  </div>
-                  <div class="center">
-                      <div class="col1">
-                        <div class="from">
-                      <p class="country">IDN</p>
-                      <p class="timeto">12.33</p>
-                    </div>
-                    <i class="fas fa-plane"></i>
-                    <div class="to">
-                      <p class="country">JPN</p>
-                      <p class="timeto">15.21</p>
-                    </div>
-                      </div>
-                    <div class="col2">
-                      <p class="time">3 hours 11 minutes <br><span class="time-detail">(1 transit)</span></p>
-                    </div>
-                    <div class="col3">
-                      <i class="fas fa-suitcase"></i>
-                      <i class="fas fa-utensils"></i>
-                      <i class="fas fa-wifi"></i>
-                    </div>
-                    <div class="col4">
-                      <!-- <p class="pricetot">Rp</p> -->
-                      <p class="pricetot">Rp15000000000</p>
-                    </div>
-                  </div>
-                  <div class="selectbtn">
-                    <p class="detail" type="button">View Detail <i class="fas fa-sort-down"></i></p>
-                    <button>Select</button>
-                  </div>
-                </div>
-                <div class="ticket">
-                  <div class="top-ticket">
-                    <div class="airline-logo">
-                      <img src="https://seeklogo.com/images/G/garuda-indonesia-logo-8A90F09D68-seeklogo.com.png" alt="">
-                  </div>
-                  <p>Garuda Indonesia</p>
-                  </div>
-                  <div class="center">
-                      <div class="col1">
-                        <div class="from">
-                      <p class="country">IDN</p>
-                      <p class="timeto">12.33</p>
-                    </div>
-                    <i class="fas fa-plane"></i>
-                    <div class="to">
-                      <p class="country">JPN</p>
-                      <p class="timeto">15.21</p>
-                    </div>
-                      </div>
-                    <div class="col2">
-                      <p class="time">3 hours 11 minutes <br><span class="time-detail">(1 transit)</span></p>
-                    </div>
-                    <div class="col3">
-                      <i class="fas fa-suitcase"></i>
-                      <i class="fas fa-utensils"></i>
-                      <i class="fas fa-wifi"></i>
-                    </div>
-                    <div class="col4">
-                      <!-- <p class="pricetot">Rp</p> -->
-                      <p class="pricetot">Rp15000000000</p>
-                    </div>
-                  </div>
-                  <div class="selectbtn">
-                    <p class="detail" type="button">View Detail <i class="fas fa-sort-down"></i></p>
-                    <button>Select</button>
-                  </div>
-                </div>
-                <div class="ticket">
-                  <div class="top-ticket">
-                    <div class="airline-logo">
-                      <img src="https://seeklogo.com/images/G/garuda-indonesia-logo-8A90F09D68-seeklogo.com.png" alt="">
-                  </div>
-                  <p>Garuda Indonesia</p>
-                  </div>
-                  <div class="center">
-                      <div class="col1">
-                        <div class="from">
-                      <p class="country">IDN</p>
-                      <p class="timeto">12.33</p>
-                    </div>
-                    <i class="fas fa-plane"></i>
-                    <div class="to">
-                      <p class="country">JPN</p>
-                      <p class="timeto">15.21</p>
-                    </div>
-                      </div>
-                    <div class="col2">
-                      <p class="time">3 hours 11 minutes <br><span class="time-detail">(1 transit)</span></p>
-                    </div>
-                    <div class="col3">
-                      <i class="fas fa-suitcase"></i>
-                      <i class="fas fa-utensils"></i>
-                      <i class="fas fa-wifi"></i>
-                    </div>
-                    <div class="col4">
-                      <!-- <p class="pricetot">Rp</p> -->
-                      <p class="pricetot">Rp15000000000</p>
-                    </div>
-                  </div>
-                  <div class="selectbtn">
-                    <p class="detail" type="button">View Detail <i class="fas fa-sort-down"></i></p>
-                    <button>Select</button>
-                  </div>
-                </div>
-                <div class="ticket">
-                  <div class="top-ticket">
-                    <div class="airline-logo">
-                      <img src="https://seeklogo.com/images/G/garuda-indonesia-logo-8A90F09D68-seeklogo.com.png" alt="">
-                  </div>
-                  <p>Garuda Indonesia</p>
-                  </div>
-                  <div class="center">
-                      <div class="col1">
-                        <div class="from">
-                      <p class="country">IDN</p>
-                      <p class="timeto">12.33</p>
-                    </div>
-                    <i class="fas fa-plane"></i>
-                    <div class="to">
-                      <p class="country">JPN</p>
-                      <p class="timeto">15.21</p>
-                    </div>
-                      </div>
-                    <div class="col2">
-                      <p class="time">3 hours 11 minutes <br><span class="time-detail">(1 transit)</span></p>
-                    </div>
-                    <div class="col3">
-                      <i class="fas fa-suitcase"></i>
-                      <i class="fas fa-utensils"></i>
-                      <i class="fas fa-wifi"></i>
-                    </div>
-                    <div class="col4">
-                      <!-- <p class="pricetot">Rp</p> -->
-                      <p class="pricetot">Rp15000000000</p>
-                    </div>
-                  </div>
-                  <div class="selectbtn">
-                    <p class="detail" type="button">View Detail <i class="fas fa-sort-down"></i></p>
-                    <button>Select</button>
-                  </div>
-                </div>
-                <div class="ticket">
-                  <div class="top-ticket">
-                    <div class="airline-logo">
-                      <img src="https://seeklogo.com/images/G/garuda-indonesia-logo-8A90F09D68-seeklogo.com.png" alt="">
-                  </div>
-                  <p>Garuda Indonesia</p>
-                  </div>
-                  <div class="center">
-                      <div class="col1">
-                        <div class="from">
-                      <p class="country">IDN</p>
-                      <p class="timeto">12.33</p>
-                    </div>
-                    <i class="fas fa-plane"></i>
-                    <div class="to">
-                      <p class="country">JPN</p>
-                      <p class="timeto">15.21</p>
-                    </div>
-                      </div>
-                    <div class="col2">
-                      <p class="time">3 hours 11 minutes <br><span class="time-detail">(1 transit)</span></p>
-                    </div>
-                    <div class="col3">
-                      <i class="fas fa-suitcase"></i>
-                      <i class="fas fa-utensils"></i>
-                      <i class="fas fa-wifi"></i>
-                    </div>
-                    <div class="col4">
-                      <!-- <p class="pricetot">Rp</p> -->
-                      <p class="pricetot">Rp15000000000</p>
-                    </div>
-                  </div>
-                  <div class="selectbtn">
-                    <p class="detail" type="button">View Detail <i class="fas fa-sort-down"></i></p>
-                    <button>Select</button>
-                  </div>
-                </div>
                 </div>
             </div>
           </div>
@@ -420,13 +202,13 @@
 </template>
 
 <script>
-import 'vue-range-component/dist/vue-range-slider.css'
-import VueRangeSlider from 'vue-range-component'
+import VueSlider from 'vue-slider-component'
+import 'vue-slider-component/theme/antd.css'
 export default {
   name: 'SearchResultComp',
   data () {
     return {
-      value: [0, 1000],
+      value: [100000, 300000],
       transit: [],
       facilities: [],
       departure: [],
@@ -435,13 +217,13 @@ export default {
     }
   },
   created () {
-    this.min = 0
+    this.min = 100000
     this.max = 2000000
-    this.step = 10000
+    this.step = 100000
     this.enableCross = false
   },
   components: {
-    VueRangeSlider
+    VueSlider
   }
 }
 </script>

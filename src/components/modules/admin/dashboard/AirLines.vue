@@ -239,7 +239,8 @@ export default {
     ...mapActions('airlines', ['getDataAirLines', 'searchAirLines', 'insertNewAirLines', 'getDataAirLinesById', 'updateLogo', 'deleteAirLines', 'updateAirLines']),
     async handleGetAirLines (noPage) {
       const payload = {
-        page: noPage || 1
+        page: noPage || 1,
+        limit: 10
       }
       // const airLinesData = await this.getDataAirLines(payload)
       // this.airLinesData = await airLinesData.airlines

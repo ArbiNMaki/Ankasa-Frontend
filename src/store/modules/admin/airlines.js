@@ -11,7 +11,7 @@ const airlines = {
       dispatch('interceptorRequest', null, { root: true })
       console.log('payload :>> ', payload)
       return new Promise((resolve, reject) => {
-        axios.get(`${process.env.VUE_APP_SERVICE_API}/api/airlines?limit=10&page=${payload.page}&orderby=name&order=ASC`)
+        axios.get(`${process.env.VUE_APP_SERVICE_API}/api/airlines?limit=${payload.limit}&page=${payload.page}&orderby=name&order=ASC`)
           .then((result) => {
             console.log('result :>> ', result)
             resolve(result.data.result)

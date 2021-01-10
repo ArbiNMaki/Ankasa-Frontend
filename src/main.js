@@ -8,7 +8,7 @@ import { BootstrapVue, BootstrapVueIcons, BIcon } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueAWN from 'vue-awesome-notifications'
-
+import Vuelidate from 'vuelidate'
 // Your custom options
 const options = {
   durations: {
@@ -16,6 +16,7 @@ const options = {
   }
 }
 
+Vue.use(Vuelidate)
 Vue.use(VueAWN, options)
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)

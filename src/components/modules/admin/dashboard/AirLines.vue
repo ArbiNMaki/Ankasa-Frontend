@@ -465,9 +465,6 @@ export default {
   .card-airlines .logo img{
     text-align:center;
   }
-  .information {
-    /* background-color:red; */
-  }
   .actions {
     display:flex;
     justify-content: center;

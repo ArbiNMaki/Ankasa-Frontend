@@ -31,9 +31,9 @@
               </div>
               </div>
               <div class="actions d-flex flex-lg-row">
-                <button class="btn btn-actions btn-primary">
+                <!-- <button class="btn btn-actions btn-primary">
                   <i class="fa fa-info-circle"></i>
-                </button>
+                </button> -->
                 <button class="btn btn-actions btn-danger ml-2" @click="handleDeleteAirLines(airLine.id)">
                  <i class="fa fa-trash"></i>
                 </button>
@@ -54,9 +54,9 @@
               </div>
               </div>
               <div class="actions d-flex flex-lg-row">
-                <button class="btn btn-actions btn-primary">
+                <!-- <button class="btn btn-actions btn-primary">
                   <i class="fa fa-info-circle"></i>
-                </button>
+                </button> -->
                 <button class="btn btn-actions btn-danger ml-2" @click="handleDeleteAirLines(airLine.id)">
                  <i class="fa fa-trash"></i>
                 </button>

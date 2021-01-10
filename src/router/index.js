@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
-import ForgotPass from '../views/ForgotPass.vue'
 import Cust from '../views/cust/index.vue'
 import SearchResult from '../views/cust/searchresult/index.vue'
 import FlighDetail from '../views/cust/flightdetail/index.vue'
@@ -10,7 +7,10 @@ import MyBooking from '../views/cust/mybooking/index.vue'
 import BookingDetail from '../views/cust/bookingdetail/index.vue'
 import Profile from '../views/cust/profile/index.vue'
 import Chat from '../views/cust/chat/index.vue'
-
+import Admin from '../views/admin/index.vue'
+import Analytic from '../components/modules/admin/dashboard/Analytic.vue'
+import AirLines from '../components/modules/admin/dashboard/AirLines.vue'
+import FlightRoute from '../components/modules/admin/dashboard/FlightRoute.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -52,19 +52,26 @@ const routes = [
     ]
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register
-  },
-  {
-    path: '/forgot',
-    name: 'ForgotPass',
-    component: ForgotPass
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    children: [
+      {
+        path: 'analytic',
+        name: 'Analytic',
+        component: Analytic
+      },
+      {
+        path: 'airlines',
+        name: 'AirLines',
+        component: AirLines
+      },
+      {
+        path: 'flight-route',
+        name: 'FlightRoute',
+        component: FlightRoute
+      }
+    ]
   }
 ]
 

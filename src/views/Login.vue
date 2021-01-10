@@ -19,8 +19,9 @@
             <button type="submit" class="btn btn-block btn-login" >Sign In</button>
             <p class="small text-muted mt-3 mb-3">
               Did you forget your password? <br />
-              <router-link class="text-primary" to="/forgot">Tap here for reset</router-link>
+              <a class="text-primary" data-toggle="modal" data-target="#forgot-pass">Tap here for reset</a>
             </p>
+            <ModalForgot />
             <hr />
             <p class="small text-muted">Or Sign in with</p>
             <b-button class="sign" variant="outline-info">
@@ -43,6 +44,8 @@
 <script>
 import Swal from 'sweetalert2'
 import { mapActions } from 'vuex'
+import ModalForgot from '../../src/components/modules/ModalForgot'
+
 export default {
   name: 'Login',
   data () {
@@ -52,6 +55,9 @@ export default {
         password: ''
       }
     }
+  },
+  components: {
+    ModalForgot
   },
   methods: {
     ...mapActions({

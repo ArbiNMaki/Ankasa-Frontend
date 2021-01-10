@@ -10,6 +10,7 @@ import MyBooking from '../views/cust/mybooking/index.vue'
 import BookingDetail from '../views/cust/bookingdetail/index.vue'
 import Profile from '../views/cust/profile/index.vue'
 import Chat from '../views/cust/chat/index.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -42,7 +43,8 @@ const routes = [
       {
         path: 'profile',
         name: 'Profile',
-        component: Profile
+        component: Profile,
+        meta: { requiresAuth: true }
       },
       {
         path: 'chat',
@@ -62,7 +64,7 @@ const routes = [
     component: Register
   },
   {
-    path: '/forgot',
+    path: '/forgot/:token',
     name: 'ForgotPass',
     component: ForgotPass
   }
@@ -72,6 +74,20 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters['auth/isLogin']) {
+      next()
+    } else {
+      next({
+        path: '/login'
+      })
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

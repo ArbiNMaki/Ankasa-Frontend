@@ -19,8 +19,8 @@
     "vue-country-region-select": "^2.0.14",
     "vue-range-component": "^1.0.3",
     "vue-router": "^3.2.0",
-    "vue-sweetalert2": "^4.1.1",
     "vue-slider-component": "^3.2.11",
+    "vue-sweetalert2": "^4.1.1",
     "vuex": "^3.4.0"
   },
   "devDependencies": {

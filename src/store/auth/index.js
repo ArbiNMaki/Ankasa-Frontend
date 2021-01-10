@@ -22,6 +22,18 @@ const mutations = {
   }
 }
 const actions = {
+  onRegister (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${url}/api/auth/signup`, payload)
+        .then(result => {
+          resolve(result.data.message)
+        })
+        .catch(err => {
+          reject(err.message)
+        })
+    })
+  },
   onLogin (context, payload) {
     return new Promise((resolve, reject) => {
       axios
@@ -30,7 +42,7 @@ const actions = {
           password: payload.password
         })
         .then(result => {
-          localStorage.setItem('token', result.data.data.token)
+          localStorage.setItem('token', result.data.token)
           localStorage.setItem('id', result.data.data.id)
           localStorage.setItem('username', result.data.data.username)
           context.dispatch('interceptorRequest')
@@ -39,6 +51,38 @@ const actions = {
         .catch(err => {
           reject(err.message)
         })
+    })
+  },
+  onLogout (context) {
+    return new Promise(resolve => {
+      localStorage.removeItem('token')
+      localStorage.removeItem('id')
+      localStorage.removeItem('username')
+      resolve()
+    })
+  },
+  onForgotPassword (context, payload) {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${url}/api/auth/forgot-password/request`, payload)
+        .then(result => {
+          resolve(result.data.message)
+        })
+        .catch(err => reject(err.message))
+    })
+  },
+  onResetPassword (context, payload) {
+    console.log(payload)
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${url}/api/auth/forgot-password/new-password/${payload.token}`, {
+          password: payload.password,
+          repeat_password: payload.confirm
+        })
+        .then(result => {
+          resolve(result)
+        })
+        .catch(err => reject(err.message))
     })
   },
   interceptorRequest (context) {

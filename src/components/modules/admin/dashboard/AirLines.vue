@@ -421,9 +421,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  /* border:1px solid red; */
-}
 .table {
   max-height:100px;
   display:inline;

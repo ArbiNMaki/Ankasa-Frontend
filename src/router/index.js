@@ -7,7 +7,10 @@ import MyBooking from '../views/cust/mybooking/index.vue'
 import BookingDetail from '../views/cust/bookingdetail/index.vue'
 import Profile from '../views/cust/profile/index.vue'
 import Chat from '../views/cust/chat/index.vue'
-
+import Admin from '../views/admin/index.vue'
+import Analytic from '../components/modules/admin/dashboard/Analytic.vue'
+import AirLines from '../components/modules/admin/dashboard/AirLines.vue'
+import FlightRoute from '../components/modules/admin/dashboard/FlightRoute.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -45,6 +48,28 @@ const routes = [
         path: 'chat',
         name: 'Chat',
         component: Chat
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    children: [
+      {
+        path: 'analytic',
+        name: 'Analytic',
+        component: Analytic
+      },
+      {
+        path: 'airlines',
+        name: 'AirLines',
+        component: AirLines
+      },
+      {
+        path: 'flight-route',
+        name: 'FlightRoute',
+        component: FlightRoute
       }
     ]
   }

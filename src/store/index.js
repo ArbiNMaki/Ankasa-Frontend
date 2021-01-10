@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import AirLinesModule from './modules/admin/airlines'
-
+import airLinesModule from './modules/admin/airlines'
+import flightRouteModule from './modules/admin/flightroute'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -21,6 +21,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    airlines: AirLinesModule
+    airlines: airLinesModule,
+    flightroute: flightRouteModule
   }
 })

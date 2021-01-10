@@ -304,7 +304,6 @@ export default {
         id: this.input.idUpdate,
         name: this.input.updateAirLineName
       }
-      console.log(payload)
       this.$awn.asyncBlock(
         this.updateAirLines(payload),
         resp => {
@@ -391,6 +390,7 @@ export default {
           this.searchData = result
           this.handleGetAirLines()
         }).catch((err) => {
+          console.log('err :>> ', err)
           if (err === 'Data not found') {
             this.alert('error', 'Data not found', 'Oops, not data match', true)
           }

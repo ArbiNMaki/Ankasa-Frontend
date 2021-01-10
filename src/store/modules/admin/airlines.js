@@ -99,7 +99,7 @@ const airlines = {
           })
       })
     },
-    interceptorResponse (context) {
+    interceptorResponseAirLines (context) {
       axios.interceptors.response.use(function (response) {
         return response
       }, function (error) {
@@ -112,6 +112,7 @@ const airlines = {
             return Promise.reject(errorMessage)
           }
         }
+        console.log('akhirs')
         return Promise.reject(error)
       })
     }

@@ -72,7 +72,6 @@ const actions = {
         })
         .then(result => {
           commit('SET_USER_DATA', result.data.data)
-          console.log('result.data.data :>> ', result.data.data)
           commit('SET_STATE_TOKEN', result.data.token)
           commit('SET_TOKEN', result.data.token, { root: true })
           localStorage.setItem('token', result.data.token)
@@ -105,7 +104,6 @@ const actions = {
     })
   },
   onResetPassword (context, payload) {
-    console.log(payload)
     return new Promise((resolve, reject) => {
       axios
         .post(`${url}/api/auth/forgot-password/new-password/${payload.token}`, {

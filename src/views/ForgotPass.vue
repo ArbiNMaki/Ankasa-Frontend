@@ -55,7 +55,6 @@ export default {
       onResetPassword: 'auth/onResetPassword'
     }),
     resetPassword () {
-      // console.log(this.form)
       const ukey = {
         password: this.form.password,
         confirm: this.form.confirm,

@@ -51,41 +51,31 @@ export default new Vuex.Store({
       })
     },
     getTickets (context, payload) {
-      console.log(payload)
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/find?routeFrom=${payload.routeFrom}&routeTo=${payload.routeTo}&flightClass=${payload.flightClass}&tripType=${payload.triptype}&tripDate=${payload.tripdate}&facilities=${payload.facilities}&price=${payload.price}&airline=${payload.airlines}&departureTime=${payload.departureTime}&timeArrived=${payload.timeArrived}&transit=${payload.transit}`)
           .then((res) => {
-            console.log('sukses')
             context.commit('SET_FINDTICKETS', res.data.result)
-            console.log(res.data.result)
           })
           .catch((err) => {
-            console.log('gagal')
             console.log(err.response)
           })
       })
     },
     getCity (context, payload) {
-      console.log(payload)
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/data-lookup/city`)
           .then((res) => {
-            console.log('sukses')
             context.commit('SET_CITY', res.data.result)
-            console.log(res.data.result)
           })
           .catch((err) => {
-            console.log('gagal')
             console.log(err.response)
           })
       })
     },
     getMyProfile (context, payload) {
-      console.log(payload)
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/user/detail`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((res) => {
-            console.log('res :>> ', res)
             context.commit('SET_MYPROFILE', res.data.data)
           })
           .catch((err) => {
@@ -94,11 +84,9 @@ export default new Vuex.Store({
       })
     },
     getMyBooking (context, payload) {
-      console.log(payload)
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/user/my-booking`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((res) => {
-            console.log('res booking:>> ', res)
             context.commit('SET_MYBOOKING', res.data.data)
           })
           .catch((err) => {
@@ -107,11 +95,9 @@ export default new Vuex.Store({
       })
     },
     getOrderDetail (context, payload) {
-      console.log(payload)
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/detail/${localStorage.getItem('orderid')}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((res) => {
-            console.log(res.data.result)
             context.commit('SET_ORDERDETAIL', res.data.result)
           })
           .catch((err) => {

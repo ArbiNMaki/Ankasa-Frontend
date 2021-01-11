@@ -134,7 +134,6 @@ export default {
     ...mapMutations('customer', ['SET_PASSENGER']),
     ...mapActions({ getAllCity: 'getCity', getUserProfile: 'getMyProfile' }),
     handleFind () {
-      console.log('this.children :>> ', this.children)
       this.SET_PASSENGER({ child: this.children, adult: this.adults })
       this.$router.push({ path: 'searchresult', query: { from: this.selectedfrom, to: this.selectedto, triptype: this.triptype, departuredate: this.departuredate, returndate: this.returndate, seattype: this.seattype, adults: this.adults, children: this.children } })
         .catch((err) => {

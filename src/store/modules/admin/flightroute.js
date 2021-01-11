@@ -10,7 +10,6 @@ const flightRoute = {
   actions: {
     getAllFlightRoute ({ dispatch, commit, getters, rootGetters }, payload) {
       dispatch('interceptorRequest', null, { root: true })
-      console.log('payload :>> ', payload)
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/flightroute?limit=10&page=${payload.page}&orderby=departureTime&order=ASC`)
           .then((result) => {
@@ -22,7 +21,6 @@ const flightRoute = {
     },
     getFlightRouteById ({ dispatch, commit, getters, rootGetters }, payload) {
       dispatch('interceptorRequest', null, { root: true })
-      console.log('payload :>> ', payload)
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/flightroute/get-by-id/${payload}`)
           .then((result) => {

@@ -18,7 +18,6 @@ const customer = {
   },
   mutations: {
     SET_PASSENGER (state, payload) {
-      console.log('payload :>> ', payload)
       state.childPassenger = payload.child
       state.adultPassenger = payload.adult
       state.passengerDesc = `${payload.child} child ${payload.adult} adult`
@@ -30,7 +29,6 @@ const customer = {
       return new Promise((resolve, reject) => {
         axios.post(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/select-ticket`, payload)
           .then((result) => {
-            console.log(result)
             resolve(result.data.result)
           }).catch((err) => {
             reject(err)
@@ -42,7 +40,6 @@ const customer = {
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/detail/${payload}`)
           .then((result) => {
-            console.log(result.data.result)
             resolve(result.data.result)
           }).catch((err) => {
             reject(err)
@@ -51,14 +48,11 @@ const customer = {
     },
     updateOrderDetail ({ dispatch, commit, getters, rootGetters }, payload) {
       dispatch('interceptorRequest', null, { root: true })
-      console.log(payload)
       return new Promise((resolve, reject) => {
         axios.patch(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/input-flight-detail`, payload)
           .then((result) => {
-            console.log('berhasil')
             resolve(result)
           }).catch((err) => {
-            console.log('gagal')
             reject(err)
           })
       })

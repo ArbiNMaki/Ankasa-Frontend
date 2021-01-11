@@ -426,7 +426,6 @@ export default {
   },
   methods: {
     check () {
-      console.log('halo')
     },
     ...mapActions('flightroute', ['searchFlightRoute', 'updateFlightRoute', 'getAllFlightRoute', 'insertNewFlightRoute', 'deleteFlightRoute', 'getFlightRouteById']),
     ...mapActions('airlines', ['getDataAirLines']),
@@ -437,8 +436,6 @@ export default {
       const result = await this.getAllFlightRoute(payload)
       this.flightRoute.data = result.flightroute
       this.flightRoute.pagination = result.pagination
-      console.log('this.flightRoute.data :>> ', this.flightRoute.data)
-      console.log('this.flightRoute.pagination :>> ', this.flightRoute.pagination)
     },
     async showModalUpdateFlightRoute (id) {
       const result = await this.getFlightRouteById(id)
@@ -459,14 +456,12 @@ export default {
         return el.facility
       })
       this.inputUpdate.facilities = arrFacilities
-      console.log('arrFacilities :>> ', arrFacilities)
       $('#upload-update-image').attr('src', result.logo)
       this.inputUpdate.id = result.id
       window.$('#modalUpdateFlightRoute').modal('toggle')
     },
     handleUpdateFlightRoute () {
       const input = this.inputUpdate
-      console.log('input :>> ', input)
       const payload = {
         id: input.id,
         data: {
@@ -485,7 +480,6 @@ export default {
           facility: input.facilities
         }
       }
-      console.log('payload :>> ', payload)
       this.$awn.asyncBlock(
         this.updateFlightRoute(payload),
         resp => {
@@ -501,7 +495,6 @@ export default {
       )
     },
     async handleGetAirLines () {
-      console.log('masuk')
       const payload = {
         page: 1,
         limit: 50
@@ -509,11 +502,9 @@ export default {
       const result = await this.getDataAirLines(payload)
       this.airLines.data = result.airlines
       this.airLines.pagination = result.pagination
-      console.log('this.airLines :>> ', this.airLines.data)
     },
     async handleDeleteFlightRoute (id) {
       const self = this
-      console.log('id :>> ', id)
       Swal.fire({
         title: 'Delete Data ?',
         icon: 'question',
@@ -555,7 +546,6 @@ export default {
         tripDate: input.tripDate,
         facility: input.facilities
       }
-      console.log('payload :>> ', payload)
       this.$awn.asyncBlock(
         this.insertNewFlightRoute(payload),
         () => {
@@ -609,9 +599,7 @@ export default {
       this.$awn.asyncBlock(
         self.searchFlightRoute(payload),
         resp => {
-          console.log('resp :>> ', resp)
           self.search.data = resp
-          console.log('self.search.data :>> ', self.search.data)
           self.handleGetAllFlightRoute()
           self.$awn.success('FlightRoute has been updated')
         },

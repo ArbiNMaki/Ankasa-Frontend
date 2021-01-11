@@ -48,7 +48,6 @@ export default {
   methods: {
     register () {
       this.actionsRegister(this.form).then((response) => {
-        console.log(response)
         if (response === 'Email already exist' || response === 'Username already exist') {
           Swal.fire({
             icon: 'error',

@@ -89,8 +89,7 @@ export default {
       this.updateProfile(payload)
         .then((result) => {
           this.$awn.success('Profile has been updated')
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        }).catch(() => {
         })
     },
     setInput () {

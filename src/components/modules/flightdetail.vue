@@ -146,7 +146,6 @@ export default {
         this.toggle.status = false
         document.getElementById('fullname2').disabled = false
       } else {
-        console.log('this.getUserData :>> ', this.getUserData.username)
         this.fullname2 = this.getUserData.username
         this.toggle.status = true
         document.getElementById('fullname2').disabled = true
@@ -156,7 +155,6 @@ export default {
       this.getOrderDetail(orderId)
         .then(async (result) => {
           this.order.data = result
-          console.log('result :>> ', result.flight_route.airLinesId)
           await this.handleGetAirLine(result.flight_route.airLinesId)
         }).catch(() => {
           this.$router.push({ path: '/cust/searchresult' })
@@ -165,7 +163,6 @@ export default {
     async handleGetAirLine (id) {
       this.getDataAirLinesById(id)
         .then((result) => {
-          console.log('result :>> ', result)
           this.order.airLine = result
         }).catch((err) => {
           console.log('err :>> ', err)
@@ -181,11 +178,10 @@ export default {
         passenger_nationality: this.country,
         is_insurance: this.insuranceopt ? 1 : 0
       }
-      console.log('payload :>> ', payload)
       this.updateOrderDetail(payload)
         .then((result) => {
-          console.log('berhasil update')
-          console.log('result :>> ', result)
+          this.$awn.success('Order has been updated')
+          this.$router.push({ path: '/cust/mybooking' })
         }).catch((err) => {
           console.log('err :>> ', err)
         })
@@ -195,7 +191,6 @@ export default {
     }
   },
   async mounted () {
-    console.log('this.route.query.orderId :>> ', this.$route.query.orderId)
     if (!this.$route.query.orderId) {
       this.$router.push({ path: '/cust/searchresult' })
     } else {

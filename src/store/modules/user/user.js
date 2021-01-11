@@ -32,7 +32,6 @@ const actions = {
     })
   },
   updateProfile ({ dispatch, commit, getters, rootGetters }, payload) {
-    console.log(payload)
     dispatch('interceptorRequest', null, { root: true })
     return new Promise((resolve, reject) => {
       axios.patch(`${process.env.VUE_APP_SERVICE_API}/api/user/edit-profile`, payload)
@@ -45,7 +44,6 @@ const actions = {
   },
   updateImage ({ dispatch, commit, getters, rootGetters }, payload) {
     dispatch('interceptorRequest', null, { root: true })
-    console.log(payload)
     return new Promise((resolve, reject) => {
       axios.patch(`${process.env.VUE_APP_SERVICE_API}/api/user/update-image`, payload, {
         headers: {
@@ -53,7 +51,6 @@ const actions = {
         }
       })
         .then((response) => {
-          console.log('response :>> ', response)
           resolve(response)
         }).catch((err) => {
           reject(err)

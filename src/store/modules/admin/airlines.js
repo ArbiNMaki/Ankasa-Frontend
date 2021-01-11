@@ -9,11 +9,9 @@ const airlines = {
   actions: {
     getDataAirLines ({ dispatch, commit, getters, rootGetters }, payload) {
       dispatch('interceptorRequest', null, { root: true })
-      console.log('payload :>> ', payload)
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/airlines?limit=${payload.limit}&page=${payload.page}&orderby=name&order=ASC`)
           .then((result) => {
-            console.log('result :>> ', result)
             resolve(result.data.result)
           }).catch((err) => {
             reject(err)
@@ -22,11 +20,9 @@ const airlines = {
     },
     searchAirLines ({ dispatch, commit, getters, rootGetters }, payload) {
       dispatch('interceptorRequest', null, { root: true })
-      console.log('payload :>> ', payload)
       return new Promise((resolve, reject) => {
         axios.post(`${process.env.VUE_APP_SERVICE_API}/api/airlines/search`, payload)
           .then((result) => {
-            console.log('result :>> ', result)
             resolve(result.data.result)
           }).catch((err) => {
             reject(err)
@@ -61,7 +57,6 @@ const airlines = {
     },
     deleteAirLines ({ dispatch, commit, getters, rootGetters }, payload) {
       dispatch('interceptorRequest', null, { root: true })
-      console.log('payload :>> ', payload)
       return new Promise((resolve, reject) => {
         axios.delete(`${process.env.VUE_APP_SERVICE_API}/api/airlines/delete/${payload}`)
           .then((result) => {
@@ -74,14 +69,12 @@ const airlines = {
     insertNewAirLines ({ dispatch, commit, getters, rootGetters }, payload) {
       dispatch('interceptorRequest', null, { root: true })
       return new Promise((resolve, reject) => {
-        console.log('payload :>> ', payload)
         axios.post(`${process.env.VUE_APP_SERVICE_API}/api/airlines/insert-airlines`, payload, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         })
           .then((result) => {
-            console.log('result :>> ', result)
             resolve(result)
           }).catch((err) => {
             resolve(err)
@@ -105,14 +98,11 @@ const airlines = {
       }, function (error) {
         const errorStatusCode = error.response.data.statusCode
         const errorMessage = error.response.data.err.message
-        console.log('errorStatusCode :>> ', errorStatusCode)
-        console.log('errorMessage :>> ', errorMessage)
         if (errorStatusCode === 404) {
           if (errorMessage === 'Data not found') {
             return Promise.reject(errorMessage)
           }
         }
-        console.log('akhirs')
         return Promise.reject(error)
       })
     }

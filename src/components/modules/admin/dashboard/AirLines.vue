@@ -293,7 +293,6 @@ export default {
       // set data input
       this.input.updateAirLineName = result.name
       $('#upload-update-image').attr('src', result.logo)
-      console.log('result.id :>> ', result.id)
       this.input.idUpdate = result.id
       window.$('#modalUpdateAirLines').modal('toggle')
     },
@@ -323,7 +322,6 @@ export default {
       const self = this
       $('#input-upload-update-image').change(function () {
         const id = self.input.idUpdate
-        console.log('id :>> ', id)
         if (this.files && this.files[0]) {
           if (this.files[0].size >= 3 * 1000000) {
             return self.alert('Sorry,file too large', 'error')
@@ -385,13 +383,11 @@ export default {
       const payload = {
         name: this.input.search
       }
-      console.log('payload :>> ', payload)
       this.searchAirLines(payload)
         .then((result) => {
           this.searchData = result
           this.handleGetAirLines()
         }).catch((err) => {
-          console.log('err :>> ', err)
           if (err === 'Data not found') {
             this.alert('error', 'Data not found', 'Oops, not data match', true)
           }
@@ -415,7 +411,6 @@ export default {
   async mounted () {
     this.changePhoto()
     this.detectUpdatePhotoAirLines()
-    console.log('this.airLinesDataPagnation :>> ', this.airLinesDataPagination)
   }
 }
 </script>

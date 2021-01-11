@@ -305,9 +305,7 @@ export default {
         flight_route_id: flightRouteId,
         passenger_desc: this.getPassenger.desc
       }
-      // console.log('payload :>> ', payload)
       const result = await this.selectTicket(payload)
-      console.log('result post:>> ', result)
       this.$router.push({ path: '/cust/flightdetail', query: { orderId: result.order_id } })
     }
   },

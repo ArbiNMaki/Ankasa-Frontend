@@ -76,7 +76,6 @@ export default {
           localStorage.removeItem('id')
           localStorage.removeItem('username')
         } else {
-          console.log(this.getUserData)
           if (this.getUserData.role_id === 1) {
             this.$router.push({ path: '/cust/profile' })
           } else if (this.getUserData.role_id === 2) {

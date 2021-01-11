@@ -14,9 +14,15 @@
           </h5>
           <h3 class="mb-5">Register</h3>
           <form @submit.prevent="register()">
-            <input type="text" class="form-control mb-4" placeholder="Username" autofocus required v-model="form.username" />
-            <input type="text" class="form-control mb-4" placeholder="Email" autofocus required v-model="form.email" />
-            <input type="password" class="form-control mb-4" placeholder="Password" required v-model="form.password" />
+            <input type="text" :class="{ 'is-invalid':  $v.form.username.$error }" class="form-control mb-4" placeholder="Username" autofocus v-model="form.username" />
+            <div v-if="!$v.form.username.required" class="invalid-feedback">Name is required</div>
+            <div v-if="!$v.form.username.minLength" class="invalid-feedback">Username must be more than 5 characters</div>
+            <input type="text" :class="{ 'is-invalid':  $v.form.email.$error }" class="form-control mb-4" placeholder="Email" autofocus v-model="form.email" />
+             <div v-if="!$v.form.email.required" class="invalid-feedback">Email is required</div>
+             <div v-if="!$v.form.username.email" class="invalid-feedback">Invalid format email</div>
+            <input type="password" :class="{ 'is-invalid':  $v.form.password.$error }" class="form-control mb-4" placeholder="Password" v-model="form.password" />
+            <div v-if="!$v.form.password.required" class="invalid-feedback">Password is required</div>
+             <div v-if="!$v.form.password.minLength" class="invalid-feedback">Password must more than 6 character</div>
             <b-button type="submit" class="btn btn-block" variant="login">Sign Up</b-button>
             <b-form-checkbox class="mt-4 mb-3" required><p class="small" req>I accept the terms and use</p> </b-form-checkbox>
             <hr />
@@ -34,6 +40,7 @@
 <script>
 import Swal from 'sweetalert2'
 import { mapActions } from 'vuex'
+import { required, email, minLength } from 'vuelidate/lib/validators'
 export default {
   name: 'Register',
   data () {
@@ -45,8 +52,19 @@ export default {
       }
     }
   },
+  validations: {
+    form: {
+      username: { required, minLength: minLength(5) },
+      email: { email, required },
+      password: { required, minLength: minLength(6) }
+    }
+  },
   methods: {
     register () {
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        return
+      }
       this.actionsRegister(this.form).then((response) => {
         if (response === 'Email already exist' || response === 'Username already exist') {
           Swal.fire({

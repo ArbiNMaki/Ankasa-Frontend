@@ -14,8 +14,11 @@
           </h5>
           <h3 class="mb-5">Login</h3>
           <form class="text-center" @submit.prevent="login">
-            <input type="text" class="form-control mb-4" placeholder="Email" autofocus required v-model="form.email" />
-            <input type="password" class="form-control mb-5" placeholder="Password" required v-model="form.password"/>
+            <input type="text" :class="{ 'is-invalid':  $v.form.email.$error }" class="form-control mb-4" placeholder="Email" autofocus v-model="form.email" />
+            <div v-if="!$v.form.email.required" class="invalid-feedback">Email is required</div>
+            <div v-if="!$v.form.email.email" class="invalid-feedback">Invalid email</div>
+            <input type="password" :class="{ 'is-invalid':  $v.form.password.$error }" class="form-control mb-5" placeholder="Password" v-model="form.password"/>
+            <div v-if="!$v.form.password.required" class="invalid-feedback">Password is required</div>
             <button type="submit" class="btn btn-block btn-login" >Sign In</button>
             <p class="small text-muted mt-3 mb-3">
               Did you forget your password? <br />
@@ -45,7 +48,7 @@
 import Swal from 'sweetalert2'
 import { mapActions, mapGetters } from 'vuex'
 import ModalForgot from '../../src/components/modules/ModalForgot'
-
+import { required, email } from 'vuelidate/lib/validators'
 export default {
   name: 'Login',
   data () {
@@ -56,6 +59,12 @@ export default {
       }
     }
   },
+  validations: {
+    form: {
+      email: { required, email },
+      password: { required }
+    }
+  },
   components: {
     ModalForgot
   },
@@ -64,6 +73,10 @@ export default {
       onLogin: 'auth/onLogin'
     }),
     login () {
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        return
+      }
       this.onLogin(this.form).then((result) => {
         if (result === "Cannot read property 'password' of undefined") {
           this.alertExist()

@@ -50,6 +50,7 @@
               </b-row>
               <p class="small text-muted">Departure</p>
               <p class="small">{{convertTime(getOrderDetail.flight_route.tripDate)}} / {{getOrderDetail.flight_route.departureTime}}</p>
+              <p class="va" v-if="getOrderDetail.status_payment === 'Waiting for payment'">Transfer Ke: {{getOrderDetail.va_number}} (Virtual Account Bank BCA)</p>
             </div>
             <div class="booking-right col-sm-4">
               <img src="../../../assets/img/qr.png" alt="qr code">
@@ -122,6 +123,14 @@ export default {
 }
 .departure {
   font-size: 20px;
+}
+.va {
+  background-color: #2395FF;
+  border-radius: 10px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: small;
 }
 @media(min-width: 581px) {
   .booking-right img {

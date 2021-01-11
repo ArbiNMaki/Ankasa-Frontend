@@ -8,8 +8,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    findtickets: []
   },
   mutations: {
+    SET_FINDTICKETS (state, payload) {
+      state.findtickets = payload
+    }
   },
   actions: {
     interceptorRequest (context) {
@@ -19,6 +23,27 @@ export default new Vuex.Store({
       }, function (error) {
         return Promise.reject(error)
       })
+    },
+    getTickets (context, payload) {
+      console.log(payload)
+      return new Promise((resolve, reject) => {
+        console.log('abcd')
+        axios.get(`http://18.234.186.153:2000/api/ticketing/find?routeFrom=${payload.routeFrom}&routeTo=${payload.routeTo}&flightClass=${payload.flightClass}&tripType=${payload.triptype}&tripDate=${payload.tripdate}&facilities=${payload.facilities}&price=${payload.price}&airline=${payload.airlines}&departureTime=${payload.departureTime}&timeArrived=${payload.timeArrived}&transit=${payload.transit}`)
+          .then((res) => {
+            console.log('sukses')
+            context.commit('SET_FINDTICKETS', res.data.result)
+            console.log(res.data.result)
+          })
+          .catch((err) => {
+            console.log('gagal')
+            console.log(err.response)
+          })
+      })
+    }
+  },
+  getters: {
+    getTickets (state) {
+      return state.findtickets
     }
   },
   modules: {

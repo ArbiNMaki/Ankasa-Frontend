@@ -9,15 +9,18 @@
               <div class="fromtoloc">
                 <div>
                 <p class="fromto">From</p>
-                <p class="location">Medan</p>
+                <p class="location">{{$route.query.from}}</p>
               </div>
               <i class="fas fa-exchange-alt fa-lg"></i>
               <div class="toloc">
                 <p class="fromto">To</p>
-                <p class="location">Tokyo</p>
+                <p class="location">{{$route.query.to}}</p>
               </div>
               </div>
-              <p class="flight-detail">Monday, 20 July 20  |  6 Passenger  |  Economy</p>
+              <p class="flight-detail">{{$route.query.departuredate}}  |  6 Passenger  |  {{$route.query.seattype}}</p>
+              <div v-if="$route.query.triptype === 'roundtrip'">
+                <p class="flight-detail">{{$route.query.returndate}}  |  6 Passenger  |  {{$route.query.seattype}}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -25,7 +28,7 @@
           <div class="row justify-content-around ctnr">
             <div class="col-lg-4 left">
               <div class="topside">
-                  <p class="filter">Filter</p>
+                  <p class="filter" type="button">Filter</p>
                   <p class="reset">Reset</p>
                 </div>
               <div class="sidebar">
@@ -35,19 +38,19 @@
                     <div class="collapse list-unstyled" id="transit">
                       <div class="opt">
                         <label for="direct">Direct</label>
-                        <input type="checkbox" id="direct" name="transit" v-model="transit" value="direct"/>
+                        <input type="checkbox" id="direct" name="transit" v-model="transit" value="direct" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="transitopt">Transit</label>
-                        <input type="checkbox" id="transitopt" name="transitopt" v-model="transit" value="transit"/>
+                        <input type="checkbox" id="transitopt" name="transitopt" v-model="transit" value="transit" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="direct2+">Direct 2+</label>
-                        <input type="checkbox" id="direct2+" name="transit" v-model="transit" value="direct2+"/>
+                        <input type="checkbox" id="direct2+" name="transit" v-model="transit" value="direct 2" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="transit2+">Transit 2+</label>
-                        <input type="checkbox" id="transit2+" name="transit" v-model="transit" value="transit2+"/>
+                        <input type="checkbox" id="transit2+" name="transit" v-model="transit" value="transit 2" @change="filter"/>
                       </div>
                       {{transit}}
                     </div>
@@ -57,15 +60,15 @@
                     <div class="collapse list-unstyled" id="facilities">
                       <div class="opt">
                         <label for="luggage">Luggage</label>
-                        <input type="checkbox" id="luggage" name="facilities" v-model="facilities" value="luggage"/>
+                        <input type="checkbox" id="luggage" name="facilities" v-model="facilities" value="luggage" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="meal">In-flight Meal</label>
-                        <input type="checkbox" id="meal" name="facilities" v-model="facilities" value="meal"/>
+                        <input type="checkbox" id="meal" name="facilities" v-model="facilities" value="meal" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="wifi">Wi-fi</label>
-                        <input type="checkbox" id="wifi" name="facilities" v-model="facilities" value="wifi"/>
+                        <input type="checkbox" id="wifi" name="facilities" v-model="facilities" value="wi-fi" @change="filter"/>
                       </div>
                       {{facilities}}
                     </div>
@@ -75,19 +78,19 @@
                     <div class="collapse list-unstyled" id="departure">
                       <div class="opt">
                         <label for="6">00:00-06:00</label>
-                        <input type="checkbox" id="6" name="departure" v-model="departure" value="00:00-06:00"/>
+                        <input type="checkbox" id="6" name="departure" v-model="departure" value="00:00-06:00" @change="filter"/>
                       </div>
                       <div class="opt">
-                        <label for="12">06:00-12.00</label>
-                        <input type="checkbox" id="12" name="departure" v-model="departure" value="06:00-12.00"/>
+                        <label for="12">06:00-12:00</label>
+                        <input type="checkbox" id="12" name="departure" v-model="departure" value="06:00-12:00" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="18">12:00-18:00</label>
-                        <input type="checkbox" id="18" name="departure" v-model="departure" value="12:00-18:00"/>
+                        <input type="checkbox" id="18" name="departure" v-model="departure" value="12:00-18:00" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="24">18:00-24:00</label>
-                        <input type="checkbox" id="24" name="departure" v-model="departure" value="18:00-24:00"/>
+                        <input type="checkbox" id="24" name="departure" v-model="departure" value="18:00-24:00" @change="filter"/>
                       </div>
                       {{departure}}
                     </div>
@@ -97,19 +100,19 @@
                     <div class="collapse list-unstyled" id="arrival">
                         <div class="opt">
                         <label for="6go">00:00-06:00</label>
-                        <input type="checkbox" id="6go" name="arrival" v-model="arrival" value="00:00-06:00"/>
+                        <input type="checkbox" id="6go" name="arrival" v-model="arrival" value="00:00-06:00" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="12go">06:00-12.00</label>
-                        <input type="checkbox" id="12go" name="arrival" v-model="arrival" value="06:00-12.00"/>
+                        <input type="checkbox" id="12go" name="arrival" v-model="arrival" value="06:00-12:00" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="18go">12:00-18:00</label>
-                        <input type="checkbox" id="18go" name="arrival" v-model="arrival" value="12:00-18:00"/>
+                        <input type="checkbox" id="18go" name="arrival" v-model="arrival" value="12:00-18:00" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="24go">18:00-24:00</label>
-                        <input type="checkbox" id="24go" name="arrival" v-model="arrival" value="18:00-24:00"/>
+                        <input type="checkbox" id="24go" name="arrival" v-model="arrival" value="18:00-24:00" @change="filter"/>
                       </div>
                       {{arrival}}
                     </div>
@@ -119,15 +122,27 @@
                     <div class="collapse list-unstyled" id="airlines">
                       <div class="opt">
                         <label for="garuda">Garuda Indonesia</label>
-                        <input type="checkbox" id="garuda" name="airlines" v-model="airlines" value="garuda"/>
+                        <input type="checkbox" id="garuda" name="airlines" v-model="airlines" value="Garuda Indonesia" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="airasia">Air Asia</label>
-                        <input type="checkbox" id="airasia" name="airlines" v-model="airlines" value="airasia"/>
+                        <input type="checkbox" id="airasia" name="airlines" v-model="airlines" value="Air Asia" @change="filter"/>
+                      </div>
+                      <div class="opt">
+                        <label for="aviastar">Aviastar</label>
+                        <input type="checkbox" id="aviastar" name="airlines" v-model="airlines" value="Aviastar" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="lionair">Lion Air</label>
-                        <input type="checkbox" id="lionair" name="airlines" v-model="airlines" value="lionair"/>
+                        <input type="checkbox" id="lionair" name="airlines" v-model="airlines" value="Lion Air" @change="filter"/>
+                      </div>
+                      <div class="opt">
+                        <label for="kalstar">Kalstar Aviation</label>
+                        <input type="checkbox" id="kalstar" name="airlines" v-model="airlines" value="Kalstar Aviation" @change="filter"/>
+                      </div>
+                      <div class="opt">
+                        <label for="citilink">Citilink</label>
+                        <input type="checkbox" id="citilink" name="airlines" v-model="airlines" value="Citilink" @change="filter"/>
                       </div>
                       {{airlines}}
                     </div>
@@ -135,9 +150,7 @@
                 <div class="menu">
                     <div data-target="#price" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Ticket Price</div>
                     <div class="collapse list-unstyled" id="price">
-                    </div>
-                </div>
-                <div class="range-title">
+                      <div class="range-title">
                   <p>Lowest</p>
                   <p>Highest</p>
                 </div>
@@ -148,6 +161,11 @@
                   <p>Rp{{value[0]}}</p>
                   <p>Rp{{value[1]}}</p>
                 </div>
+                <div class="pricefilter">
+                  <button class="filterprice" @click.prevent="filterprice">price filter</button>
+                </div>
+                    </div>
+                </div>
             </div>
               </div>
             </div>
@@ -157,36 +175,41 @@
                   <p class="sort" type="button">Sort By <i class="fas fa-sort"></i></p>
                 </div>
               <div class="ticketing">
-                <div class="ticket">
+                <div class="ticket" v-for="ticketing in getTickets" :key="ticketing.id">
                   <div class="top-ticket">
                     <div class="airline-logo">
-                      <img src="https://seeklogo.com/images/G/garuda-indonesia-logo-8A90F09D68-seeklogo.com.png" alt="">
+                      <img :src="ticketing.AirLine.logo" alt="">
                   </div>
-                  <p>Garuda Indonesia</p>
+                  <p>{{ticketing.AirLine.name}}</p>
                   </div>
                   <div class="center">
                       <div class="col1">
                         <div class="from">
-                      <p class="country">IDN</p>
-                      <p class="timeto">12.33</p>
+                      <p class="country">{{ticketing.routeFrom}}</p>
+                      <p class="timeto">{{ticketing.departureTime}}</p>
                     </div>
                     <i class="fas fa-plane"></i>
                     <div class="to">
-                      <p class="country">JPN</p>
-                      <p class="timeto">15.21</p>
+                      <p class="country">{{ticketing.routeTo}}</p>
+                      <p class="timeto">{{ticketing.timeArrived}}</p>
                     </div>
                       </div>
                     <div class="col2">
-                      <p class="time">3 hours 11 minutes <br><span class="time-detail">(1 transit)</span></p>
+                      <p class="time">{{ticketing.flightDuration}} <br><span class="time-detail">({{ticketing.transit}} transit) ({{ticketing.direct}} direct)</span></p>
                     </div>
-                    <div class="col3">
-                      <i class="fas fa-suitcase"></i>
-                      <i class="fas fa-utensils"></i>
-                      <i class="fas fa-wifi"></i>
+                    <div class="col3"  v-for="index in ticketing.Facilities" :key="index.id">
+                      <div class="facilitypic" v-if="index.facility === 'luggage'">
+                        <i class="fas fa-suitcase"></i>
+                      </div>
+                      <div class="facilitypic" v-if="index.facility === 'meal'">
+                        <i class="fas fa-utensils"></i>
+                      </div>
+                      <div class="facilitypic" v-if="index.facility === 'wi-fi'">
+                        <i class="fas fa-wifi"></i>
+                      </div>
                     </div>
                     <div class="col4">
-                      <!-- <p class="pricetot">Rp</p> -->
-                      <p class="pricetot">Rp15000000000</p>
+                      <p class="pricetot">Rp{{ticketing.price}}</p>
                     </div>
                   </div>
                   <div class="selectbtn">
@@ -202,13 +225,14 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/antd.css'
 export default {
   name: 'SearchResultComp',
   data () {
     return {
-      value: [100000, 300000],
+      value: [1000000, 3000000],
       transit: [],
       facilities: [],
       departure: [],
@@ -218,17 +242,98 @@ export default {
   },
   created () {
     this.min = 100000
-    this.max = 2000000
+    this.max = 20000000
     this.step = 100000
     this.enableCross = false
   },
   components: {
     VueSlider
+  },
+  methods: {
+    ...mapActions({ getAllTickets: 'getTickets' }),
+    updatePage (param) {
+      const payload = {
+        routeFrom: this.$route.query.from,
+        routeTo: this.$route.query.to,
+        flightClass: this.$route.query.seattype,
+        triptype: this.$route.query.triptype,
+        tripdate: this.$route.query.departuredate,
+        facilities: (this.facilities).toString() || '',
+        airlines: (this.airlines).toString() || '',
+        departureTime: (this.departure).toString() || '',
+        timeArrived: (this.arrival).toString() || '',
+        transit: (this.transit).toString() || '',
+        price: ''
+      }
+      this.getAllTickets(payload)
+    },
+    filter () {
+      const payload = {
+        routeFrom: this.$route.query.from,
+        routeTo: this.$route.query.to,
+        flightClass: this.$route.query.seattype,
+        triptype: this.$route.query.triptype,
+        tripdate: this.$route.query.departuredate,
+        facilities: (this.facilities).toString() || '',
+        airlines: (this.airlines).toString() || '',
+        departureTime: (this.departure).toString() || '',
+        timeArrived: (this.arrival).toString() || '',
+        transit: (this.transit).toString() || '',
+        price: ''
+      }
+      this.getAllTickets(payload)
+    },
+    filterprice () {
+      const payload = {
+        routeFrom: this.$route.query.from,
+        routeTo: this.$route.query.to,
+        flightClass: this.$route.query.seattype,
+        triptype: this.$route.query.triptype,
+        tripdate: this.$route.query.departuredate,
+        facilities: (this.facilities).toString() || '',
+        airlines: (this.airlines).toString() || '',
+        departureTime: (this.departure).toString() || '',
+        timeArrived: (this.arrival).toString() || '',
+        transit: (this.transit).toString() || '',
+        price: (this.value).toString()
+      }
+      this.getAllTickets(payload)
+    }
+  },
+  computed: {
+    ...mapGetters(['getTickets'])
+  },
+  watch: {
+    $route () {
+      this.updatePage([this.$route.query.from, this.$route.query.to, this.$route.query.triptype, this.$route.query.seattype, this.$route.query.departuredate])
+    }
+  },
+  mounted () {
+    this.filter()
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.pricefilter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+.filterprice {
+  height: 50px;
+  width: 150px;
+  border-radius: 10px;
+  background-color: #2395FF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
 .topfromto {
     margin-left: 3%;
 }
@@ -286,7 +391,7 @@ export default {
 }
 .country {
     font-family: Poppins;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 500;
     color: black;
 }
@@ -303,9 +408,6 @@ export default {
     outline: none;
     cursor: pointer;
 }
-.col3 i {
-    margin-left: 5%;
-}
 .col4 {
     text-align: center;
 }
@@ -313,7 +415,6 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 20%;
 }
 .selectbtn {
     display: flex;
@@ -394,6 +495,7 @@ export default {
     font-family: Poppins;
     font-size: 24px;
     font-weight: 600;
+    cursor: pointer;
 }
 .reset, .sort {
     font-family: Poppins;

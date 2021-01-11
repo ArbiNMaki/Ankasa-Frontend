@@ -18,11 +18,13 @@
             <div class="booking-left col-sm-6">
               <b-row>
                 <b-col>
-                  <img src="../../../assets/img/garuda-indonesia-logo-BD82882F07-seeklogo 3.png" alt="logo garuda">
+                  <div class="airline-logo">
+                    <img :src="getOrderDetail.flight_route.AirLine.logo" alt="logo garuda">
+                  </div>
                 </b-col>
                 <b-col>
                   <b class="departure font-weight-bold mr-2" v-if="getOrderDetail.flight_route.routeFrom">{{getOrderDetail.flight_route.routeFrom}}</b>
-                  <img src="../../../assets/img/greysmallplane.png" alt="gray-small-plane"/>
+                    <img src="../../../assets/img/greysmallplane.png" alt="gray-small-plane"/>
                   <b class="departure font-weight-bold ml-2">{{getOrderDetail.flight_route.routeTo}}</b>
                 </b-col>
               </b-row>
@@ -80,6 +82,14 @@ export default {
 </script>
 
 <style scoped>
+.airline-logo {
+  height: 57px;
+  width: 100px;
+  overflow: hidden;
+}
+.airline-logo img {
+  width: 100%;
+}
 .booking-detail {
   background-color: #2395FF;
   overflow: hidden;

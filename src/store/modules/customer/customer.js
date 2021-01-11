@@ -51,12 +51,14 @@ const customer = {
     },
     updateOrderDetail ({ dispatch, commit, getters, rootGetters }, payload) {
       dispatch('interceptorRequest', null, { root: true })
+      console.log(payload)
       return new Promise((resolve, reject) => {
         axios.patch(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/input-flight-detail`, payload)
           .then((result) => {
-            console.log(result)
+            console.log('berhasil')
             resolve(result)
           }).catch((err) => {
+            console.log('gagal')
             reject(err)
           })
       })

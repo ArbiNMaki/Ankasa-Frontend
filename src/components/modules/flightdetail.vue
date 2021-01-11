@@ -184,6 +184,7 @@ export default {
       console.log('payload :>> ', payload)
       this.updateOrderDetail(payload)
         .then((result) => {
+          console.log('berhasil update')
           console.log('result :>> ', result)
         }).catch((err) => {
           console.log('err :>> ', err)

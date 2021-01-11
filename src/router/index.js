@@ -23,6 +23,7 @@ const routes = [
     path: '/cust',
     name: 'Cust',
     component: Cust,
+    meta: { requiresAuth: true },
     children: [
       {
         path: 'searchresult',
@@ -47,8 +48,7 @@ const routes = [
       {
         path: 'profile',
         name: 'Profile',
-        component: Profile,
-        meta: { requiresAuth: true }
+        component: Profile
       },
       {
         path: 'chat',
@@ -60,22 +60,26 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: { requiresVisitor: true }
   },
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: Register,
+    meta: { requiresVisitor: true }
   },
   {
     path: '/forgot/:token',
     name: 'ForgotPass',
-    component: ForgotPass
+    component: ForgotPass,
+    meta: { requiresVisitor: true }
   },
   {
     path: '/admin',
     name: 'Admin',
     component: Admin,
+    meta: { requiresAdmin: true },
     children: [
       {
         path: 'analytic',
@@ -109,6 +113,22 @@ router.beforeEach((to, from, next) => {
     } else {
       next({
         path: '/login'
+      })
+    }
+  } else if (to.matched.some(record => record.meta.requiresVisitor)) {
+    if (!store.getters['auth/isLogin']) {
+      next()
+    } else {
+      next({
+        path: '/cust/searchresult'
+      })
+    }
+  } else if (to.matched.some(record => record.meta.requiresAdmin)) {
+    if (store.getters['auth/isAdmin']) {
+      next()
+    } else {
+      next({
+        path: '/cust/searchresult'
       })
     }
   } else {

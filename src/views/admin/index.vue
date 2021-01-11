@@ -39,23 +39,14 @@
       </aside>
       <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0">
         <div class="main-navbar sticky-top bg-white">
-          <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-              <form action="#" class="main-navbar-search w-100 d-none d-md-flex d-lg-flex align-items-center p-3">
-                <div class="input-group prepend-search input-group-seamless ml-3">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text border-0 bg-white">
-                      <b-icon-search class="black-search"/>
-                    </div>
-                  </div>
-                  <input class="navbar-search border-0 form-control shadow-none" type="text" placeholder="Search for something..." aria-label="Search"> </div>
-              </form>
+          <nav class="navbar align-items-stretch navbar-light flex-md-end justify-content-end p-0">
               <ul class="navbar-nav border-left flex-row">
                 <li class="nav-item dropdown">
                   <a class="nav-link d-flex align-items-center dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     <div class="user-avatar ">
-                    <img class="rounded-circle mr-2" src="../../assets/image/messi.jpg" alt="User Avatar">
+                    <img class="rounded-circle mr-2" :src="getUserData.image" alt="User Avatar">
                     </div>
-                    <span class="d-none d-md-inline-block ml-2">Messi</span>
+                    <span class="d-none d-md-inline-block ml-2">{{ getUserData.username }}</span>
                   </a>
                 </li>
               </ul>
@@ -71,12 +62,9 @@
 
 <script>
 import $ from 'jquery'
-import { BIconSearch } from 'bootstrap-vue'
+import { mapGetters } from 'vuex'
 export default {
   name: 'AdminDashboard',
-  components: {
-    BIconSearch
-  },
   state: {
 
   },
@@ -94,6 +82,9 @@ export default {
   },
   mounted () {
     this.cssFunction()
+  },
+  computed: {
+    ...mapGetters('auth', ['getUserData'])
   }
 }
 </script>

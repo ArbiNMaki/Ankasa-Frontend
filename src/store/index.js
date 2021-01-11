@@ -18,7 +18,8 @@ export default new Vuex.Store({
     city: [],
     myprofile: {},
     mybooking: [],
-    orderdetail: {}
+    orderdetail: {},
+    token: null
   },
   mutations: {
     SET_FINDTICKETS (state, payload) {
@@ -35,6 +36,9 @@ export default new Vuex.Store({
     },
     SET_ORDERDETAIL (state, payload) {
       state.orderdetail = payload
+    },
+    SET_TOKEN (state, payload) {
+      state.token = payload
     }
   },
   actions: {
@@ -81,6 +85,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/user/detail`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((res) => {
+            console.log('res :>> ', res)
             context.commit('SET_MYPROFILE', res.data.data)
           })
           .catch((err) => {
@@ -93,7 +98,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/user/my-booking`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((res) => {
-            console.log(res.data)
+            console.log('res booking:>> ', res)
             context.commit('SET_MYBOOKING', res.data.data)
           })
           .catch((err) => {
@@ -145,6 +150,12 @@ export default new Vuex.Store({
         getItem: key => ls.get(key),
         setItem: (key, value) => ls.set(key, value),
         removeItem: key => ls.remove(key)
+      },
+      reducer (val) {
+        if (val.user.token === null) { // val.user.token (your user token for example)
+          return {}
+        }
+        return val
       }
     })
   ]

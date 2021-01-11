@@ -70,7 +70,7 @@
                   <label for="insurance-check">Insurance  {{insuranceopt}}</label>
                   </div>
                   <div>
-                    <p class="total">Rp20000000/pax</p>
+                    <p class="total">Rp75000/pax</p>
                   </div>
                   </div>
                   <p class="info">Get Travel Compensation Up To Rp1000000  </p>

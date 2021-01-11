@@ -21,6 +21,11 @@ const customer = {
       state.childPassenger = payload.child
       state.adultPassenger = payload.adult
       state.passengerDesc = `${payload.child} child ${payload.adult} adult`
+    },
+    LOGOUT_CUSTOMER (state) {
+      state.passengerDesc = null
+      state.childPassenger = null
+      state.adultPassenger = null
     }
   },
   actions: {

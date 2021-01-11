@@ -4,7 +4,7 @@
         <div class="card-body">
         <div class="text-center">
           <div class="img-profile">
-            <img :src="getUserData.image"  class="img-thumbnail" alt="image">
+            <img :src="getUserData.image? getUserData.image : '/img/default-avatar.png'"  class="img-thumbnail" alt="image">
           </div>
         </div>
         <div class="text-center mt-3" >
@@ -55,7 +55,10 @@ export default {
   },
   methods: {
     ...mapActions('user', ['updateImage', 'getUser']),
-    ...mapMutations('auth', ['LOGOUT']),
+    ...mapMutations('auth', ['LOGOUT_AUTH']),
+    ...mapMutations(['LOGOUT_INDEX']),
+    ...mapMutations('user', ['LOGOUT_USER']),
+    ...mapMutations('customer', ['LOGOUT_CUSTOMER']),
     uploadImage () {
     },
     detectChangeImage () {
@@ -93,7 +96,11 @@ export default {
       })
     },
     handleLogout () {
-      this.LOGOUT()
+      this.LOGOUT_INDEX()
+      this.LOGOUT_USER()
+      this.LOGOUT_CUSTOMER()
+      this.LOGOUT_AUTH()
+      this.$router.push({ path: '/login' })
     }
   },
   mounted () {

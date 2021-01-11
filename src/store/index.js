@@ -39,6 +39,14 @@ export default new Vuex.Store({
     },
     SET_TOKEN (state, payload) {
       state.token = payload
+    },
+    LOGOUT_INDEX (state) {
+      state.findtickets = []
+      state.city = []
+      state.myprofile = {}
+      state.mybooking = []
+      state.orderdetail = {}
+      state.token = null
     }
   },
   actions: {

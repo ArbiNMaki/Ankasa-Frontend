@@ -102,8 +102,8 @@
                 <div class="nav-item notif">
                     <i class="far fa-bell fa-lg"></i>
                 </div>
-                <div class="nav-item userprofile">
-                    <img :src="getMyProfile.image" @click="toProfile" alt="">
+                <div class="nav-item userprofile" @click="toProfile">
+                    <img :src="getMyProfile.image? getMyProfile.image : '/img/default-avatar.png'"  alt="">
                 </div>
             </div>
         </div>
@@ -285,7 +285,7 @@ select {
     color: #414141;
 }
 .brand {
-    width: 10%;
+    width: 200px;
     margin-left: 5% ;
     display: flex;
     flex-direction: row;

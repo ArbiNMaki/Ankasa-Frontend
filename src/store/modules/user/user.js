@@ -15,6 +15,9 @@ const getters = {
 const mutations = {
   SET_DATA_USER (state, payload) {
     state.dataUser = payload
+  },
+  LOGOUT_USER (state) {
+    state.dataUser = []
   }
 }
 

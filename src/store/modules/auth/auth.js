@@ -43,11 +43,12 @@ const mutations = {
   SET_STATE_TOKEN (state, payload) {
     state.token = payload
   },
-  LOGOUT () {
-    window.localStorage.removeItem('vuex')
-    window.localStorage.removeItem('username')
-    window.localStorage.removeItem('id')
-    window.localStorage.removeItem('token')
+  LOGOUT_AUTH (state) {
+    state.token = null
+    state.user.data = null
+    localStorage.removeItem('username')
+    localStorage.removeItem('id')
+    localStorage.removeItem('token')
   }
 }
 const actions = {

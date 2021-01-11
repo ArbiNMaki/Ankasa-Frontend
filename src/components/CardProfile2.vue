@@ -11,12 +11,12 @@
                     <div class="login-box">
                     <form>
                       <div class="user-box">
-                        <input type="text">
-                        <label> Email</label>
+                        <label> Email :</label>
+                        <input type="text" class="form-control" v-model="input.email">
                       </div>
                       <div class="user-box">
-                        <input type="text">
-                        <label> Phone Number</label>
+                        <label> Phone Number :</label>
+                        <input type="text" class="form-control" v-model="input.phoneNumber">
                       </div>
                     </form>
                     <p class="text-right color-default font-weight-bold">Account Settings
@@ -28,22 +28,22 @@
                   <div class="col-6">
                     <p class="font-weight-bold"> Biodata</p>
                     <div class="login-box">
-                    <form>
+                    <form @submit.prevent="handleUpdateProfile">
                       <div class="user-box">
-                        <input type="text" name="">
-                        <label> Username</label>
+                        <label> Username :</label>
+                        <input type="text" class="form-control" name="" v-model="input.userName">
                       </div>
                       <div class="user-box">
-                          <input type="text">
-                        <label> City</label>
+                        <label> City :</label>
+                        <input type="text" class="form-control" name="" v-model="input.city" id="">
                       </div>
                       <div class="user-box">
-                        <input type="text">
-                        <label> Address</label>
+                        <label> Address :</label>
+                        <input type="text" class="form-control" v-model="input.address">
                       </div>
                       <div class="user-box">
-                        <input type="text">
-                        <label> Post Code</label>
+                        <label> Post Code :</label>
+                        <input type="text" class="form-control" v-model="input.postCode">
                       </div>
                       <button type="submit" class="btn float-rigth">Save</button>
                     </form>
@@ -57,7 +57,57 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
+  data () {
+    return {
+      input: {
+        email: '',
+        phoneNumber: '',
+        userName: '',
+        city: '',
+        address: '',
+        postCode: ''
+      }
+    }
+  },
+  methods: {
+    ...mapActions('user', ['getUser', 'updateProfile']),
+    async handleGetProfile () {
+      await this.getUser()
+      this.setInput()
+    },
+    async handleUpdateProfile () {
+      const payload = {
+        email: this.input.email,
+        phone_number: this.input.phoneNumber,
+        username: this.input.userName,
+        city: this.input.city,
+        address: this.input.address,
+        post_code: this.input.postCode
+      }
+      this.updateProfile(payload)
+        .then((result) => {
+          this.$awn.success('Profile has been updated')
+        }).catch((err) => {
+          console.log('err :>> ', err)
+        })
+    },
+    setInput () {
+      this.input.email = this.getUserData.email
+      this.input.phoneNumber = this.getUserData.phone_number
+      this.input.userName = this.getUserData.username
+      this.input.city = this.getUserData.city
+      this.input.address = this.getUserData.address
+      this.input.postCode = this.getUserData.post_code
+    }
+  },
+  mounted () {
+    this.handleGetProfile()
+  },
+  computed: {
+    ...mapGetters('user', ['getUserData'])
+  }
 }
 </script>
 

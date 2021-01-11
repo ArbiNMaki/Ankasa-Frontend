@@ -3,19 +3,21 @@
     <div class="card d-sm-block d-none">
         <div class="card-body">
         <div class="text-center">
-            <img width="150" class="img-thumbnail" alt="image" :src="form.image">
+          <div class="img-profile">
+            <img :src="getUserData.image"  class="img-thumbnail" alt="image">
+          </div>
         </div>
         <div class="text-center mt-3" >
             <div class="fileUpload btn btn-outline-primary btn-lg font-weight-bold">
                 <span>Select Photo</span>
-                 <input @change="prosesFile($event)" class="upload" type="file" />
+                 <input class="upload" id="image-profile" type="file" />
             </div>
         </div>
         <div class="text-center mt-3" >
-            <h4 class="font-weight-bold" >{{ form.username }}</h4>
+            <h4 class="font-weight-bold" ></h4>
         </div>
         <div class="text-center mt-2" >
-             <p style="color: #6B6B6B;" >{{ form.address === ''? 'Address Belum di Tambahkan' : form.address }}</p>
+             <p style="color: #6B6B6B;" ></p>
         </div>
         <div class="row">
             <div class="col-6"><p class="" >Cards</p></div>
@@ -34,7 +36,7 @@
             </router-link>
             <p class="ml-2 mb-4"><img class="mr-4" src="../../src/assets/image/star.svg">My Review</p>
             <p class="ml-2 mb-4"><img class="mr-4" src="../../src/assets/image/setting.svg">Settings</p>
-            <a class="body-text-logout ml-2 mb-4" @click="logOut()" style="cursor: pointer;"><img class="mr-4" src="../assets/image/logout.svg">Logout</a>
+            <a class="body-text-logout ml-2 mb-4" style="cursor: pointer;"><img class="mr-4" src="../assets/image/logout.svg">Logout</a>
         </div>
         </div>
     </div>
@@ -43,72 +45,76 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-
+import { mapGetters, mapActions } from 'vuex'
+import $ from 'jquery'
+import Swal from 'sweetalert2'
 export default {
   data () {
     return {
-      form: {
-        image: null,
-        username: null,
-        address: null
-      }
     }
   },
   methods: {
-    ...mapActions({
-      actionLogout: 'auth/onLogout',
-      actionGetUser: 'user/getUser',
-      actionUpdate: 'user/updateProfile'
-    }),
-    logOut () {
-      this.actionLogout().then((resolve) => {
-        this.$swal('Logout', 'You successfully Logout', 'success')
-        localStorage.removeItem('id')
-        setTimeout(() => {
-          window.location = '/login'
-        }, 2000)
-      })
+    ...mapActions('user', ['updateImage', 'getUser']),
+    uploadImage () {
     },
-    prosesFile (event) {
-      const fd = new FormData()
-      fd.append('image', event.target.files[0])
-      const payload = {
-        id: localStorage.getItem('id'),
-        data: fd
-      }
-      this.actionUpdate(payload)
-        .then((response) => {
-          if (response === 'Image type must jpg, jpeg or png') {
-            this.$swal('Failed', 'Image type must jpg, jpeg or png', 'error')
-          } else if (response === 'File size max 2Mb') {
-            this.$swal('Failed', ' File too large, max size 2Mb', 'error')
-          } else {
-            this.$swal('Update', 'Successfully update', 'success')
-            setTimeout(() => {
-              window.location = '/profile'
-            }, 1000)
+    detectChangeImage () {
+      const self = this
+      $('#image-profile').change(function () {
+        if (this.files && this.files[0]) {
+          if (this.files[0].size >= 3 * 1000000) {
+            return self.alert('Sorry,file too large', 'error')
           }
-        })
+          Swal.fire({
+            title: 'Are you sure?',
+            icon: 'question',
+            text: 'change your profile photo?',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, I want to change!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              const form = new FormData()
+              form.append('image', this.files[0])
+              self.$awn.asyncBlock(
+                self.updateImage(form),
+                resp => {
+                  self.getUser()
+                    .then((result) => {
+                      self.$awn.success('Photo profile has been updated')
+                    }).catch((err) => {
+                      console.log('err :>> ', err)
+                    })
+                }
+              )
+            }
+          })
+        }
+      })
     }
   },
   mounted () {
-    this.actionGetUser()
-      .then((result) => {
-        this.image = result[0].image
-      })
+    this.detectChangeImage()
+  },
+  computed: {
+    ...mapGetters('user', ['getUserData'])
   }
 }
 </script>
 
 <style scoped>
+.img-profile {
+  width:135px;
+  height:135px;
+  margin: auto auto;
+}
 .img-thumbnail {
-  padding: 0.25rem;
   background-color: #fff;
   border: 2px solid rgba(35, 149, 255, 1) !important;
-  border-radius: 100% !important;
-  max-width: 100% !important;
-  height: auto;
+  border-radius: 50% !important;
+  width:100%;
+  height: 100%;
+  object-fit: cover;
 }
 .edit-photo {
     display:flex;

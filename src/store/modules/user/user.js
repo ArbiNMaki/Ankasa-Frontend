@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { URL } from '../../../helper/env'
 
 const state = () => {
   return {
@@ -8,7 +7,7 @@ const state = () => {
 }
 
 const getters = {
-  getUser (state) {
+  getUserData (state) {
     return state.dataUser
   }
 }
@@ -20,23 +19,42 @@ const mutations = {
 }
 
 const actions = {
-  getUser (context, payload) {
+  getUser ({ dispatch, commit, getters, rootGetters }, payload) {
+    dispatch('interceptorRequest', null, { root: true })
     return new Promise((resolve, reject) => {
-      axios.get(`${URL}/api/user/detail/${localStorage.getItem('id')}`)
+      axios.get(`${process.env.VUE_APP_SERVICE_API}/api/user/detail`)
         .then((response) => {
-          context.commit('SET_DATA_USER', response.data.data)
+          commit('SET_DATA_USER', response.data.data)
           resolve(response.data.data)
         }).catch((err) => {
           console.log(err)
         })
     })
   },
-  updateProfile (context, payload) {
+  updateProfile ({ dispatch, commit, getters, rootGetters }, payload) {
     console.log(payload)
+    dispatch('interceptorRequest', null, { root: true })
     return new Promise((resolve, reject) => {
-      axios.patch(`${URL}/api/user/edit-profile/${payload.id}`, payload.data)
+      axios.patch(`${process.env.VUE_APP_SERVICE_API}/api/user/edit-profile`, payload)
         .then((response) => {
           resolve(response.data.message)
+        }).catch((err) => {
+          reject(err)
+        })
+    })
+  },
+  updateImage ({ dispatch, commit, getters, rootGetters }, payload) {
+    dispatch('interceptorRequest', null, { root: true })
+    console.log(payload)
+    return new Promise((resolve, reject) => {
+      axios.patch(`${process.env.VUE_APP_SERVICE_API}/api/user/update-image`, payload, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+        .then((response) => {
+          console.log('response :>> ', response)
+          resolve(response)
         }).catch((err) => {
           reject(err)
         })

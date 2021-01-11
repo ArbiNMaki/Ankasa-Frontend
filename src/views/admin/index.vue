@@ -43,7 +43,7 @@
               <ul class="navbar-nav border-left flex-row">
                 <li class="nav-item dropdown">
                   <a class="nav-link d-flex align-items-center dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <div class="user-avatar ">
+                    <div class="user-avatar " @click="toProfile">
                     <img class="rounded-circle mr-2" :src="getUserData.image" alt="User Avatar">
                     </div>
                     <span class="d-none d-md-inline-block ml-2">{{ getUserData.username }}</span>
@@ -71,6 +71,9 @@ export default {
   methods: {
     toPage (path) {
       this.$router.push({ path: path })
+    },
+    toProfile () {
+      this.$router.push({ path: '/cust/profile' })
     },
     cssFunction () {
       $('.sidebar-item').on('click', function () {

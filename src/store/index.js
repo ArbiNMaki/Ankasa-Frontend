@@ -7,9 +7,9 @@ import auth from './modules/auth/auth'
 import customerModule from './modules/customer/customer'
 import createPersistedState from 'vuex-persistedstate'
 import SecureLS from 'secure-ls'
+import user from './modules/user/user'
 const ls = new SecureLS({ isCompression: false })
 
-import user from './modules/user/user'
 Vue.use(Vuex)
 
 export default new Vuex.Store({

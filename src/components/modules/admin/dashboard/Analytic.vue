@@ -58,9 +58,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  /* border: 1px solid red; */
-}
 .page-subtitle {
   font-size:11px;
   letter-spacing: 0.2em;

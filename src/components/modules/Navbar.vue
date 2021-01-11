@@ -119,8 +119,10 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import mixin from '../../mixins/index'
 export default {
   name: 'Navbar',
+  mixins: [mixin],
   data: function () {
     return {
       departuredate: '2021-01-18    ',
@@ -146,7 +148,8 @@ export default {
   methods: {
     ...mapMutations('customer', ['SET_PASSENGER']),
     handleFind () {
-      this.SET_PASSENGER(`${this.children} child ${this.adults} adult`)
+      console.log('this.children :>> ', this.children)
+      this.SET_PASSENGER({ child: this.children, adult: this.adults })
       this.$router.push({ path: 'searchresult', query: { from: this.selectedfrom, to: this.selectedto, triptype: this.triptype, departuredate: this.departuredate, returndate: this.returndate, seattype: this.seattype, adults: this.adults, children: this.children } })
         .catch((err) => {
           if (err.name !== 'NavigationDuplicated') {

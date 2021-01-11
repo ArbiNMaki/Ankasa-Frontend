@@ -3,16 +3,25 @@ import axios from 'axios'
 const customer = {
   namespaced: true,
   state: {
-    passenger: null
+    passengerDesc: null,
+    childPassenger: null,
+    adultPassenger: null
   },
   getters: {
     getPassenger (state) {
-      return state.passenger
+      return {
+        desc: state.passengerDesc,
+        child: state.childPassenger,
+        adult: state.adultPassenger
+      }
     }
   },
   mutations: {
     SET_PASSENGER (state, payload) {
-      state.passenger = payload
+      console.log('payload :>> ', payload)
+      state.childPassenger = payload.child
+      state.adultPassenger = payload.adult
+      state.passengerDesc = `${payload.child} child ${payload.adult} adult`
     }
   },
   actions: {
@@ -35,6 +44,18 @@ const customer = {
           .then((result) => {
             console.log(result.data.result)
             resolve(result.data.result)
+          }).catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    updateOrderDetail ({ dispatch, commit, getters, rootGetters }, payload) {
+      dispatch('interceptorRequest', null, { root: true })
+      return new Promise((resolve, reject) => {
+        axios.patch(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/input-flight-detail`, payload)
+          .then((result) => {
+            console.log(result)
+            resolve(result)
           }).catch((err) => {
             reject(err)
           })

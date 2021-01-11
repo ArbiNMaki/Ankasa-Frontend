@@ -10,6 +10,9 @@ const index = {
         showConfirmButton: false,
         timer: 1500
       })
+    },
+    toPage (path) {
+      this.$router.push({ path: path })
     }
   }
 }

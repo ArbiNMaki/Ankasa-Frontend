@@ -76,7 +76,7 @@
                   <p class="info">Get Travel Compensation Up To Rp1000000  </p>
                 </div>
                 <div class="proceed">
-                    <button>Proceed to Payment</button>
+                    <button @click="handleUpdateOrderDetail">Proceed to Payment</button>
                 </div>
             </div>
             <div class="col-lg-4 right" v-if="order.airLine">
@@ -138,7 +138,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions('customer', ['getOrderDetail']),
+    ...mapActions('customer', ['getOrderDetail', 'updateOrderDetail']),
     ...mapActions('airlines', ['getDataAirLinesById']),
     toggleProfile () {
       if (this.toggle.status) {
@@ -151,8 +151,6 @@ export default {
         this.toggle.status = true
         document.getElementById('fullname2').disabled = true
       }
-      // this.profile = !this.profile
-      // this.$emit('setCheckboxVal', this.profile)
     },
     handleGetOrderDetail (orderId) {
       this.getOrderDetail(orderId)
@@ -169,6 +167,24 @@ export default {
         .then((result) => {
           console.log('result :>> ', result)
           this.order.airLine = result
+        }).catch((err) => {
+          console.log('err :>> ', err)
+        })
+    },
+    async handleUpdateOrderDetail () {
+      const payload = {
+        order_id: this.$route.query.orderId,
+        cp_email: this.email,
+        cp_fullname: this.fullname,
+        cp_phone: this.phone,
+        passenger_name: this.fullname2,
+        passenger_nationality: this.country,
+        is_insurance: this.insuranceopt ? 1 : 0
+      }
+      console.log('payload :>> ', payload)
+      this.updateOrderDetail(payload)
+        .then((result) => {
+          console.log('result :>> ', result)
         }).catch((err) => {
           console.log('err :>> ', err)
         })

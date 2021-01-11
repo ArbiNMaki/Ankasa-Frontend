@@ -303,9 +303,8 @@ export default {
     async toFlightDetail (flightRouteId) {
       const payload = {
         flight_route_id: flightRouteId,
-        passenger_desc: this.getPassenger
+        passenger_desc: this.getPassenger.desc
       }
-      console.log('payload :>> ', payload)
       // console.log('payload :>> ', payload)
       const result = await this.selectTicket(payload)
       console.log('result post:>> ', result)

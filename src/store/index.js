@@ -112,6 +112,18 @@ export default new Vuex.Store({
             console.log(err.response)
           })
       })
+    },
+    sorting ({ dispatch, commit }, { routeFrom, routeTo, tripType, tripDate, sort, flightClass }) {
+      dispatch('interceptorRequest')
+      return new Promise((resolve, reject) => {
+        axios.get(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/find?routeFrom=${routeFrom}&routeTo=${routeTo}&flightClass=${flightClass}&tripType=${tripType}&tripDate=${tripDate}&sort=${sort}`)
+          .then((result) => {
+            console.log('result sorting:>> ', result.data.result)
+            commit('SET_FINDTICKETS', result.data.result)
+          }).catch((err) => {
+            console.log('err :>> ', err)
+          })
+      })
     }
   },
   getters: {

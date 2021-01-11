@@ -172,7 +172,7 @@
             <div class="col-lg-7 right">
               <div class="topside">
                   <p class="select">Select Ticket</p>
-                  <p class="sort" type="button">Sort By <i class="fas fa-sort"></i></p>
+                  <p class="sort" type="button"  @click="handleSorting">Sort By <i class="fas fa-sort"></i></p>
                 </div>
               <div class="ticketing">
                 <div class="ticket" v-for="ticketing in getTickets" :key="ticketing.id">
@@ -237,7 +237,8 @@ export default {
       facilities: [],
       departure: [],
       arrival: [],
-      airlines: []
+      airlines: [],
+      toggleSort: false
     }
   },
   created () {
@@ -252,6 +253,7 @@ export default {
   methods: {
     ...mapActions({ getAllTickets: 'getTickets' }),
     ...mapActions('customer', ['selectTicket']),
+    ...mapActions(['sorting']),
     updatePage (param) {
       const payload = {
         routeFrom: this.$route.query.from,
@@ -307,6 +309,31 @@ export default {
       }
       const result = await this.selectTicket(payload)
       this.$router.push({ path: '/cust/flightdetail', query: { orderId: result.order_id } })
+    },
+    handleSorting () {
+      let sort = ''
+      if (this.toggleSort) {
+        sort = 'desc'
+        this.toggleSort = false
+      } else {
+        sort = 'asc'
+        this.toggleSort = true
+      }
+      const payload = {
+        routeFrom: this.$route.query.from,
+        routeTo: this.$route.query.to,
+        flightClass: this.$route.query.seattype,
+        tripType: this.$route.query.triptype,
+        tripDate: this.$route.query.departuredate,
+        sort: sort
+      }
+      console.log('payload :>> ', payload)
+      this.sorting(payload)
+        .then((result) => {
+          console.log('result :>> ', result)
+        }).catch((err) => {
+          console.log('err :>> ', err)
+        })
     }
   },
   computed: {

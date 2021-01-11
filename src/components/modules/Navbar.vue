@@ -43,7 +43,7 @@
                             </div>
                             <div class="trip">
                                 <div class="trip-oneway">
-                                    <input type="radio" id="oneway" name="trip" v-model="triptype" value="oneway"/>
+                                    <input type="radio" id="oneway" name="trip" v-model="triptype" value="one way"/>
                                     <label for="oneway">
                                         <i class="fas fa-plane"></i>
                                         One Way
@@ -61,7 +61,7 @@
                             <p class="departure">Departure Date</p>
                             <input type="date" v-model="departuredate"/>
                             {{departuredate}}
-                            <div v-if="triptype !== 'oneway'">
+                            <div v-if="triptype !== 'one way'">
                                 <p class="return">Return Date</p>
                                 <input type="date" v-model="returndate"/>
                             {{returndate}}
@@ -82,12 +82,12 @@
                             <p class="class-title">Which Class Do You Want?</p>
                             <div class="seatclass">
                                 <div class="options">
-                                    <input type="radio" id="economy" name="seatclass" value="economy" v-model="seattype" />
+                                    <input type="radio" id="economy" name="seatclass" value="ekonomi" v-model="seattype" />
                                     <label for="economy">Economy</label>
                                 </div>
                                 <div class="options">
-                                    <input type="radio" id="bussiness" name="seatclass" value="bussiness" v-model="seattype" />
-                                    <label for="bussiness">Bussiness</label>
+                                    <input type="radio" id="bussiness" name="seatclass" value="business" v-model="seattype" />
+                                    <label for="bussiness">Business</label>
                                 </div>
                                 <div class="options">
                                     <input type="radio" id="firstclass" name="seatclass" value="firstclass" v-model="seattype" />
@@ -95,7 +95,7 @@
                                 </div>
                             </div>
                             {{seattype}}
-                            <button class="search">Search Flight</button>
+                            <button class="search" @click.prevent="handleFind">Search Flight</button>
                         </form>
                     </div>
                 </div>
@@ -124,22 +124,40 @@ export default {
     return {
       departuredate: '',
       returndate: '',
-      triptype: 'oneway',
+      triptype: 'one way',
       selectedfrom: '',
       selectedto: '',
       children: '',
       adults: '',
       seattype: '',
       vals: [{
-        value: 'Indonesia'
+        value: 'Jakarta'
       },
       {
-        value: 'Malaysia'
+        value: 'Riyadh'
       },
       {
-        value: 'Singapura'
+        value: 'Singapore'
       }
       ]
+    }
+  },
+  methods: {
+    handleFind () {
+      this.$router.push({ path: 'searchresult', query: { from: this.selectedfrom, to: this.selectedto, triptype: this.triptype, departuredate: this.departuredate, returndate: this.returndate, seattype: this.seattype, adults: this.adults, children: this.children } })
+        .catch((err) => {
+          if (err.name !== 'NavigationDuplicated') {
+            throw err
+          }
+        })
+      this.departuredate = ''
+      this.returndate = ''
+      this.triptype = 'one way'
+      this.selectedfrom = ''
+      this.selectedto = ''
+      this.children = ''
+      this.adults = ''
+      this.seattype = ''
     }
   }
 }

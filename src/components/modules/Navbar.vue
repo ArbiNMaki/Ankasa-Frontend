@@ -28,16 +28,16 @@
                             <p class="hey-detail">Where do you want to go?</p>
                             <div class="where">
                                 <div class="from">
-                                    <p class="from-title">From {{selectedfrom}}</p>
+                                    <p class="from-title">From</p>
                                     <select name="" id="" v-model="selectedfrom">
-                                        <option v-for="item in vals" :value="item.value" :key="item.value"> {{item.value}}</option>
+                                        <option v-for="city in getCity" :value="city.city_name" :key="city.id"> {{city.city_name}}</option>
                                     </select>
                                 </div>
                                 <i class="fas fa-exchange-alt fa-lg"></i>
                                 <div class="to">
-                                    <p class="to-title">To {{selectedto}}</p>
+                                    <p class="to-title">To</p>
                                     <select name="" id="" v-model="selectedto">
-                                        <option v-for="item in vals" :value="item.value" :key="item.value"> {{item.value}}</option>
+                                        <option v-for="city in getCity" :value="city.city_name" :key="city.id"> {{city.city_name}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -50,33 +50,28 @@
                                     </label>
                                 </div>
                                 <div class="trip-roundtrip">
-                                    <input type="radio" id="roundtrip" name="trip" v-model="triptype" value="roundtrip"/>
+                                    <input type="radio" id="roundtrip" name="trip" v-model="triptype" value="round trip"/>
                                     <label for="roundtrip">
                                         <i class="fas fa-redo"></i>
                                         Round Trip
                                     </label>
                                 </div>
                             </div>
-                            {{triptype}}
                             <p class="departure">Departure Date</p>
                             <input type="date" v-model="departuredate"/>
-                            {{departuredate}}
                             <div v-if="triptype !== 'one way'">
                                 <p class="return">Return Date</p>
                                 <input type="date" v-model="returndate"/>
-                            {{returndate}}
                             </div>
                             <p class="person">How Many Persons?</p>
                             <div class="total">
                                 <div class="children">
                                     <p class="children-title">Children</p>
                                     <input type="number" min="0" v-model="children">
-                                    {{children}}
                                 </div>
                                 <div class="adults">
                                     <p class="adults-title">Adults</p>
                                     <input type="number" min="0" v-model="adults">
-                                    {{adults}}
                                 </div>
                             </div>
                             <p class="class-title">Which Class Do You Want?</p>
@@ -94,7 +89,6 @@
                                     <label for="firstclass">First Class</label>
                                 </div>
                             </div>
-                            {{seattype}}
                             <button class="search" @click.prevent="handleFind">Search Flight</button>
                         </form>
                     </div>
@@ -109,7 +103,7 @@
                     <i class="far fa-bell fa-lg"></i>
                 </div>
                 <div class="nav-item userprofile">
-
+                    <img :src="getMyProfile.image" alt="">
                 </div>
             </div>
         </div>
@@ -118,8 +112,9 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters, mapActions } from 'vuex'
 import mixin from '../../mixins/index'
+
 export default {
   name: 'Navbar',
   mixins: [mixin],
@@ -132,21 +127,12 @@ export default {
       selectedto: 'Tokyo',
       children: '',
       adults: '',
-      seattype: 'ekonomi',
-      vals: [{
-        value: 'Jakarta'
-      },
-      {
-        value: 'Medan'
-      },
-      {
-        value: 'Tokyo'
-      }
-      ]
+      seattype: ''
     }
   },
   methods: {
     ...mapMutations('customer', ['SET_PASSENGER']),
+    ...mapActions({ getAllCity: 'getCity', getUserProfile: 'getMyProfile' }),
     handleFind () {
       console.log('this.children :>> ', this.children)
       this.SET_PASSENGER({ child: this.children, adult: this.adults })
@@ -165,6 +151,13 @@ export default {
     //   this.adults = ''
     //   this.seattype = ''
     }
+  },
+  computed: {
+    ...mapGetters(['getCity', 'getMyProfile'])
+  },
+  mounted () {
+    this.getAllCity()
+    this.getUserProfile()
   }
 }
 </script>
@@ -302,6 +295,9 @@ select {
     background-color: gray;
     overflow: hidden;
     margin-right: 5%;
+}
+.userprofile img {
+    height: 100%;
 }
 .findticket, .booking {
     font-family: Poppins;

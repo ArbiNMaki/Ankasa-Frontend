@@ -2,7 +2,7 @@
   <div class="booking-detail">
     <div class="row justify-content-center">
       <div class="booking-card p-3">
-        <div class="container mt-5">
+        <div class="container mt-5" >
           <b-row>
             <b-col cols="10">
               <h4 class="font-weight-bold mb-4 ml-5">
@@ -18,36 +18,38 @@
             <div class="booking-left col-sm-6">
               <b-row>
                 <b-col>
-                  <img src="../../../assets/img/garuda-indonesia-logo-BD82882F07-seeklogo 3.png" alt="logo garuda">
+                  <div class="airline-logo">
+                    <img :src="getOrderDetail.flight_route.AirLine.logo" alt="logo garuda">
+                  </div>
                 </b-col>
                 <b-col>
-                  <b class="departure font-weight-bold mr-2"> IDN </b>
-                  <img src="../../../assets/img/greysmallplane.png" alt="gray-small-plane"/>
-                  <b class="departure font-weight-bold ml-2"> JPN </b>
+                  <b class="departure font-weight-bold mr-2" v-if="getOrderDetail.flight_route.routeFrom">{{getOrderDetail.flight_route.routeFrom}}</b>
+                    <img src="../../../assets/img/greysmallplane.png" alt="gray-small-plane"/>
+                  <b class="departure font-weight-bold ml-2">{{getOrderDetail.flight_route.routeTo}}</b>
                 </b-col>
               </b-row>
               <b-row>
                 <b-col>
                   <b class="small text-muted">Code</b>
-                  <p class="small">AB-221</p>
+                  <p class="small">{{getOrderDetail.booking_code}}</p>
                 </b-col>
                 <b-col>
                   <b class="small text-muted">Class</b>
-                  <p class="small">Economy</p>
+                  <p class="small">{{getOrderDetail.flight_route.flightClass}}</p>
                 </b-col>
               </b-row>
               <b-row>
                 <b-col>
                   <b class="small text-muted">Terminal</b>
-                  <p class="small">A</p>
+                  <p class="small">{{getOrderDetail.terminal}}</p>
                 </b-col>
                 <b-col>
                   <b class="small text-muted">Class</b>
-                  <p class="small">221</p>
+                  <p class="small">{{getOrderDetail.gate}}</p>
                 </b-col>
               </b-row>
               <p class="small text-muted">Departure</p>
-              <p class="small">Monday, 20 July 2020 -12:33</p>
+              <p class="small">{{convertTime(getOrderDetail.flight_route.tripDate)}} / {{getOrderDetail.flight_route.departureTime}}</p>
             </div>
             <div class="booking-right col-sm-4">
               <img src="../../../assets/img/qr.png" alt="qr code">
@@ -60,12 +62,34 @@
 </template>
 
 <script>
+import moment from 'moment'
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'BookingDetail'
+  name: 'BookingDetail',
+  methods: {
+    ...mapActions({ getUserOrder: 'getOrderDetail' }),
+    convertTime (date) {
+      return moment(date).format('dddd YYYY-MM-DD')
+    }
+  },
+  computed: {
+    ...mapGetters(['getOrderDetail'])
+  },
+  mounted () {
+    this.getUserOrder()
+  }
 }
 </script>
 
 <style scoped>
+.airline-logo {
+  height: 57px;
+  width: 100px;
+  overflow: hidden;
+}
+.airline-logo img {
+  width: 100%;
+}
 .booking-detail {
   background-color: #2395FF;
   overflow: hidden;

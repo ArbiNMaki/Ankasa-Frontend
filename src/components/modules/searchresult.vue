@@ -209,7 +209,6 @@
                       </div>
                     </div>
                     <div class="col4">
-                      <!-- <p class="pricetot">Rp</p> -->
                       <p class="pricetot">Rp{{ticketing.price}}</p>
                     </div>
                   </div>

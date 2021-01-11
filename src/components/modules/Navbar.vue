@@ -90,7 +90,7 @@
                                     <label for="bussiness">Business</label>
                                 </div>
                                 <div class="options">
-                                    <input type="radio" id="firstclass" name="seatclass" value="firstclass" v-model="seattype" />
+                                    <input type="radio" id="firstclass" name="seatclass" value="first-class" v-model="seattype" />
                                     <label for="firstclass">First Class</label>
                                 </div>
                             </div>

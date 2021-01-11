@@ -9,6 +9,7 @@ import createPersistedState from 'vuex-persistedstate'
 import SecureLS from 'secure-ls'
 const ls = new SecureLS({ isCompression: false })
 
+import user from './modules/user/user'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -55,7 +56,8 @@ export default new Vuex.Store({
     airlines: airLinesModule,
     flightroute: flightRouteModule,
     auth: auth,
-    customer: customerModule
+    customer: customerModule,
+    user: user
   },
   plugins: [
     createPersistedState({

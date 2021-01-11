@@ -37,7 +37,7 @@
                     <div class="toggle">
                       <p>Same as contact person</p>
                       <label class="switch">
-                        <input type="checkbox" @click="toggleProfile">
+                        <input type="checkbox" v-model="toggle.status" @click="toggleProfile">
                         <div class="slider round"></div>
                         </label>
                         <p style="display:none">{{profile}}</p>
@@ -53,7 +53,7 @@
                   </div>
                   <div class="fullname2">
                     <p>Full Name</p>
-                    <input type="text" v-model="fullname2">
+                    <input type="text" id="fullname2" v-model="fullname2">
                   </div>
                   <div class="nationality">
                     <p>Nationality</p>
@@ -79,7 +79,7 @@
                     <button>Proceed to Payment</button>
                 </div>
             </div>
-            <div class="col-lg-4 right">
+            <div class="col-lg-4 right" v-if="order.airLine">
               <div class="topside">
                   <p class="detail">Flight Details</p>
                   <p class="view">View Details</p>
@@ -87,16 +87,16 @@
                 <div class="rightside">
                   <div class="top-right">
                     <div class="plane-logo">
-                      <img src="https://seeklogo.com/images/G/garuda-indonesia-logo-8A90F09D68-seeklogo.com.png" alt="">
+                      <img :src="order.airLine.logo" alt="">
                     </div>
-                    <p>Garuda Indonesia</p>
+                    <p>{{ order.airLine.name }}</p>
                   </div>
                   <div class="fromto">
-                    <p>Medan</p>
+                    <p>{{ order.data.flight_route.routeFrom }}</p>
                     <i class="fas fa-plane"></i>
-                    <p>Japan</p>
+                    <p>{{ order.data.flight_route.routeTo }}</p>
                   </div>
-                  <p class="datetime">Sunday, 12 August 2020 | 12.33-15.21</p>
+                  <p class="datetime">{{ convertTripDate(order.data.flight_route.tripDate) }} | {{order.data.flight_route.departureTime}}-{{order.data.flight_route.timeArrived}}</p>
                   <div class="opt">
                     <p><i class="far fa-check-circle"></i> Refundable</p>
                     <p><i class="far fa-check-circle"></i> Can Reschedule </p>
@@ -104,7 +104,7 @@
                   <hr>
                   <div class="payment">
                     <p class="payment-title">Total Payment</p>
-                    <p class="payment-total">Rp15000000</p>
+                    <p class="payment-total">Rp{{order.data.total_payment}}</p>
                   </div>
                 </div>
             </div>
@@ -114,6 +114,8 @@
 </template>
 
 <script>
+import moment from 'moment'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'FlightDetailComp',
   data: function () {
@@ -125,14 +127,66 @@ export default {
       fullname: '',
       email: '',
       phone: '',
-      fullname2: ''
+      fullname2: '',
+      toggle: {
+        status: false
+      },
+      order: {
+        data: null,
+        airLine: null
+      }
     }
   },
   methods: {
+    ...mapActions('customer', ['getOrderDetail']),
+    ...mapActions('airlines', ['getDataAirLinesById']),
     toggleProfile () {
-      this.profile = !this.profile
-      this.$emit('setCheckboxVal', this.profile)
+      if (this.toggle.status) {
+        this.fullname2 = ''
+        this.toggle.status = false
+        document.getElementById('fullname2').disabled = false
+      } else {
+        console.log('this.getUserData :>> ', this.getUserData.username)
+        this.fullname2 = this.getUserData.username
+        this.toggle.status = true
+        document.getElementById('fullname2').disabled = true
+      }
+      // this.profile = !this.profile
+      // this.$emit('setCheckboxVal', this.profile)
+    },
+    handleGetOrderDetail (orderId) {
+      this.getOrderDetail(orderId)
+        .then(async (result) => {
+          this.order.data = result
+          console.log('result :>> ', result.flight_route.airLinesId)
+          await this.handleGetAirLine(result.flight_route.airLinesId)
+        }).catch(() => {
+          this.$router.push({ path: '/cust/searchresult' })
+        })
+    },
+    async handleGetAirLine (id) {
+      this.getDataAirLinesById(id)
+        .then((result) => {
+          console.log('result :>> ', result)
+          this.order.airLine = result
+        }).catch((err) => {
+          console.log('err :>> ', err)
+        })
+    },
+    convertTripDate (date) {
+      return moment(date).format('LLLL')
     }
+  },
+  async mounted () {
+    console.log('this.route.query.orderId :>> ', this.$route.query.orderId)
+    if (!this.$route.query.orderId) {
+      this.$router.push({ path: '/cust/searchresult' })
+    } else {
+      await this.handleGetOrderDetail(this.$route.query.orderId)
+    }
+  },
+  computed: {
+    ...mapGetters('auth', ['getUserData'])
   }
 }
 </script>

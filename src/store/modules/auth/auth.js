@@ -4,7 +4,10 @@ import router from '../../../router/index'
 
 const state = () => {
   return {
-    token: localStorage.getItem('token') || null
+    token: null,
+    user: {
+      data: null
+    }
   }
 }
 const getters = {
@@ -14,11 +17,20 @@ const getters = {
     } else {
       return false
     }
+  },
+  getUserData (state) {
+    return state.user.data
   }
 }
 const mutations = {
   REMOVE_TOKEN (state) {
     state.token = null
+  },
+  SET_USER_DATA (state, payload) {
+    state.user.data = payload
+  },
+  SET_STATE_TOKEN (state, payload) {
+    state.token = payload
   }
 }
 const actions = {
@@ -42,6 +54,8 @@ const actions = {
           password: payload.password
         })
         .then(result => {
+          context.commit('SET_USER_DATA', result.data.data)
+          context.commit('SET_STATE_TOKEN', result.data.token)
           localStorage.setItem('token', result.data.token)
           localStorage.setItem('id', result.data.data.id)
           localStorage.setItem('username', result.data.data.username)

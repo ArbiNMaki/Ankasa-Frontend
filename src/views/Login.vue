@@ -13,7 +13,7 @@
             <img src="../assets/image/planeBlue.png" alt="logo" /> Ankasa
           </h5>
           <h3 class="mb-5">Login</h3>
-          <form class="text-center" @submit.prevent="login()">
+          <form class="text-center" @submit.prevent="login">
             <input type="text" class="form-control mb-4" placeholder="Email" autofocus required v-model="form.email" />
             <input type="password" class="form-control mb-5" placeholder="Password" required v-model="form.password"/>
             <button type="submit" class="btn btn-block btn-login" >Sign In</button>
@@ -76,7 +76,7 @@ export default {
           localStorage.removeItem('id')
           localStorage.removeItem('username')
         } else {
-          window.location = 'cust/profile'
+          this.$router.push({ path: '/cust/profile' })
         }
       }).catch(err => this.alertError(err.message))
     },

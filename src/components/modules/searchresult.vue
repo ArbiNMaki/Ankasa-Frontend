@@ -214,7 +214,7 @@
                   </div>
                   <div class="selectbtn">
                     <p class="detail" type="button">View Detail <i class="fas fa-sort-down"></i></p>
-                    <button>Select</button>
+                    <button @click="toFlightDetail(ticketing.id)">Select</button>
                   </div>
                 </div>
                 </div>
@@ -251,6 +251,7 @@ export default {
   },
   methods: {
     ...mapActions({ getAllTickets: 'getTickets' }),
+    ...mapActions('customer', ['selectTicket']),
     updatePage (param) {
       const payload = {
         routeFrom: this.$route.query.from,
@@ -298,10 +299,22 @@ export default {
         price: (this.value).toString()
       }
       this.getAllTickets(payload)
+    },
+    async toFlightDetail (flightRouteId) {
+      const payload = {
+        flight_route_id: flightRouteId,
+        passenger_desc: this.getPassenger
+      }
+      console.log('payload :>> ', payload)
+      // console.log('payload :>> ', payload)
+      const result = await this.selectTicket(payload)
+      console.log('result post:>> ', result)
+      this.$router.push({ path: '/cust/flightdetail', query: { orderId: result.order_id } })
     }
   },
   computed: {
-    ...mapGetters(['getTickets'])
+    ...mapGetters(['getTickets']),
+    ...mapGetters('customer', ['getPassenger'])
   },
   watch: {
     $route () {

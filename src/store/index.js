@@ -4,6 +4,11 @@ import axios from 'axios'
 import airLinesModule from './modules/admin/airlines'
 import flightRouteModule from './modules/admin/flightroute'
 import auth from './modules/auth/auth'
+import customerModule from './modules/customer/customer'
+import createPersistedState from 'vuex-persistedstate'
+import SecureLS from 'secure-ls'
+const ls = new SecureLS({ isCompression: false })
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -18,7 +23,7 @@ export default new Vuex.Store({
   actions: {
     interceptorRequest (context) {
       axios.interceptors.request.use(function (config) {
-        config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`
+        config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
         return config
       }, function (error) {
         return Promise.reject(error)
@@ -49,6 +54,16 @@ export default new Vuex.Store({
   modules: {
     airlines: airLinesModule,
     flightroute: flightRouteModule,
-    auth: auth
-  }
+    auth: auth,
+    customer: customerModule
+  },
+  plugins: [
+    createPersistedState({
+      storage: {
+        getItem: key => ls.get(key),
+        setItem: (key, value) => ls.set(key, value),
+        removeItem: key => ls.remove(key)
+      }
+    })
+  ]
 })

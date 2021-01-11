@@ -118,46 +118,49 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'Navbar',
   data: function () {
     return {
-      departuredate: '',
+      departuredate: '2021-01-18    ',
       returndate: '',
       triptype: 'one way',
-      selectedfrom: '',
-      selectedto: '',
+      selectedfrom: 'Medan',
+      selectedto: 'Tokyo',
       children: '',
       adults: '',
-      seattype: '',
+      seattype: 'ekonomi',
       vals: [{
         value: 'Jakarta'
       },
       {
-        value: 'Riyadh'
+        value: 'Medan'
       },
       {
-        value: 'Singapore'
+        value: 'Tokyo'
       }
       ]
     }
   },
   methods: {
+    ...mapMutations('customer', ['SET_PASSENGER']),
     handleFind () {
+      this.SET_PASSENGER(`${this.children} child ${this.adults} adult`)
       this.$router.push({ path: 'searchresult', query: { from: this.selectedfrom, to: this.selectedto, triptype: this.triptype, departuredate: this.departuredate, returndate: this.returndate, seattype: this.seattype, adults: this.adults, children: this.children } })
         .catch((err) => {
           if (err.name !== 'NavigationDuplicated') {
             throw err
           }
         })
-      this.departuredate = ''
-      this.returndate = ''
-      this.triptype = 'one way'
-      this.selectedfrom = ''
-      this.selectedto = ''
-      this.children = ''
-      this.adults = ''
-      this.seattype = ''
+    //   this.departuredate = ''
+    //   this.returndate = ''
+    //   this.triptype = 'one way'
+    //   this.selectedfrom = ''
+    //   this.selectedto = ''
+    //   this.children = ''
+    //   this.adults = ''
+    //   this.seattype = ''
     }
   }
 }

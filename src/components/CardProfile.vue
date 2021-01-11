@@ -36,7 +36,7 @@
             </router-link>
             <p class="ml-2 mb-4"><img class="mr-4" src="../../src/assets/image/star.svg">My Review</p>
             <p class="ml-2 mb-4"><img class="mr-4" src="../../src/assets/image/setting.svg">Settings</p>
-            <a class="body-text-logout ml-2 mb-4" style="cursor: pointer;"><img class="mr-4" src="../assets/image/logout.svg">Logout</a>
+            <a class="body-text-logout ml-2 mb-4" style="cursor: pointer;" @click="handleLogout"><img class="mr-4" src="../assets/image/logout.svg">Logout</a>
         </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 import $ from 'jquery'
 import Swal from 'sweetalert2'
 export default {
@@ -55,6 +55,7 @@ export default {
   },
   methods: {
     ...mapActions('user', ['updateImage', 'getUser']),
+    ...mapMutations('auth', ['LOGOUT']),
     uploadImage () {
     },
     detectChangeImage () {
@@ -91,6 +92,9 @@ export default {
           })
         }
       })
+    },
+    handleLogout () {
+      this.LOGOUT()
     }
   },
   mounted () {

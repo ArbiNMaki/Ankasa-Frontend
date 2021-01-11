@@ -20,7 +20,7 @@
                 <input v-model="input.search" @keyup.enter.prevent="handleSearchAirLines" class="navbar-search border-0 form-control search-input shadow-none rounded" type="text" placeholder="Search for something..." aria-label="Search"> </div>
             </div>
           </div>
-          <div v-if="!input.search" class="card-body p-0 text-center">
+          <div v-if="!input.search" class="card-body p-4 text-center">
             <div v-for="airLine in getairLinesData" :key="airLine.id" class="card card-airlines card-small d-flex flex-lg-row flex-sm-column justify-content-between p-3 mb-3">
               <div class="information d-flex flex-lg-row flex-column justify-content-center">
               <div class="logo">
@@ -421,6 +421,10 @@ export default {
 </script>
 
 <style scoped>
+.card-airlines {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 .table {
   max-height:100px;
   display:inline;
@@ -444,7 +448,7 @@ export default {
 .card-airlines .logo img {
   width:100%;
   height:100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius:10px;
 }
 .card-airlines .name p {

@@ -16,13 +16,13 @@
               <div class="history-box">
                   <div class="allhistory" v-for="booking in getMyBooking" :key="booking.id">
                 <div class="history">
-                <p>{{convertTime(booking.flight_route.tripDate)}} / {{booking.flight_route.departureTime}}</p>
+                <p>{{convertTime(booking.flight_route.tripDate || '')}} / {{booking.flight_route.departureTime || ''}}</p>
                 <div class="fromto">
-                  <p class="loc">{{booking.flight_route.routeFrom}}</p>
+                  <p class="loc">{{booking.flight_route.routeFrom || ''}}</p>
                   <i class="fas fa-plane"></i>
-                  <p class="loc">{{booking.flight_route.routeTo}}</p>
+                  <p class="loc">{{booking.flight_route.routeTo || ''}}</p>
                 </div>
-                <p class="plane">{{booking.flight_route.AirLine.name}} {{booking.booking_code}}</p>
+                <p class="plane">{{booking.flight_route.AirLine.name || ''}} {{booking.booking_code || ''}}</p>
                 <hr>
                 <div class="statusflex">
                   <div class="statustop">

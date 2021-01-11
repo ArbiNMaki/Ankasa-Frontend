@@ -43,7 +43,7 @@
 
 <script>
 import Swal from 'sweetalert2'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import ModalForgot from '../../src/components/modules/ModalForgot'
 
 export default {
@@ -76,7 +76,12 @@ export default {
           localStorage.removeItem('id')
           localStorage.removeItem('username')
         } else {
-          this.$router.push({ path: '/cust/profile' })
+          console.log(this.getUserData)
+          if (this.getUserData.role_id === 1) {
+            this.$router.push({ path: '/cust/profile' })
+          } else if (this.getUserData.role_id === 2) {
+            this.$router.push({ path: '/admin' })
+          }
         }
       }).catch(err => this.alertError(err.message))
     },
@@ -100,6 +105,9 @@ export default {
         text: 'Something went wrong!'
       })
     }
+  },
+  computed: {
+    ...mapGetters('auth', ['getUserData'])
   }
 }
 </script>

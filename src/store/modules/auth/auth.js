@@ -18,6 +18,17 @@ const getters = {
       return false
     }
   },
+  isAdmin (state) {
+    if (state.user.data !== null) {
+      if (state.user.data.role_id === 1) {
+        return true
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }
+  },
   getUserData (state) {
     return state.user.data
   }
@@ -31,6 +42,12 @@ const mutations = {
   },
   SET_STATE_TOKEN (state, payload) {
     state.token = payload
+  },
+  LOGOUT () {
+    window.localStorage.removeItem('vuex')
+    window.localStorage.removeItem('username')
+    window.localStorage.removeItem('id')
+    window.localStorage.removeItem('token')
   }
 }
 const actions = {
@@ -46,7 +63,7 @@ const actions = {
         })
     })
   },
-  onLogin (context, payload) {
+  onLogin ({ dispatch, commit, getters, rootGetters }, payload) {
     return new Promise((resolve, reject) => {
       axios
         .post(`${url}/api/auth/login`, {
@@ -54,12 +71,14 @@ const actions = {
           password: payload.password
         })
         .then(result => {
-          context.commit('SET_USER_DATA', result.data.data)
-          context.commit('SET_STATE_TOKEN', result.data.token)
+          commit('SET_USER_DATA', result.data.data)
+          console.log('result.data.data :>> ', result.data.data)
+          commit('SET_STATE_TOKEN', result.data.token)
+          commit('SET_TOKEN', result.data.token, { root: true })
           localStorage.setItem('token', result.data.token)
           localStorage.setItem('id', result.data.data.id)
           localStorage.setItem('username', result.data.data.username)
-          context.dispatch('interceptorRequest')
+          dispatch('interceptorRequest')
           resolve(result.data.message)
         })
         .catch(err => {

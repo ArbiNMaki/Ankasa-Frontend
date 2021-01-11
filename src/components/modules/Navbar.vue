@@ -1,7 +1,7 @@
 <template>
     <div>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="brand">
+        <div class="brand" @click="toHome">
             <div class="brand-logo">
                 <img src="../../assets/image/vector 02.png" alt="">
             </div>
@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="nav-item booking">
-                    <div class="nav-link">My Booking</div>
+                    <div class="nav-link" @click="toBooking">My Booking</div>
                 </div>
                 <div class="nav-item chat">
                     <i class="far fa-envelope fa-lg"></i>
@@ -103,7 +103,7 @@
                     <i class="far fa-bell fa-lg"></i>
                 </div>
                 <div class="nav-item userprofile">
-                    <img :src="getMyProfile.image" alt="">
+                    <img :src="getMyProfile.image" @click="toProfile" alt="">
                 </div>
             </div>
         </div>
@@ -150,6 +150,15 @@ export default {
     //   this.children = ''
     //   this.adults = ''
     //   this.seattype = ''
+    },
+    toHome () {
+      this.$router.push({ path: '/cust/searchresult' })
+    },
+    toBooking () {
+      this.$router.push({ path: '/cust/mybooking' })
+    },
+    toProfile () {
+      this.$router.push({ path: '/cust/profile' })
     }
   },
   computed: {
@@ -281,6 +290,7 @@ select {
     margin-left: 5% ;
     display: flex;
     flex-direction: row;
+    cursor: pointer;
 }
 .brand-name {
     margin-top: 5%;

@@ -14,7 +14,7 @@
             <div class="input-group-prepend">
                   <div class="input-group-text border-0 bg-white">
                     <i v-if="!input.search" class="fa fa-search"></i>
-                    <i v-if="input.search" class="fa fa-times"></i>
+                    <i v-if="input.search" class="fa fa-times" @click="clearSearch"></i>
             </div>
             </div>
                <input v-model="input.search" @keyup.enter="handleSearch" class="navbar-search border-0 form-control search-input shadow-none rounded" type="text" placeholder="Search for something..." aria-label="Search">
@@ -619,6 +619,10 @@ export default {
           self.$awn.error('Looks like server having trouble')
         }
       )
+    },
+    clearSearch () {
+      this.input.search = ''
+      this.search.data = []
     }
   },
   async mounted () {

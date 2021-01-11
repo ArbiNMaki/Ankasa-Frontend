@@ -90,9 +90,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  /* border:1px solid red; */
-}
 #wrapper {
   min-height:100vh;
 }

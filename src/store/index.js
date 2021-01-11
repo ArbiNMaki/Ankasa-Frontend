@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import airLinesModule from './modules/admin/airlines'
 import flightRouteModule from './modules/admin/flightroute'
+import auth from './modules/auth/auth'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -22,6 +23,7 @@ export default new Vuex.Store({
   },
   modules: {
     airlines: airLinesModule,
-    flightroute: flightRouteModule
+    flightroute: flightRouteModule,
+    auth: auth
   }
 })

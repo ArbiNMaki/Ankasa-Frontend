@@ -13,13 +13,11 @@
             <img src="../assets/image/planeBlue.png" alt="logo" /> Ankasa
           </h5>
           <h3 class="mb-5">Register</h3>
-          <form @submit.prevent="register">
-            <input type="text" class="form-control mb-4" placeholder="Fullname" required />
-            <input type="text" class="form-control mb-4" placeholder="Email" required />
-            <input type="password" class="form-control mb-4" placeholder="Password" required  />
-            <router-link to="/login">
+          <form @submit.prevent="register()">
+            <input type="text" class="form-control mb-4" placeholder="Username" autofocus required v-model="form.username" />
+            <input type="text" class="form-control mb-4" placeholder="Email" autofocus required v-model="form.email" />
+            <input type="password" class="form-control mb-4" placeholder="Password" required v-model="form.password" />
             <b-button type="submit" class="btn btn-block" variant="login">Sign Up</b-button>
-            </router-link>
             <b-form-checkbox class="mt-4 mb-3" required><p class="small" req>I accept the terms and use</p> </b-form-checkbox>
             <hr />
             <p class="small text-muted text-center">Already have an account?</p>
@@ -34,8 +32,47 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+import { mapActions } from 'vuex'
 export default {
-  name: 'Register'
+  name: 'Register',
+  data () {
+    return {
+      form: {
+        username: '',
+        email: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    register () {
+      this.actionsRegister(this.form).then((response) => {
+        console.log(response)
+        if (response === 'Email already exist' || response === 'Username already exist') {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${response}`
+          })
+        } else {
+          Swal.fire(
+            'Good job!',
+            'Success Register! Redirecting to login page',
+            'success'
+          )
+          this.$router.push({
+            path: '/login'
+          })
+        }
+      }).catch((err) => {
+        alert(err.message)
+      })
+    },
+    ...mapActions({
+      actionsRegister: 'auth/onRegister'
+    })
+  }
 }
 </script>
 

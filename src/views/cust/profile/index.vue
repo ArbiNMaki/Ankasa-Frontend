@@ -12,11 +12,18 @@
 <script>
 import CardProfile from '../../../components/CardProfile'
 import CardProfile2 from '../../../components/CardProfile2'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
     CardProfile,
     CardProfile2
+  },
+  methods: {
+    ...mapActions('user', ['getUser'])
+  },
+  mounted () {
+    this.getUser()
   }
 }
 </script>

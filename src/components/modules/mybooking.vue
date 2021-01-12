@@ -53,6 +53,7 @@ export default {
   },
   methods: {
     ...mapActions({ getUserBooking: 'getMyBooking' }),
+    ...mapActions('user', ['getUser']),
     convertTime (date) {
       return moment(date).format('dddd YYYY-MM-DD')
     },
@@ -65,6 +66,7 @@ export default {
     ...mapGetters(['getMyBooking'])
   },
   mounted () {
+    this.getUser()
     this.getUserBooking()
   }
 }

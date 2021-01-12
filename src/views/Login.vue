@@ -49,8 +49,10 @@ import Swal from 'sweetalert2'
 import { mapActions, mapGetters } from 'vuex'
 import ModalForgot from '../../src/components/modules/ModalForgot'
 import { required, email } from 'vuelidate/lib/validators'
+import mixin from '../mixins/index'
 export default {
   name: 'Login',
+  mixins: [mixin],
   data () {
     return {
       form: {
@@ -78,22 +80,11 @@ export default {
         return
       }
       this.onLogin(this.form).then((result) => {
-        if (result === "Cannot read property 'password' of undefined") {
-          this.alertExist()
-          localStorage.removeItem('token')
-          localStorage.removeItem('id')
-          localStorage.removeItem('username')
-        } else if (result === 'Incorrect password! Please try again') {
-          this.alertMatch()
-          localStorage.removeItem('token')
-          localStorage.removeItem('id')
-          localStorage.removeItem('username')
-        } else {
-          if (this.getUserData.role_id === 1) {
-            this.$router.push({ path: '/admin' })
-          } else if (this.getUserData.role_id === 2) {
-            this.$router.push({ path: '/cust/searchresult' })
-          }
+        this.alert('success', 'Welcome 😁', 'Have a nice day!', false)
+        if (this.getUserData.role_id === 1) {
+          this.$router.push({ path: '/admin' })
+        } else if (this.getUserData.role_id === 2) {
+          this.$router.push({ path: '/cust/searchresult' })
         }
       }).catch(err => this.alertError(err.message))
     },

@@ -125,7 +125,7 @@ const actions = {
       return Promise.reject(error)
     })
   },
-  interceptorResponse (context) {
+  interceptorResponseAuth (context) {
     axios.interceptors.response.use(function (response) {
       return response
     }, function (error) {
@@ -138,6 +138,11 @@ const actions = {
           localStorage.clear()
           context.commit('REMOVE_TOKEN')
           router.push({ name: 'Login' })
+        }
+      } else if (error.response.status === 404) {
+        console.log('error.response.data.err.message :>> ', error.response.data.err.message)
+        if (error.response.data.err.message === 'Wrong Password') {
+          return error.response.data.err.message
         }
       }
       return Promise.reject(error)

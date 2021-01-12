@@ -48,7 +48,9 @@
 import { mapGetters, mapActions, mapMutations } from 'vuex'
 import $ from 'jquery'
 import Swal from 'sweetalert2'
+import mixin from '../mixins/index'
 export default {
+  mixins: [mixin],
   data () {
     return {
     }
@@ -100,6 +102,7 @@ export default {
       this.LOGOUT_USER()
       this.LOGOUT_CUSTOMER()
       this.LOGOUT_AUTH()
+      this.alert('success', 'See you later 👋', '', false)
       this.$router.push({ path: '/login' })
     }
   },

@@ -116,8 +116,10 @@
 <script>
 import moment from 'moment'
 import { mapGetters, mapActions } from 'vuex'
+import mixin from '../../mixins/index'
 export default {
   name: 'FlightDetailComp',
+  mixins: [mixin],
   data: function () {
     return {
       profile: false,
@@ -180,7 +182,7 @@ export default {
       }
       this.updateOrderDetail(payload)
         .then((result) => {
-          this.$awn.success('Order has been updated')
+          this.$awn.success('Order has been updated, please complete your payment 😉 ')
           this.$router.push({ path: '/cust/mybooking' })
         }).catch((err) => {
           console.log('err :>> ', err)

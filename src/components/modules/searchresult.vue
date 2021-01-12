@@ -228,8 +228,10 @@
 import { mapGetters, mapActions } from 'vuex'
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/antd.css'
+import mixin from '../../mixins/index'
 export default {
   name: 'SearchResultComp',
+  mixins: [mixin],
   data () {
     return {
       value: [1000000, 3000000],
@@ -269,6 +271,13 @@ export default {
         price: ''
       }
       this.getAllTickets(payload)
+        .then((result) => {
+          if (result.length === 0) {
+            this.alert('info', 'Oops, flight not found', 'Sorry, your search data not found..', false)
+          }
+        }).catch(() => {
+          this.alert('error', 'Oops', 'Looks like server having trouble', false)
+        })
     },
     filter () {
       const payload = {

@@ -8,10 +8,12 @@
 import { mapActions } from 'vuex'
 export default {
   methods: {
-    ...mapActions('airlines', ['interceptorResponseAirLines'])
+    ...mapActions('airlines', ['interceptorResponseAirLines']),
+    ...mapActions('auth', ['interceptorResponseAuth'])
   },
   created () {
     this.interceptorResponseAirLines()
+    this.interceptorResponseAuth()
   }
 }
 </script>

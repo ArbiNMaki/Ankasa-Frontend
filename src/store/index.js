@@ -63,8 +63,10 @@ export default new Vuex.Store({
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/find?routeFrom=${payload.routeFrom}&routeTo=${payload.routeTo}&flightClass=${payload.flightClass}&tripType=${payload.triptype}&tripDate=${payload.tripdate}&facilities=${payload.facilities}&price=${payload.price}&airline=${payload.airlines}&departureTime=${payload.departureTime}&timeArrived=${payload.timeArrived}&transit=${payload.transit}`)
           .then((res) => {
             context.commit('SET_FINDTICKETS', res.data.result)
+            resolve(res.data.result)
           })
           .catch((err) => {
+            reject(err)
             console.log(err.response)
           })
       })

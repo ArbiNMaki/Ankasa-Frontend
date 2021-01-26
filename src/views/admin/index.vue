@@ -152,4 +152,7 @@ export default {
 .active a {
     color:#007BFF !important;
 }
+.nav-item {
+  cursor: pointer;
+}
 </style>

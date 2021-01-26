@@ -15,7 +15,7 @@
             <div class="d-flex flex-column m-auto">
               <div class="stats-small__data text-center">
                 <span class="stats-small__label text-capitalize text-center">AirLines</span>
-                <h6 class="stats-small__value count my-3">2,390</h6>
+                <h6 class="stats-small__value count my-3">{{ airLines.amount }}</h6>
               </div>
             </div>
           </div>
@@ -27,7 +27,7 @@
             <div class="d-flex flex-column m-auto">
               <div class="stats-small__data text-center">
                 <span class="stats-small__label text-capitalize text-center">Flight Route</span>
-                <h6 class="stats-small__value count my-3">2,390</h6>
+                <h6 class="stats-small__value count my-3">{{ flightRoutes.amount }}</h6>
               </div>
             </div>
           </div>
@@ -38,8 +38,8 @@
           <div class="card-body p-0 d-flex ">
             <div class="d-flex flex-column m-auto">
               <div class="stats-small__data text-center">
-                <span class="stats-small__label text-capitalize text-center">Posts</span>
-                <h6 class="stats-small__value count my-3">2,390</h6>
+                <span class="stats-small__label text-capitalize text-center">Completed Order</span>
+                <h6 class="stats-small__value count my-3">{{ completedOrder.amount }}</h6>
               </div>
             </div>
           </div>
@@ -51,8 +51,42 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-  components: {
+  name: 'Analytic',
+  data () {
+    return {
+      airLines: {
+        amount: null
+      },
+      flightRoutes: {
+        amount: null
+      },
+      completedOrder: {
+        amount: null
+      }
+    }
+  },
+  methods: {
+    ...mapActions('flightroute', ['getAmountFlightRoute', 'getAmountCompletedPayment']),
+    ...mapActions('airlines', ['getAmountAirLines']),
+    async handleGetAmountFlightRoute () {
+      const amount = await this.getAmountFlightRoute()
+      this.airLines.amount = amount
+    },
+    async handleGetAmountAirLines () {
+      const amount = await this.getAmountAirLines()
+      this.flightRoutes.amount = amount
+    },
+    async handleGetAmountCompletedPayment () {
+      const amount = await this.getAmountCompletedPayment()
+      this.completedOrder.amount = amount
+    }
+  },
+  mounted () {
+    this.handleGetAmountCompletedPayment()
+    this.handleGetAmountFlightRoute()
+    this.handleGetAmountAirLines()
   }
 }
 </script>

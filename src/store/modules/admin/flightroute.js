@@ -19,6 +19,17 @@ const flightRoute = {
           })
       })
     },
+    getCity ({ dispatch, commit, getters, rootGetters }, payload) {
+      return new Promise((resolve, reject) => {
+        dispatch('interceptorRequest', null, { root: true })
+        axios.get(`${process.env.VUE_APP_SERVICE_API}/api/data-lookup/city`)
+          .then((result) => {
+            resolve(result.data.result)
+          }).catch((err) => {
+            reject(err)
+          })
+      })
+    },
     getFlightRouteById ({ dispatch, commit, getters, rootGetters }, payload) {
       dispatch('interceptorRequest', null, { root: true })
       return new Promise((resolve, reject) => {
@@ -80,6 +91,29 @@ const flightRoute = {
         axios.delete(`${process.env.VUE_APP_SERVICE_API}/api/flightroute/delete/${payload}`)
           .then((result) => {
             resolve(result)
+          }).catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    getAmountFlightRoute ({ dispatch, commit, getters, rootGetters }, payload) {
+      return new Promise((resolve, reject) => {
+        dispatch('interceptorRequest', null, { root: true })
+        axios.get(`${process.env.VUE_APP_SERVICE_API}/api/flightroute/amount`)
+          .then((result) => {
+            console.log('result dari index :>> ', result)
+            resolve(result.data)
+          }).catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    getAmountCompletedPayment ({ dispatch, commit, getters, rootGetters }, payload) {
+      return new Promise((resolve, reject) => {
+        dispatch('interceptorRequest', null, { root: true })
+        axios.get(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/amount-completed-payment`)
+          .then((result) => {
+            resolve(result.data.result)
           }).catch((err) => {
             reject(err)
           })

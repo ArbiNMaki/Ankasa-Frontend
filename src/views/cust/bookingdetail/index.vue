@@ -22,9 +22,11 @@
                     <img :src="getOrderDetail.flight_route.AirLine.logo" alt="logo garuda">
                   </div>
                 </b-col>
-                <b-col>
+                <b-col class="d-flex">
                   <b class="departure font-weight-bold mr-2" v-if="getOrderDetail.flight_route.routeFrom">{{getOrderDetail.flight_route.routeFrom}}</b>
+                    <div class="wrapper-plane-icon">
                     <img src="../../../assets/img/greysmallplane.png" alt="gray-small-plane"/>
+                    </div>
                   <b class="departure font-weight-bold ml-2">{{getOrderDetail.flight_route.routeTo}}</b>
                 </b-col>
               </b-row>
@@ -90,6 +92,8 @@ export default {
 }
 .airline-logo img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 .booking-detail {
   background-color: #2395FF;

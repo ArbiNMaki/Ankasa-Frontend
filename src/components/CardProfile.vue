@@ -67,8 +67,8 @@ export default {
       const self = this
       $('#image-profile').change(function () {
         if (this.files && this.files[0]) {
-          if (this.files[0].size >= 1 * 1000000) {
-            return self.alert('Sorry,file too large', 'error')
+          if (this.files[0].size >= 2 * 1000000) {
+            return self.alert('error', 'Sorry File too large')
           }
           Swal.fire({
             title: 'Are you sure?',

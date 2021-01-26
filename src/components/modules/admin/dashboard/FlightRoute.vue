@@ -171,10 +171,19 @@
                     <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="feEmailAddress">Route From :</label>
-                        <input type="text" v-model="input.routeFrom" class="form-control" id="" placeholder="Medan"> </div>
+                        <select name="" class="form-control" id="" v-model="input.routeFrom">
+                          <option value="" disabled selected>Choose Route</option>
+                          <option :value="list.city_name" v-for="(list, index) in city.data" :key="index">{{ list.city_name }}</option>
+                        </select>
+                        </div>
+                        <!-- <input type="text" v-model="input.routeFrom" class="form-control" id="" placeholder="Medan"> </div> -->
                       <div class="form-group col-md-6">
                         <label for="fePassword">Route To :</label>
-                        <input type="text" v-model="input.routeTo" class="form-control" id="" placeholder="Jakarta"> </div>
+                        <select name="" class="form-control" id="" v-model="input.routeTo">
+                          <option value="" disabled selected>Choose Route</option>
+                          <option :value="list.city_name" v-for="(list, index) in city.data" :key="index">{{ list.city_name }}</option>
+                        </select>
+                    </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
@@ -420,14 +429,18 @@ export default {
       },
       airLines: {
         data: [],
-        pagination: null
+        pagination: null,
+        amount: []
+      },
+      city: {
+        data: []
       }
     }
   },
   methods: {
     check () {
     },
-    ...mapActions('flightroute', ['searchFlightRoute', 'updateFlightRoute', 'getAllFlightRoute', 'insertNewFlightRoute', 'deleteFlightRoute', 'getFlightRouteById']),
+    ...mapActions('flightroute', ['searchFlightRoute', 'updateFlightRoute', 'getAllFlightRoute', 'insertNewFlightRoute', 'deleteFlightRoute', 'getFlightRouteById', 'getCity']),
     ...mapActions('airlines', ['getDataAirLines']),
     async handleGetAllFlightRoute (page) {
       const payload = {
@@ -436,6 +449,11 @@ export default {
       const result = await this.getAllFlightRoute(payload)
       this.flightRoute.data = result.flightroute
       this.flightRoute.pagination = result.pagination
+    },
+    async handleGetCity () {
+      const resultCity = await this.getCity()
+      console.log('resultCity :>> ', resultCity)
+      this.city.data = resultCity
     },
     async showModalUpdateFlightRoute (id) {
       const result = await this.getFlightRouteById(id)
@@ -614,6 +632,7 @@ export default {
     }
   },
   async mounted () {
+    this.handleGetCity()
     this.handleGetAllFlightRoute()
     await this.handleGetAirLines()
   }

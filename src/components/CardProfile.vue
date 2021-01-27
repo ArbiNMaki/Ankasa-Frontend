@@ -1,47 +1,44 @@
 <template>
-    <div class="w-75 pl-5">
-    <div class="card d-sm-block d-none">
-        <div class="card-body">
+  <div class="card-main mt-3">
+    <div class="sub-card m-4">
+      <form enctype="multipart/form-data" @change.prevent="update">
         <div class="text-center">
-          <div class="img-profile">
-            <img :src="getUserData.image? getUserData.image : '/img/default-avatar.png'"  class="img-thumbnail" alt="image">
-          </div>
+        <div class="user-profile">
+        <img :src="getUserData.image? getUserData.image : '/img/default-avatar.png'" alt="profile" class="rounded-circle mt-4">
         </div>
-        <div class="text-center mt-3" >
-            <div class="fileUpload btn btn-outline-primary btn-lg font-weight-bold">
-                <span>Select Photo</span>
-                 <input class="upload" id="image-profile" type="file" />
-            </div>
+        <label class="custom-file-upload">
+          <input class="upload" id="image-profile" type="file" />
+          Select Photo
+        </label>
+        <h5></h5>
+        <p class="small text-muted"></p>
+      </div>
+      </form>
+        <b-row>
+            <b-col><b>Card</b></b-col>
+            <b-col><p class="text-info text-right">+ Add</p></b-col>
+          </b-row>
+        <div class="mini-card">
+          <b>4441 1235 5512 5551</b>
+          <b-row>
+            <b-col><p>X Card</p></b-col>
+            <b-col><p class="text-right">$ 1,440.2</p></b-col>
+          </b-row>
         </div>
-        <div class="text-center mt-3" >
-            <h4 class="font-weight-bold" ></h4>
-        </div>
-        <div class="text-center mt-2" >
-             <p style="color: #6B6B6B;" ></p>
-        </div>
-        <div class="row">
-            <div class="col-6"><p class="" >Cards</p></div>
-            <div class="col-6"><p class="text-right add-cards" >+ Add</p></div>
-        </div>
-        <div class="text-white cards mb-4 pt-2 pl-3 pr-3">
-            <p class="font-weight-bold cards-id" >4441 1235 5512 5551</p>
-            <div class="row cards-detail">
-            <div class="col-6"><p class="" >X Card</p></div>
-            <div class="col-6"><p class="text-right" >$ 1,440.2</p></div>
-            </div>
-        </div>
-        <div class="font-weight-bold">
-            <router-link to="profile" class="router-link">
-            <p class="body-text-profile ml-2 mb-4"><img class="mr-4" src="../../src/assets/image/user.svg">Profile</p>
-            </router-link>
-            <p class="ml-2 mb-4"><img class="mr-4" src="../../src/assets/image/star.svg">My Review</p>
-            <p class="ml-2 mb-4"><img class="mr-4" src="../../src/assets/image/setting.svg">Settings</p>
-            <a class="body-text-logout ml-2 mb-4" style="cursor: pointer;" @click="handleLogout"><img class="mr-4" src="../assets/image/logout.svg">Logout</a>
-        </div>
-        </div>
-    </div>
-    </div>
 
+        <div class="menu">
+          <ul>
+            <li class="text-primary">
+              <router-link to="/user"> <b-icon-person-circle class="mr-3"></b-icon-person-circle> Profile
+              </router-link>
+            </li>
+            <li> <b-icon-star-fill class="text-secondary mr-3"></b-icon-star-fill> My Review</li>
+            <li> <b-icon-gear-fill class="text-secondary mr-3"></b-icon-gear-fill> Settings</li>
+            <li class="text-danger" style="cursor: pointer;" @click="handleLogout"> <b-icon-box-arrow-right class="mr-3"></b-icon-box-arrow-right>Logout</li>
+          </ul>
+        </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -116,76 +113,90 @@ export default {
 </script>
 
 <style scoped>
-.img-profile {
-  width:135px;
-  height:135px;
-  margin: auto auto;
-}
-.img-thumbnail {
-  background-color: #fff;
-  border: 2px solid rgba(35, 149, 255, 1) !important;
-  border-radius: 50% !important;
-  width:100%;
-  height: 100%;
-  object-fit: cover;
-}
-.edit-photo {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background: #FFFFFF;
-    box-shadow: 0px 8px 27px rgba(14, 63, 108, 0.19);
-    border-radius: 20px;
-    top:1000px;
-}
-.cont-edit-photo {
-    position: absolute;
-    right: 100px;
-    bottom: 0px;
-}
-.cards {
-    height: 68px;
-}
-.fileUpload {
-    position: relative;
-    overflow: hidden;
-    margin: 10px;
-}
-.fileUpload input.upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-}
-.add-cards {
-  color: rgba(35, 149, 255, 1);
-}
-.cards {
-  background-color: rgba(35, 149, 255, 1);
-  box-shadow: 0px 8px 25px rgba(35, 149, 255, 0.49);
+input[type="file"] {
+  display: none;
   border-radius: 10px;
+  font-weight: bold;
+  padding: 8px;
+  margin: 20px auto;
 }
-.cards-detail {
-  margin-top: -15px;
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  border: 1px solid #2395FF;
+  box-sizing: border-box;
+  border-radius: 10px;
+  color: #2395FF;
+  margin-bottom: 15px;
+}
+.card-main {
+  background-color: #fff;
+  border-radius: 15px;
+  width: 300px;
+  height: 100%;
+  margin: auto;
+}
+.user-profile img{
+  width: 100px;
+  height: 90px;
+  border: 3px solid #2395FF;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+.btn-photo {
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 8px;
+  margin: 20px auto;
+}
+h5 {
+  font-weight: bolder;
+}
+p {
   font-size: 12px;
 }
-.cards-id {
-  letter-spacing: 1px;
-  word-spacing: 1px;
+.mini-card {
+  background-color: #2395FF;
+  color: #fff;
+  box-shadow: 0px 8px 25px rgba(35, 149, 255, 0.49);
+  border-radius: 10px;
+  padding: 15px;
 }
-.cards-title {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 21px;
-  /* identical to box height */
-  letter-spacing: 0.3em;
-  color: #2395FF;
+.mini-card b {
+  letter-spacing: 2.3px;
+}
+.mini-card p {
+  color: #AEFAFF;
+}
+.menu ul li{
+  margin-top: 20px;
+  list-style: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+@media (max-width: 1008px) {
+  .card-main {
+    width: 400px;
+  }
+  .user-profile img {
+    margin-bottom: 15px;
+  }
+  .mini-card b {
+    letter-spacing: 4px;
+  }
+}
+@media (max-width: 576px) {
+  .card-main {
+    width: 400px;
+  }
+  .user-profile img {
+    margin-bottom: 15px;
+  }
+  .mini-card b {
+    letter-spacing: 4px;
+  }
 }
 </style>

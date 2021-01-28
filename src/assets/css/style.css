@@ -1,9 +1,12 @@
+/* * {
+  border: 1px solid red;
+} */
 .container-fluid {
   background-color: #2395ff;
   height: 100vh;
 }
 .container {
-  width: 60%;
+  /* width: 60%; */
 }
 .img-left {
   width: 100%;

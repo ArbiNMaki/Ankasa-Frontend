@@ -74,7 +74,7 @@ export default {
 
 <style lang="scss" scoped>
 .history-box {
-    height: 800px;
+    height: max-content;
     overflow: auto;
 }
 .allhistory {

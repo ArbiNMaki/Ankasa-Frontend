@@ -1,5 +1,5 @@
 <template>
-  <div class="card-main mt-3">
+  <div class="card-main">
     <div class="sub-card m-4">
       <form enctype="multipart/form-data" @change.prevent="update">
         <div class="text-center">
@@ -190,7 +190,7 @@ p {
 }
 @media (max-width: 576px) {
   .card-main {
-    width: 400px;
+    width: 100%;
   }
   .user-profile img {
     margin-bottom: 15px;

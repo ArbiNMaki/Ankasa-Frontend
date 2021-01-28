@@ -67,16 +67,10 @@ const actions = {
   onLogin ({ dispatch, commit, getters, rootGetters }, payload) {
     return new Promise((resolve, reject) => {
       axios
-        .post(`${url}/api/auth/login`,
-          {
-            headers: {
-              'Access-Control-Allow-Origin': '*'
-            }
-          },
-          {
-            email: payload.email,
-            password: payload.password
-          })
+        .post(`${url}/api/auth/login`, {
+          email: payload.email,
+          password: payload.password
+        })
         .then(result => {
           commit('SET_USER_DATA', result.data.data)
           commit('SET_STATE_TOKEN', result.data.token)
@@ -88,6 +82,7 @@ const actions = {
           resolve(result.data.message)
         })
         .catch(err => {
+          console.log('err :>> ', err)
           reject(err.message)
         })
     })

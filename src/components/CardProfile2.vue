@@ -1,6 +1,5 @@
 <template>
-<div class="cp">
-  <div class="col-sm-9">
+  <div class="">
             <div class="card mb-4">
               <div class="card-body">
                 <h6 class="card-title cards-title">PROFILE</h6>
@@ -52,7 +51,6 @@
                 </div>
               </div>
             </div>
-  </div>
 </div>
 </template>
 

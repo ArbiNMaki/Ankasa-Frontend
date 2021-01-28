@@ -52,7 +52,6 @@
                         <label for="transit2+">Transit 2+</label>
                         <input type="checkbox" id="transit2+" name="transit" v-model="transit" value="transit 2" @change="filter"/>
                       </div>
-                      {{transit}}
                     </div>
                 </div>
                 <div class="menu">
@@ -70,7 +69,6 @@
                         <label for="wifi">Wi-fi</label>
                         <input type="checkbox" id="wifi" name="facilities" v-model="facilities" value="wi-fi" @change="filter"/>
                       </div>
-                      {{facilities}}
                     </div>
                 </div>
                 <div class="menu">
@@ -92,7 +90,6 @@
                         <label for="24">18:00-24:00</label>
                         <input type="checkbox" id="24" name="departure" v-model="departure" value="18:00-24:00" @change="filter"/>
                       </div>
-                      {{departure}}
                     </div>
                 </div>
                 <div class="menu">
@@ -114,7 +111,6 @@
                         <label for="24go">18:00-24:00</label>
                         <input type="checkbox" id="24go" name="arrival" v-model="arrival" value="18:00-24:00" @change="filter"/>
                       </div>
-                      {{arrival}}
                     </div>
                 </div>
                 <div class="menu">
@@ -144,7 +140,6 @@
                         <label for="citilink">Citilink</label>
                         <input type="checkbox" id="citilink" name="airlines" v-model="airlines" value="Citilink" @change="filter"/>
                       </div>
-                      {{airlines}}
                     </div>
                 </div>
                 <div class="menu">
@@ -502,12 +497,13 @@ export default {
     margin-top: 2%;
 }
 .airline-logo {
-    height: 57px;
-    width: 100px;
+    height: 60px;
+    width: 60px ;
     overflow: hidden;
 }
 .airline-logo img {
     width: 100%;
+    object-fit: cover !important;
 }
 .ticket {
     height: 240px;
@@ -587,7 +583,7 @@ export default {
     margin-bottom: 5%;
 }
 .ticketing {
-  height: 1250px;
+  height: max-content;
   overflow: auto;
 }
 .option {
@@ -607,17 +603,15 @@ export default {
 }
 .sidebar {
     width: 100%;
-    min-height: 1250px;
+    height: 90%;
     border-radius: 15px;
     background-color: white;
-    padding-right: 5%;
-    padding-left: 5%;
-    padding-top: 5%;
+    padding:25px;
 }
 .all {
     // height: 100%;
     background-color: #F5F6FA;
-    min-height: 1600px;
+    height:max-content;
 }
 .ctnr {
     height: 100%;

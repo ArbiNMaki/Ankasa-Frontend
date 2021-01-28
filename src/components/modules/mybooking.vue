@@ -1,11 +1,12 @@
 <template>
   <div class="all">
-    <div class="container">
+    <!-- <div class="container"> -->
+      <!-- <CardProfile /> -->
           <div class="row justify-content-around">
-            <div class="col-lg-5 left">
+            <div class="col-lg-4 left">
               <CardProfile />
             </div>
-            <div class="col-lg-6 right">
+            <div class="col-lg-7 right">
               <div class="title">
                 <p>MY BOOKING</p>
                 <div class="detail">
@@ -38,7 +39,7 @@
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
   </div>
 </template>
 
@@ -161,8 +162,12 @@ export default {
   color: #2395FF;
 }
 .left, .right {
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-top: 1%;
+  // margin-bottom: 5%;
+  border: 2px solid black;
+}
+.left {
+  widows: 10%;
 }
 .all {
   background-color: #F5F6FA;

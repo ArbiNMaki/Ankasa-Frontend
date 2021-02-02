@@ -1,66 +1,136 @@
-![illustration](https://user-images.githubusercontent.com/41407774/104251646-c4e96f80-54a2-11eb-912f-bda0baf22e36.png)
-# Ankasa Ticketing
+<!--
+*** Thanks for checking out this README Template. If you have a suggestion that would
+*** make this better, please fork the repo and create a pull request or simply open
+*** an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+-->
+<p align="center">
+<img src="https://img.shields.io/github/repo-size/Gefyaqiilah/Zwallet-Front-End?color=%20%236379f4&label=Repo%20SIZE&logo=%20%236379f4&logoColor=%20%236379f4&style=for-the-badge">
+ <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/Vue-v2-green?style=for-the-badge"></a>
+ <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction"><img src="https://img.shields.io/badge/Bootstrap-v4-lightgreen?style=for-the-badge"></a>
+   <a href="https://linkedin.com/in/gefyaqiilahaqshal"><img src="https://img.shields.io/badge/LinkedIn-v4-blue?style=for-the-badge&logo=linkedin"></a>
+</p>
 
-> Find your Flight and explore the  world with us. We will take care of the rest.
+<p align="center">
+  <a href="https://github.com/Gefyaqiilah/Zwallet-Front-End">
+    <img src="./screenshots/logo.png"  width="200px" alt="Logo" width="80">
+  </a>
 
----
+  <h3 align="center">Zwallet App</h3>
 
-## Description
+  <p align="center">
+    Transactions made easy with Zwallet
+    <br />
+    <a href="https://github.com/Gefyaqiilah/Zwallet-Front-End"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://zwallet-gefy.netlify.app">View Demo</a>
+    ·
+    <a href="https://github.com/Gefyaqiilah/Zwallet-Front-End">Report Bug</a>
+    ·
+    <a href="https://github.com/Gefyaqiilah/Zwallet-Front-End">Request Feature</a>
+  </p>
+</p>
 
-With Ankasa Ticketing, users can search a specific flights to another countries. The App also has a Find Ticket and Filter Features that allows users to select a country as an arrival destination and explore flight prices to various regions
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-#### Technologies
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Screenshots](#screenshots)
+* [Related Project](#related-project)
+* [Contact](#contact)
 
-- Vue.js
-- Sequelize
 
-[Back To The Top](#read-me-template)
 
----
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-## Features
-- [Find Ticket + Search Result](#description)
-![searchresult](https://user-images.githubusercontent.com/41407774/104252586-f8c59480-54a4-11eb-92db-702bcc4adc63.JPG)
-- [Input Booking](#how-to-use)
-![flightdetail](https://user-images.githubusercontent.com/41407774/104252593-fb27ee80-54a4-11eb-87ff-a5114d20b9e0.JPG)
-- [Booking Detail](#references)
-![bookingdetail](https://user-images.githubusercontent.com/41407774/104252590-fa8f5800-54a4-11eb-9ef7-c36f8a2d740d.JPG)
-- [Booking History](#license)
-![mybooking](https://user-images.githubusercontent.com/41407774/104252596-fbc08500-54a4-11eb-9cad-458e6108c229.JPG)
----
 
-## How To Use
 
-## Project setup
+Zwallet is an electronic money or digital wallet. You can send money to the user's wallet by finding out the contact information of the user you want to send.
+
+### Built With
+
+* [Vue v2](https://vuejs.org/v2)
+* [Bootstrap v4](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+Before going to the installation stage there are some software that must be installed first.
+
+* [NodeJs](https://nodejs.org/en/download/)
+
+### Installation
+
+If you want to run this project locally, I recommend you to configure the [Back-End](https://github.com/Gefyaqiilah/Zwallet-Back-End) first before configuring this repo front-end.
+1. Clone the repo
+```sh
+git clone https://github.com/Gefyaqiilah/Zwallet-Front-End.git
+```
+2. Install NPM packages
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
+3. Add .env file at root folder project, and add following
+```sh
+VUE_APP_SERVICE_API = YOUR_HOST_NAME
+VUE_APP_JWT_KEY = YOUR_JWT_KEY
 ```
-npm run serve
+4. Run the project
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+  npm run serve
 ```
 
-## References
-[Back To The Top](#read-me-template)
 
----
 
-## Author Info
+<!-- ROADMAP -->
+## Screenshots
 
-- Github - [Defri Ansyah](https://github.com/defri-ansyah)
-- Github - [Gefy Aqiilah](https://github.com/Gefyaqiilah)
-- Github - [Arbi Dwi Wijaya](https://github.com/ArbiNMaki)
-- Github - [Trisa Safira](https://github.com/safiratrisa)
+<p align='center'>
+  <span>
+      <image width="200" src='./screenshots/landing-page.png' />
+      <image width="200" src='./screenshots/register.png' />
+      <image width="200" src='./screenshots/login.png' />
+      <image width="200" src='./screenshots/create-pin.png' />
+      <image width="200" src='./screenshots/home.png' />
+      <image width="200" src='./screenshots/profile.png' />
+      <image width="200" src='./screenshots/personal-information.png' />
+      <image width="200" src='./screenshots/top-up.png' />
+      <image width="200" src='./screenshots/search-receiver.png' />
+      <image width="200" src='./screenshots/transfer-information.png' />
+      <image width="200" src='./screenshots/input-pin.png' />
+      <image width="200" src='./screenshots/transfer-success.png' />
+     
 
-[Back To The Top](#read-me-template)
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+## Related Project
+- [Zwallet Back-End](https://github.com/Gefyaqiilah/Zwallet-Back-End)
+
+
+<!-- CONTACT -->
+## Contact
+
+- Email - gefyaqiilah26@gmail.com
+- LinkedIn - [@GefyAqiilahAqshal](https://linkedin.com/in/gefyaqiilahaqshal)
+
+

@@ -134,25 +134,25 @@ Contributions are what make the open source community such an amazing place to b
       <td align="center">
         <a href="https://api.github.com/users/Gefyaqiilah">
           <img width="100" src="https://avatars.githubusercontent.com/u/54069791?v=4" alt="Gefy Aqiilah Aqshal"><br/>
-          <sub><b>Deny Kurniawan</b></sub>
+          <sub><b>Gefy Aqiilah Aqshal</b></sub>
         </a>
       </td>
       <td align="center">
         <a href="https://api.github.com/users/defri-ansyah">
           <img width="100" src="https://avatars.githubusercontent.com/u/73015398?v=4 alt="Defri Ansyah"><br/>
-          <sub><b>Hapid Moch Jamil</b></sub>
+          <sub><b>Defri Ansyah</b></sub>
         </a>
       </td>
       <td align="center">
         <a href="https://api.github.com/users/safiratrisa">
           <img width="100" src="https://avatars.githubusercontent.com/u/41407774?v=4" alt="Nur Ihsan"><br/>
-          <sub><b>Nur Ihsan</b></sub>
+          <sub><b>Trisa Safira</b></sub>
         </a>
       </td>
       <td align="center">
         <a href="https://api.github.com/users/ArbiNMaki">
           <img width="100" src="https://avatars.githubusercontent.com/u/26770607?v=4" alt="Arbi N Maki"><br/>
-          <sub><b>Alfatah Hidayat</b></sub>
+          <sub><b>Arbi N Maki</b></sub>
         </a>
       </td>
     </tr>

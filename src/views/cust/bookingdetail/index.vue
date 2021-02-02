@@ -135,6 +135,7 @@ export default {
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: small;
+  color:#FFFFFF !important;
 }
 @media(min-width: 581px) {
   .booking-right img {

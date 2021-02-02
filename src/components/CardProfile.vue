@@ -1,6 +1,6 @@
 <template>
   <div class="card-main">
-    <div class="sub-card m-4">
+    <div class="sub-card m-0 p-4">
       <form enctype="multipart/form-data" @change.prevent="update">
         <div class="text-center">
         <div class="user-profile">
@@ -113,6 +113,9 @@ export default {
 </script>
 
 <style scoped>
+.card-main {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 input[type="file"] {
   display: none;
   border-radius: 10px;

@@ -112,6 +112,9 @@ export default {
 body, html {
   overflow: hidden;
 }
+.card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 .btn {
   color: #fff;
   font-weight: bold;

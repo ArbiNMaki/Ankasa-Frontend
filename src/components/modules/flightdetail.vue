@@ -67,7 +67,7 @@
                   <div class="insurance-flex">
                     <div class="insurance-top">
                     <input type="checkbox" id="insurance-check" v-model="insuranceopt">
-                  <label for="insurance-check">Insurance  {{insuranceopt}}</label>
+                  <label for="insurance-check">Insurance</label>
                   </div>
                   <div>
                     <p class="total">Rp75000/pax</p>

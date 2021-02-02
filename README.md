@@ -68,19 +68,18 @@ Before going to the installation stage there are some software that must be inst
 
 ### Installation
 
-If you want to run this project locally, I recommend you to configure the [Back-End](https://github.com/Gefyaqiilah/Zwallet-Back-End) first before configuring this repo front-end.
+If you want to run this project locally, I recommend you to configure the [Back-End](https://github.com/defri-ansyah/Ankasa-API) first before configuring this repo front-end.
 1. Clone the repo
 ```sh
-git clone https://github.com/Gefyaqiilah/Zwallet-Front-End.git
+git clone https://github.com/ArbiNMaki/Ankasa-Frontend.git
 ```
-2. Install NPM packages
+ 2. Install NPM packages
 ```
 npm install
 ```
 3. Add .env file at root folder project, and add following
 ```sh
 VUE_APP_SERVICE_API = YOUR_HOST_NAME
-VUE_APP_JWT_KEY = YOUR_JWT_KEY
 ```
 4. Run the project
 ```

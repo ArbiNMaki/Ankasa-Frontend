@@ -93,19 +93,14 @@ VUE_APP_SERVICE_API = YOUR_HOST_NAME
 
 <p align='center'>
   <span>
-      <image width="200" src='./screenshots/landing-page.png' />
-      <image width="200" src='./screenshots/register.png' />
-      <image width="200" src='./screenshots/login.png' />
-      <image width="200" src='./screenshots/create-pin.png' />
-      <image width="200" src='./screenshots/home.png' />
       <image width="200" src='./screenshots/profile.png' />
-      <image width="200" src='./screenshots/personal-information.png' />
-      <image width="200" src='./screenshots/top-up.png' />
-      <image width="200" src='./screenshots/search-receiver.png' />
-      <image width="200" src='./screenshots/transfer-information.png' />
-      <image width="200" src='./screenshots/input-pin.png' />
-      <image width="200" src='./screenshots/transfer-success.png' />
-     
+      <image width="200" src='./screenshots/search-result.png' />
+      <image width="200" src='./screenshots/search-result2.png' />
+      <image width="200" src='./screenshots/profile.png' />
+      <image width="200" src='./screenshots/my-booking.png' />
+      <image width="200" src='./screenshots/ticket.png' />
+ </span>
+</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing

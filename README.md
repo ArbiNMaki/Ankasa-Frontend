@@ -125,25 +125,25 @@ Contributions are what make the open source community such an amazing place to b
   <table>
     <tr>
       <td align="center">
-        <a href="https://api.github.com/users/Gefyaqiilah">
+        <a href="https://github.com/Gefyaqiilah">
           <img width="100" src="https://avatars.githubusercontent.com/u/54069791?v=4" alt="Gefy Aqiilah Aqshal"><br/>
           <sub><b>Gefy Aqiilah Aqshal</b></sub>
         </a>
       </td>
       <td align="center">
-        <a href="https://api.github.com/users/defri-ansyah">
+        <a href="https://github.com/defri-ansyah">
           <img width="100" src="https://avatars.githubusercontent.com/u/73015398?v=4 alt="Defri Ansyah"><br/>
           <sub><b>Defri Ansyah</b></sub>
         </a>
       </td>
       <td align="center">
-        <a href="https://api.github.com/users/safiratrisa">
-          <img width="100" src="https://avatars.githubusercontent.com/u/41407774?v=4" alt="Nur Ihsan"><br/>
+        <a href="https://github.com/safiratrisa">
+          <img width="100" src="https://avatars.githubusercontent.com/u/41407774?v=4" alt="Trisa Safira"><br/>
           <sub><b>Trisa Safira</b></sub>
         </a>
       </td>
       <td align="center">
-        <a href="https://api.github.com/users/ArbiNMaki">
+        <a href="https://github.com/ArbiNMaki">
           <img width="100" src="https://avatars.githubusercontent.com/u/26770607?v=4" alt="Arbi N Maki"><br/>
           <sub><b>Arbi N Maki</b></sub>
         </a>

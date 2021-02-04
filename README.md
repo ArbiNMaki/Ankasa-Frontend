@@ -20,8 +20,6 @@
   <p align="center">
     Find your Flight and explore the world with us.
     <br />
-    <a href="https://github.com/ArbiNMaki/Ankasa-Frontend"><strong>Explore the docs »</strong></a>
-    <br />
     <br />
     <a href="https://ankasa.netlify.app">View Demo</a>
     ·

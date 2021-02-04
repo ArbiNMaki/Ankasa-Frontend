@@ -1,11 +1,11 @@
 <template>
-  <div class="">
-            <div class="card mb-4">
+  <div class="wrapper p-0">
+            <div class="card p-0 m-0">
               <div class="card-body">
                 <h6 class="card-title cards-title">PROFILE</h6>
                 <h3 class="card-text mb-5 font-weight-bold">Profile</h3>
                 <div class="row">
-                  <div class="col-6">
+                  <div class=" col-sm-12 col-lg-6">
                     <p class="font-weight-bold">Contact</p>
                     <div class="login-box">
                     <form>
@@ -18,13 +18,9 @@
                         <input type="text" class="form-control" v-model="input.phoneNumber">
                       </div>
                     </form>
-                    <p class="text-right color-default font-weight-bold">Account Settings
-                      <img src="../../src/assets/image/btnback.png">
-                      <img  src="../../src/assets/image/btnback (1).png">
-                    </p>
                   </div>
                   </div>
-                  <div class="col-6">
+                  <div class=" col-sm-12 col-lg-6">
                     <p class="font-weight-bold"> Biodata</p>
                     <div class="login-box">
                     <form @submit.prevent="handleUpdateProfile">
@@ -44,7 +40,7 @@
                         <label> Post Code :</label>
                         <input type="text" class="form-control" v-model="input.postCode">
                       </div>
-                      <button type="submit" class="btn float-rigth">Save</button>
+                      <button type="submit" class="btn float-rigth mt-4">Save</button>
                     </form>
                   </div>
                   </div>
@@ -85,7 +81,9 @@ export default {
         post_code: this.input.postCode
       }
       this.updateProfile(payload)
-        .then((result) => {
+        .then((res) => {
+          console.log('res :>> ', res)
+          this.getUserProfile()
           this.$awn.success('Profile has been updated')
         }).catch(() => {
         })
@@ -112,8 +110,13 @@ export default {
 body, html {
   overflow: hidden;
 }
+.wrapper {
+  height:100%;
+}
 .card {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 15px;
+    height:100%;
 }
 .btn {
   color: #fff;
@@ -140,5 +143,10 @@ body, html {
 }
 .color-default {
   color: #2395FF;
+}
+@media screen and (max-width:575.98px) {
+  .wrapper {
+    margin: 50px 0 0 0 ;
+  }
 }
 </style>

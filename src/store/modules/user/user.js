@@ -30,7 +30,7 @@ const actions = {
           commit('SET_DATA_USER', response.data.data)
           resolve(response.data.data)
         }).catch((err) => {
-          console.log(err)
+          reject(err)
         })
     })
   },
@@ -54,6 +54,7 @@ const actions = {
         }
       })
         .then((response) => {
+          dispatch('getMyProfile', null, { root: true })
           resolve(response)
         }).catch((err) => {
           reject(err)

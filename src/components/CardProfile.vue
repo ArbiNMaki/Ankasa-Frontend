@@ -1,7 +1,6 @@
 <template>
   <div class="card-main">
     <div class="sub-card m-0 p-4">
-      <form enctype="multipart/form-data" @change.prevent="update">
         <div class="text-center">
         <div class="user-profile">
         <img :src="getUserData.image? getUserData.image : '/img/default-avatar.png'" alt="profile" class="rounded-circle mt-4">
@@ -13,7 +12,6 @@
         <h5></h5>
         <p class="small text-muted"></p>
       </div>
-      </form>
         <b-row>
             <b-col><b>Card</b></b-col>
             <b-col><p class="text-info text-right">+ Add</p></b-col>
@@ -29,7 +27,7 @@
         <div class="menu">
           <ul>
             <li class="text-primary">
-              <router-link to="/user"> <b-icon-person-circle class="mr-3"></b-icon-person-circle> Profile
+              <router-link to="/cust/profile"> <b-icon-person-circle class="mr-3"></b-icon-person-circle> Profile
               </router-link>
             </li>
             <li> <b-icon-star-fill class="text-secondary mr-3"></b-icon-star-fill> My Review</li>
@@ -164,7 +162,7 @@ p {
 .mini-card {
   background-color: #2395FF;
   color: #fff;
-  box-shadow: 0px 8px 25px rgba(35, 149, 255, 0.49);
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 10px;
   padding: 15px;
 }

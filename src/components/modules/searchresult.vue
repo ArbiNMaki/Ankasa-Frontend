@@ -17,9 +17,9 @@
                 <p class="location">{{$route.query.to}}</p>
               </div>
               </div>
-              <p class="flight-detail">{{$route.query.departuredate}}  |  6 Passenger  |  {{$route.query.seattype}}</p>
+              <p class="flight-detail" v-if="$route.query.adults && $route.query.children">{{$route.query.departuredate}}  |  {{$route.query.adults + $route.query.children}} Passenger  |  {{$route.query.seattype}}</p>
               <div v-if="$route.query.triptype === 'roundtrip'">
-                <p class="flight-detail">{{$route.query.returndate}}  |  6 Passenger  |  {{$route.query.seattype}}</p>
+                <p class="flight-detail">{{$route.query.returndate}}  |  {{$route.query.adults || 0 + $route.query.children || 0}} Passenger  |  {{$route.query.seattype}}</p>
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@
             <div class="col-lg-4 left">
               <div class="topside">
                   <p class="filter" type="button">Filter</p>
-                  <p class="reset">Reset</p>
+                  <p class="reset cursor-pointer" @click="resetFilter">Reset</p>
                 </div>
               <div class="sidebar">
                 <div class="list-unstyled components">
@@ -164,7 +164,7 @@
             </div>
               </div>
             </div>
-            <div class="col-lg-7 right">
+            <div v-if="getTickets.length > 0" class="col-lg-7 right">
               <div class="topside">
                   <p class="select">Select Ticket</p>
                   <p class="sort" type="button"  @click="handleSorting">Sort By <i class="fas fa-sort"></i></p>
@@ -214,13 +214,17 @@
                 </div>
                 </div>
             </div>
+            <div v-if="getTickets.length === 0" class="col-lg-7 right d-flex flex-column align-items-center justify-content-center">
+              <p class="default-text">looking for a flight route? 🧐</p>
+              <p>You'll have to search first at <span class="bold-600">"Find ticket"</span></p>
+            </div>
           </div>
         </div>
     </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/antd.css'
 import mixin from '../../mixins/index'
@@ -251,6 +255,7 @@ export default {
     ...mapActions({ getAllTickets: 'getTickets' }),
     ...mapActions('customer', ['selectTicket']),
     ...mapActions(['sorting']),
+    ...mapMutations(['SET_FINDTICKETS']),
     updatePage (param) {
       const payload = {
         routeFrom: this.$route.query.from,
@@ -289,6 +294,16 @@ export default {
         price: ''
       }
       this.getAllTickets(payload)
+    },
+    resetFilter () {
+      this.value = [1000000, 3000000]
+      this.transit = []
+      this.facilities = []
+      this.departure = []
+      this.arrival = []
+      this.airlines = []
+      this.toggleSort = false
+      this.filter()
     },
     filterprice () {
       const payload = {
@@ -616,6 +631,18 @@ export default {
 .ctnr {
     height: 100%;
     margin-top: 3%;
+}
+.default-text {
+  font-size:25px;
+  text-transform: capitalize;
+  font-weight:700;
+  color:#575454;
+}
+.bold-600 {
+  font-weight: 600;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 @media screen and (max-width: 767px) {
     .center {

@@ -1,66 +1,147 @@
-![illustration](https://user-images.githubusercontent.com/41407774/104251646-c4e96f80-54a2-11eb-912f-bda0baf22e36.png)
-# Ankasa Ticketing
+<p align="center">
+<img src="https://img.shields.io/github/repo-size/ArbiNMaki/Ankasa-Frontend?color=%20%236379f4&label=Repo%20SIZE&logo=%20%236379f4&logoColor=%20%236379f4&style=for-the-badge">
+ <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/Vue-v2-green?style=for-the-badge"></a>
+ <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction"><img src="https://img.shields.io/badge/Bootstrap-v4-lightgreen?style=for-the-badge"></a>
+</p>
 
-> Find your Flight and explore the  world with us. We will take care of the rest.
+<p align="center">
+  <a href="https://github.com/ArbiNMaki/Ankasa-Frontend">
+    <img src="./screenshots/logo.png"  width="200px" alt="Logo" width="80">
+  </a>
 
----
+  <h3 align="center">Ankasa App</h3>
 
-## Description
+  <p align="center">
+    Find your Flight and explore the world with us.
+    <br />
+    <br />
+    <a href="https://ankasa.netlify.app">View Demo</a>
+    ·
+    <a href="https://github.com/ArbiNMaki/Ankasa-Frontend"">Report Bug</a>
+    ·
+    <a href="https://github.com/ArbiNMaki/Ankasa-Frontend">Request Feature</a>
+  </p>
+</p>
 
-With Ankasa Ticketing, users can search a specific flights to another countries. The App also has a Find Ticket and Filter Features that allows users to select a country as an arrival destination and explore flight prices to various regions
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-#### Technologies
+* [About the Project](#about-the-project)
+  * [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Screenshots](#screenshots)
+* [Related Project](#related-project)
+* [Contact](#contact)
 
-- Vue.js
-- Sequelize
 
-[Back To The Top](#read-me-template)
 
----
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-## Features
-- [Find Ticket + Search Result](#description)
-![searchresult](https://user-images.githubusercontent.com/41407774/104252586-f8c59480-54a4-11eb-92db-702bcc4adc63.JPG)
-- [Input Booking](#how-to-use)
-![flightdetail](https://user-images.githubusercontent.com/41407774/104252593-fb27ee80-54a4-11eb-87ff-a5114d20b9e0.JPG)
-- [Booking Detail](#references)
-![bookingdetail](https://user-images.githubusercontent.com/41407774/104252590-fa8f5800-54a4-11eb-9ef7-c36f8a2d740d.JPG)
-- [Booking History](#license)
-![mybooking](https://user-images.githubusercontent.com/41407774/104252596-fbc08500-54a4-11eb-9cad-458e6108c229.JPG)
----
 
-## How To Use
+With Ankasa Ticketing, users can search a specific flights to another countries. The App also has a Find Ticket and Filter Features that allows users to select a country as an arrival destination and explore flight prices to various regions.
 
-## Project setup
+### Built With
+
+* [Vue v2](https://vuejs.org/v2)
+* [Bootstrap v4](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+Before going to the installation stage there are some software that must be installed first.
+
+* [NodeJs](https://nodejs.org/en/download/)
+
+### Installation
+
+If you want to run this project locally, I recommend you to configure the [Back-End](https://github.com/defri-ansyah/Ankasa-API) first before configuring this repo front-end.
+1. Clone the repo
+```sh
+git clone https://github.com/ArbiNMaki/Ankasa-Frontend.git
+```
+ 2. Install NPM packages
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
+3. Add .env file at root folder project, and add following
+```sh
+VUE_APP_SERVICE_API = YOUR_HOST_NAME
 ```
-npm run serve
+4. Run the project
 ```
-
-### Compiles and minifies for production
-```
-npm run build
+  npm run serve
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-## References
-[Back To The Top](#read-me-template)
 
----
+<!-- ROADMAP -->
+## Screenshots
 
-## Author Info
+<p align='center'>
+  <span>
+      <image width="200" src='./screenshots/profile.png' />
+      <image width="200" src='./screenshots/search-result.png' />
+      <image width="200" src='./screenshots/search-result2.png' />
+      <image width="200" src='./screenshots/profile.png' />
+      <image width="200" src='./screenshots/my-booking.png' />
+      <image width="200" src='./screenshots/ticket.png' />
+ </span>
+</p>
 
-- Github - [Defri Ansyah](https://github.com/defri-ansyah)
-- Github - [Gefy Aqiilah](https://github.com/Gefyaqiilah)
-- Github - [Arbi Dwi Wijaya](https://github.com/ArbiNMaki)
-- Github - [Trisa Safira](https://github.com/safiratrisa)
+<!-- CONTRIBUTING -->
+## Contributing
 
-[Back To The Top](#read-me-template)
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+
+## Related Project
+- [Ankasa Back-End](https://github.com/defri-ansyah/Ankasa-API)
+
+
+## Contributors
+
+<center>
+  <table>
+    <tr>
+      <td align="center">
+        <a href="https://github.com/Gefyaqiilah">
+          <img width="100" src="https://avatars.githubusercontent.com/u/54069791?v=4" alt="Gefy Aqiilah Aqshal"><br/>
+          <sub><b>Gefy Aqiilah Aqshal</b></sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/defri-ansyah">
+          <img width="100" src="https://avatars.githubusercontent.com/u/73015398?v=4 alt="Defri Ansyah"><br/>
+          <sub><b>Defri Ansyah</b></sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/safiratrisa">
+          <img width="100" src="https://avatars.githubusercontent.com/u/41407774?v=4" alt="Trisa Safira"><br/>
+          <sub><b>Trisa Safira</b></sub>
+        </a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/ArbiNMaki">
+          <img width="100" src="https://avatars.githubusercontent.com/u/26770607?v=4" alt="Arbi N Maki"><br/>
+          <sub><b>Arbi N Maki</b></sub>
+        </a>
+      </td>
+    </tr>
+  </table>
+</center>
+
+

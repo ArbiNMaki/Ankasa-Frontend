@@ -85,6 +85,7 @@ export default {
 </script>
 
 <style scoped>
+
 .airline-logo {
   height: 57px;
   width: 100px;
@@ -109,7 +110,6 @@ export default {
 }
 .booking-left {
   width: 200px;
-  height: 100%;
   border: 0.5px solid #E5E5E5;
   border-right: 2px dashed #E5E5E5;
   border-radius: 10px;
@@ -117,7 +117,6 @@ export default {
 }
 .booking-right {
   width: 100%;
-  height: 100%;
   border: 0.5px solid#E5E5E5;
   border-left: none;
   border-radius: 10px;
@@ -135,6 +134,7 @@ export default {
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: small;
+  color:#FFFFFF !important;
 }
 @media(min-width: 581px) {
   .booking-right img {

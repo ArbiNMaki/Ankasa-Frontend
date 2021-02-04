@@ -67,7 +67,6 @@ export default new Vuex.Store({
           })
           .catch((err) => {
             reject(err)
-            console.log(err.response)
           })
       })
     },
@@ -75,10 +74,11 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/data-lookup/city`)
           .then((res) => {
+            resolve(res)
             context.commit('SET_CITY', res.data.result)
           })
           .catch((err) => {
-            console.log(err.response)
+            reject(err)
           })
       })
     },
@@ -89,7 +89,7 @@ export default new Vuex.Store({
             context.commit('SET_MYPROFILE', res.data.data)
           })
           .catch((err) => {
-            console.log(err.response)
+            reject(err)
           })
       })
     },

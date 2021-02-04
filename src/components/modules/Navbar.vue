@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="header">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="brand" @click="toHome">
+        <div class="brand" @click="toHome" data-toggle="collapse" data-target="#navbarSupportedContent">
             <div class="brand-logo">
                 <img src="../../assets/image/vector 02.png" alt="">
             </div>
@@ -22,6 +22,7 @@
                     <a class="nav-link dropdown-toggle findticket" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Find Ticket
                     </a>
+                    <div class="menu">
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <form action="">
                             <p class="hey">Hey!</p>
@@ -58,7 +59,9 @@
                                 </div>
                             </div>
                             <p class="departure">Departure Date</p>
-                            <input type="date" v-model="departuredate"/>
+                            <div class="date">
+                                <input type="date" v-model="departuredate"/>
+                            </div>
                             <div v-if="triptype !== 'one way'">
                                 <p class="return">Return Date</p>
                                 <input type="date" v-model="returndate"/>
@@ -89,20 +92,21 @@
                                     <label for="firstclass">First Class</label>
                                 </div>
                             </div>
-                            <button class="search" @click.prevent="handleFind">Search Flight</button>
+                            <button class="search" @click.prevent="handleFind" data-toggle="collapse" data-target="#navbarSupportedContent">Search Flight</button>
                         </form>
+                    </div>
                     </div>
                 </div>
                 <div class="nav-item booking">
-                    <div class="nav-link" @click="toBooking">My Booking</div>
+                    <div class="nav-link" @click="toBooking" data-toggle="collapse" data-target="#navbarSupportedContent">My Booking</div>
                 </div>
                 <div class="nav-item chat">
-                    <i class="far fa-envelope fa-lg"></i>
+                    <i class="far fa-envelope fa-lg" data-toggle="collapse" data-target="#navbarSupportedContent"></i>
                 </div>
                 <div class="nav-item notif">
-                    <i class="far fa-bell fa-lg"></i>
+                    <i class="far fa-bell fa-lg" data-toggle="collapse" data-target="#navbarSupportedContent"></i>
                 </div>
-                <div class="nav-item userprofile" @click="toProfile">
+                <div class="nav-item userprofile" @click="toProfile" data-toggle="collapse" data-target="#navbarSupportedContent">
                     <img :src="getMyProfile.image? getMyProfile.image : '/img/default-avatar.png'"  alt="">
                 </div>
             </div>
@@ -120,13 +124,13 @@ export default {
   mixins: [mixin],
   data: function () {
     return {
-      departuredate: '2021-01-18    ',
+      departuredate: '2021-01-18',
       returndate: '',
       triptype: 'one way',
       selectedfrom: 'Medan',
-      selectedto: 'Tokyo',
-      children: '',
-      adults: '',
+      selectedto: 'Bandung',
+      children: '0',
+      adults: '0',
       seattype: ''
     }
   },
@@ -141,13 +145,13 @@ export default {
             throw err
           }
         })
-    //   this.departuredate = ''
+    //   this.departuredate = '2021-01-18'
     //   this.returndate = ''
     //   this.triptype = 'one way'
-    //   this.selectedfrom = ''
-    //   this.selectedto = ''
-    //   this.children = ''
-    //   this.adults = ''
+    //   this.selectedfrom = 'Medan'
+    //   this.selectedto = 'Bandung'
+    //   this.children = '0'
+    //   this.adults = '0'
     //   this.seattype = ''
     },
     toHome () {
@@ -171,6 +175,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#dimScreen {
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(41, 34, 34, 0.5);
+    z-index: 999;
+}
+
+.modal-full {
+    max-height: 800px;
+    width: 50%;
+    min-width: 280px;
+    max-width: 500px;
+    border-radius: 25px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
 .navbar-nav {
     position: relative;
     z-index: 999;
@@ -183,7 +218,7 @@ select {
     width: 90%;
     border: none;
     outline: none;
-    height: 50%;
+    // height: 50%;
 }
 .from-title, .to-title {
     font-family: Poppins;
@@ -211,7 +246,6 @@ select {
     color: #FFFFFF;
     cursor: pointer;
     margin-top: 5%;
-    margin-bottom: 5%;
 }
 .departure, .return, .person, .class-title {
     margin-top: 8%;
@@ -242,7 +276,7 @@ select {
 }
 .navbar {
     height: 148px;
-    position: relative;
+    // position: relative;
 }
 .image-search input {
     border: none;
@@ -314,6 +348,9 @@ select {
     font-weight: 700;
     color: #414141;
 }
+// .dropdown {
+//     border: 2px solid black;
+// }
 .fa-search, .fa-bell, .fa-envelope {
     color: #414141;
 }
@@ -328,6 +365,7 @@ select {
     padding-left: 20%;
     padding-top: 20%;
     padding-right: 20%;
+    padding-bottom: 20%;
 }
 .where {
     height: 97px;
@@ -438,14 +476,66 @@ input[type="date"], input[type="number"] {
     font-size: 14px;
     font-weight: 500;
 }
+.navbar-toggler {
+    outline: none !important;
+}
 @media screen and (max-width: 991px) {
     .list {
         flex-direction: column;
+        height: 100%;
+        padding-bottom: 5%;
+        border-bottom-right-radius: 10px ;
+        border-bottom-left-radius: 10px ;
+        box-shadow:10px 10px 10px grey;
     }
     .dropdown-menu {
         margin-top: 0%;
         height: auto;
         width: 100%;
+    }
+    .nav-item {
+        margin-top: 5%;
+    }
+    .seatclass {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .options {
+        text-align: left;
+    }
+    .trip {
+        flex-direction: column;
+    }
+    .where {
+        flex-direction: column;
+        min-height: 200px;
+    }
+    .to {
+        text-align: left;
+        padding-left: 5%;
+        padding-top: 2%;
+    }
+    .departure, .return, .person, .class-title {
+        text-align: center;
+    }
+    .date {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .trip label {
+        padding: 10px;
+        padding-top: 10px;
+        width: 100%;
+    }
+    .navbar {
+        height: 73px;
+    }
+    .booking, .chat, .notif, .dropdown {
+        margin-right: 0%;
+    }
+    .userprofile {
+        margin-left: 5%;
     }
 }
 </style>

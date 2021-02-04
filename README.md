@@ -1,9 +1,3 @@
-<!--
-*** Thanks for checking out this README Template. If you have a suggestion that would
-*** make this better, please fork the repo and create a pull request or simply open
-*** an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
 <p align="center">
 <img src="https://img.shields.io/github/repo-size/ArbiNMaki/Ankasa-Frontend?color=%20%236379f4&label=Repo%20SIZE&logo=%20%236379f4&logoColor=%20%236379f4&style=for-the-badge">
  <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/Vue-v2-green?style=for-the-badge"></a>

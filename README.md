@@ -17,7 +17,7 @@
     <a href="https://github.com/ArbiNMaki/Ankasa-Frontend">Request Feature</a>
   </p>
 <p align="center">
- <img src="https://img.shields.io/github/repo-size/ArbiNMaki/Ankasa-Frontend?color=%20%236379f4&label=Repo%20SIZE&logo=%20%236379f4&logoColor=%20%236379f4&style=flat">
+ <img src="https://img.shields.io/github/repo-size/ArbiNMaki/Ankasa-Frontend?label=Repo%20Size">
  <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/Vue-v2-green?style=flat"></a>
  <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction"><img src="https://img.shields.io/badge/Bootstrap-v4-lightgreen?style=flat"></a>                                                                                                                                      
 </p>

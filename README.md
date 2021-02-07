@@ -1,7 +1,7 @@
-                                                ///////
+
 <p align="center">
   <a href="https://github.com/ArbiNMaki/Ankasa-Frontend">
-    <img src="./screenshots/logo.png"  width="300px" alt="Logo">
+    <img src="./screenshots/logo.png"  width="200px" alt="Logo">
   </a>
 </p>
   <p align="center">

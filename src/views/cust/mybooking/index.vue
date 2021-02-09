@@ -6,6 +6,7 @@
 import MyBookingComp from '../../../components/modules/mybooking'
 export default {
   name: 'MyBooking',
+  title: 'My Booking',
   components: {
     MyBookingComp
   }

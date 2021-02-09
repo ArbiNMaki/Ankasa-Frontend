@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueAWN from 'vue-awesome-notifications'
 import Vuelidate from 'vuelidate'
+import titleMixin from './mixins/titleMixin'
+Vue.mixin(titleMixin)
 // Your custom options
 const options = {
   durations: {

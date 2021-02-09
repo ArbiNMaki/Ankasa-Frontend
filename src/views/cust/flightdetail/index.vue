@@ -6,6 +6,7 @@
 import FlightDetailComp from '../../../components/modules/flightdetail'
 export default {
   name: 'FlightDetail',
+  title: 'Flight Detail',
   components: {
     FlightDetailComp
   }

@@ -21,6 +21,7 @@ export default {
     CardProfile,
     CardProfile2
   },
+  title: 'Profile',
   methods: {
     ...mapActions('user', ['getUser'])
   },

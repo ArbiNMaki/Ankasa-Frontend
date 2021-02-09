@@ -17,7 +17,7 @@
                 <p class="location">{{$route.query.to}}</p>
               </div>
               </div>
-              <p class="flight-detail" v-if="$route.query.adults && $route.query.children">{{$route.query.departuredate}}  |  {{$route.query.adults + $route.query.children}} Passenger  |  {{$route.query.seattype}}</p>
+              <p class="flight-detail" v-if="$route.query.adults && $route.query.children">{{$route.query.departuredate}}  |  {{parseInt($route.query.adults) + parseInt($route.query.children)}} Passenger  |  {{$route.query.seattype}}</p>
               <div v-if="$route.query.triptype === 'roundtrip'">
                 <p class="flight-detail">{{$route.query.returndate}}  |  {{$route.query.adults || 0 + $route.query.children || 0}} Passenger  |  {{$route.query.seattype}}</p>
               </div>

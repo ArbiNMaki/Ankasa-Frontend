@@ -293,7 +293,7 @@ export default {
         transit: (this.transit).toString() || '',
         price: ''
       }
-      this.getAllTickets(payload)
+      if (payload.airlines) { this.getAllTickets(payload) }
     },
     resetFilter () {
       this.value = [1000000, 3000000]

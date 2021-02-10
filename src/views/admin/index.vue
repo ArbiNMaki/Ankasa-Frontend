@@ -65,6 +65,7 @@ import $ from 'jquery'
 import { mapGetters } from 'vuex'
 export default {
   name: 'AdminDashboard',
+  title: 'Ankasa Dashboard',
   state: {
 
   },

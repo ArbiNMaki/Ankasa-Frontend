@@ -1,30 +1,29 @@
-<p align="center">
-<img src="https://img.shields.io/github/repo-size/ArbiNMaki/Ankasa-Frontend?color=%20%236379f4&label=Repo%20SIZE&logo=%20%236379f4&logoColor=%20%236379f4&style=for-the-badge">
- <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/Vue-v2-green?style=for-the-badge"></a>
- <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction"><img src="https://img.shields.io/badge/Bootstrap-v4-lightgreen?style=for-the-badge"></a>
-</p>
 
 <p align="center">
   <a href="https://github.com/ArbiNMaki/Ankasa-Frontend">
-    <img src="./screenshots/logo.png"  width="200px" alt="Logo" width="80">
+    <img src="./screenshots/logo.png"  width="200px" alt="Logo">
   </a>
-
-  <h3 align="center">Ankasa App</h3>
-
+</p>
+<h3 align="center">Ankasa App</h3>
   <p align="center">
     Find your Flight and explore the world with us.
-    <br />
-    <br />
+  <br/>
+    <a href="https://github.com/ArbiNMaki/Ankasa-Frontend"><strong>Explore the docs »</strong></a>
+    <br /><br/>
     <a href="https://ankasa.netlify.app">View Demo</a>
     ·
-    <a href="https://github.com/ArbiNMaki/Ankasa-Frontend"">Report Bug</a>
+    <a href="https://github.com/ArbiNMaki/Ankasa-Frontend">Report Bug</a>
     ·
     <a href="https://github.com/ArbiNMaki/Ankasa-Frontend">Request Feature</a>
   </p>
+<p align="center">
+ <img src="https://img.shields.io/github/repo-size/ArbiNMaki/Ankasa-Frontend?label=Repo%20Size">
+ <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/Vue-v2-green?style=flat"></a>
+ <a href="https://getbootstrap.com/docs/4.6/getting-started/introduction"><img src="https://img.shields.io/badge/Bootstrap-v4-lightgreen?style=flat"></a>                                                                                                                                      
 </p>
 
 <!-- TABLE OF CONTENTS -->
-## Table of Contents
+ ## Table of Contents
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)

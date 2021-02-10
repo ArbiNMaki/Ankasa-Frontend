@@ -69,6 +69,7 @@ import moment from 'moment'
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'BookingDetail',
+  title: 'Booking Detail',
   methods: {
     ...mapActions({ getUserOrder: 'getOrderDetail' }),
     convertTime (date) {

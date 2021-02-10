@@ -1,7 +1,7 @@
 <template>
     <div class="header">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="brand" @click="toHome" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <div class="brand" @click="toHome">
             <div class="brand-logo">
                 <img src="../../assets/image/vector 02.png" alt="">
             </div>
@@ -92,21 +92,21 @@
                                     <label for="firstclass">First Class</label>
                                 </div>
                             </div>
-                            <button class="search" @click.prevent="handleFind" data-toggle="collapse" data-target="#navbarSupportedContent">Search Flight</button>
+                            <button class="search" @click.prevent="handleFind">Search Flight</button>
                         </form>
                     </div>
                     </div>
                 </div>
                 <div class="nav-item booking">
-                    <div class="nav-link" @click="toBooking" data-toggle="collapse" data-target="#navbarSupportedContent">My Booking</div>
+                    <div class="nav-link" @click="toBooking">My Booking</div>
                 </div>
                 <div class="nav-item chat">
-                    <i class="far fa-envelope fa-lg" data-toggle="collapse" data-target="#navbarSupportedContent"></i>
+                    <i class="far fa-envelope fa-lg"></i>
                 </div>
                 <div class="nav-item notif">
-                    <i class="far fa-bell fa-lg" data-toggle="collapse" data-target="#navbarSupportedContent"></i>
+                    <i class="far fa-bell fa-lg"></i>
                 </div>
-                <div class="nav-item userprofile" @click="toProfile" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <div class="nav-item userprofile" @click="toProfile" >
                     <img :src="getMyProfile.image? getMyProfile.image : '/img/default-avatar.png'"  alt="">
                 </div>
             </div>
@@ -140,28 +140,23 @@ export default {
     handleFind () {
       this.SET_PASSENGER({ child: this.children, adult: this.adults })
       this.$router.push({ path: 'searchresult', query: { from: this.selectedfrom, to: this.selectedto, triptype: this.triptype, departuredate: this.departuredate, returndate: this.returndate, seattype: this.seattype, adults: this.adults, children: this.children } })
-        .catch((err) => {
-          if (err.name !== 'NavigationDuplicated') {
-            throw err
-          }
+        .catch(() => {
         })
-    //   this.departuredate = '2021-01-18'
-    //   this.returndate = ''
-    //   this.triptype = 'one way'
-    //   this.selectedfrom = 'Medan'
-    //   this.selectedto = 'Bandung'
-    //   this.children = '0'
-    //   this.adults = '0'
-    //   this.seattype = ''
     },
     toHome () {
       this.$router.push({ path: '/cust/searchresult' })
+        .catch(() => {
+        })
     },
     toBooking () {
       this.$router.push({ path: '/cust/mybooking' })
+        .catch(() => {
+        })
     },
     toProfile () {
       this.$router.push({ path: '/cust/profile' })
+        .catch(() => {
+        })
     }
   },
   computed: {

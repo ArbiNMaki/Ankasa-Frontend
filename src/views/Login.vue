@@ -52,6 +52,7 @@ import { required, email } from 'vuelidate/lib/validators'
 import mixin from '../mixins/index'
 export default {
   name: 'Login',
+  title: 'Login',
   mixins: [mixin],
   data () {
     return {

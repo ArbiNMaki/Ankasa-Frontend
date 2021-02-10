@@ -32,6 +32,7 @@ import Swal from 'sweetalert2'
 import { mapActions } from 'vuex'
 export default {
   name: 'ForgotPass',
+  title: 'Forgot Password',
   data () {
     return {
       form: {

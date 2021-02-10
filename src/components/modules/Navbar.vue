@@ -1,7 +1,7 @@
 <template>
     <div class="header">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="brand" @click="toHome" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <div class="brand" @click="toHome">
             <div class="brand-logo">
                 <img src="../../assets/image/vector 02.png" alt="">
             </div>
@@ -92,21 +92,21 @@
                                     <label for="firstclass">First Class</label>
                                 </div>
                             </div>
-                            <button class="search" @click.prevent="handleFind" data-toggle="collapse" data-target="#navbarSupportedContent">Search Flight</button>
+                            <button class="search" @click.prevent="handleFind">Search Flight</button>
                         </form>
                     </div>
                     </div>
                 </div>
                 <div class="nav-item booking">
-                    <div class="nav-link" @click="toBooking" data-toggle="collapse" data-target="#navbarSupportedContent">My Booking</div>
+                    <div class="nav-link" @click="toBooking">My Booking</div>
                 </div>
                 <div class="nav-item chat">
-                    <i class="far fa-envelope fa-lg" data-toggle="collapse" data-target="#navbarSupportedContent"></i>
+                    <i class="far fa-envelope fa-lg"></i>
                 </div>
                 <div class="nav-item notif">
-                    <i class="far fa-bell fa-lg" data-toggle="collapse" data-target="#navbarSupportedContent"></i>
+                    <i class="far fa-bell fa-lg"></i>
                 </div>
-                <div class="nav-item userprofile" @click="toProfile" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <div class="nav-item userprofile" @click="toProfile" >
                     <img :src="getMyProfile.image? getMyProfile.image : '/img/default-avatar.png'"  alt="">
                 </div>
             </div>
@@ -156,12 +156,27 @@ export default {
     },
     toHome () {
       this.$router.push({ path: '/cust/searchresult' })
+        .catch((err) => {
+          if (err.name !== 'NavigationDuplicated') {
+            throw err
+          }
+        })
     },
     toBooking () {
       this.$router.push({ path: '/cust/mybooking' })
+        .catch((err) => {
+          if (err.name !== 'NavigationDuplicated') {
+            throw err
+          }
+        })
     },
     toProfile () {
       this.$router.push({ path: '/cust/profile' })
+        .catch((err) => {
+          if (err.name !== 'NavigationDuplicated') {
+            throw err
+          }
+        })
     }
   },
   computed: {

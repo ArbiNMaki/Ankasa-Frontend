@@ -52,6 +52,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import Swal from 'sweetalert2'
 export default {
   data () {
     return {
@@ -82,6 +83,10 @@ export default {
       }
       this.updateProfile(payload)
         .then((res) => {
+          Swal.fire({
+            title: 'Data Successfully Updated',
+            icon: 'success'
+          })
           console.log('res :>> ', res)
           this.getUserProfile()
           this.$awn.success('Profile has been updated')

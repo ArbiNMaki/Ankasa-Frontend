@@ -51,7 +51,8 @@
 
 <script>
 export default {
-  name: 'Chat'
+  name: 'Chat',
+  title: 'Chat'
 }
 </script>
 

@@ -6,6 +6,7 @@
 import SearchResultComp from '../../../components/modules/searchresult'
 export default {
   name: 'SearchResult',
+  title: 'Ankasa',
   components: {
     SearchResultComp
   }

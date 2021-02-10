@@ -43,6 +43,7 @@ import { mapActions } from 'vuex'
 import { required, email, minLength } from 'vuelidate/lib/validators'
 export default {
   name: 'Register',
+  title: 'Register',
   data () {
     return {
       form: {

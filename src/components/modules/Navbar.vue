@@ -140,22 +140,34 @@ export default {
     handleFind () {
       this.SET_PASSENGER({ child: this.children, adult: this.adults })
       this.$router.push({ path: 'searchresult', query: { from: this.selectedfrom, to: this.selectedto, triptype: this.triptype, departuredate: this.departuredate, returndate: this.returndate, seattype: this.seattype, adults: this.adults, children: this.children } })
-        .catch(() => {
+        .catch((err) => {
+          if (err.name !== 'NavigationDuplicated') {
+            throw err
+          }
         })
     },
     toHome () {
       this.$router.push({ path: '/cust/searchresult' })
-        .catch(() => {
+        .catch((err) => {
+          if (err.name !== 'NavigationDuplicated') {
+            throw err
+          }
         })
     },
     toBooking () {
       this.$router.push({ path: '/cust/mybooking' })
-        .catch(() => {
+        .catch((err) => {
+          if (err.name !== 'NavigationDuplicated') {
+            throw err
+          }
         })
     },
     toProfile () {
       this.$router.push({ path: '/cust/profile' })
-        .catch(() => {
+        .catch((err) => {
+          if (err.name !== 'NavigationDuplicated') {
+            throw err
+          }
         })
     }
   },

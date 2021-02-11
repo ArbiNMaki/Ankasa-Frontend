@@ -18,7 +18,7 @@
             <div class="booking-left col-sm-6">
               <b-row>
                 <b-col>
-                  <div class="airline-logo">
+                  <div class="airline-logo" v-if="getOrderDetail.flight_route">
                     <img :src="getOrderDetail.flight_route.AirLine.logo" alt="logo garuda">
                   </div>
                 </b-col>

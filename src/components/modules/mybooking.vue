@@ -15,7 +15,7 @@
               </div>
               <div class="history-box">
                   <div class="allhistory" v-for="booking in getMyBooking" :key="booking.id">
-                <div class="history">
+                <div class="history" v-if="booking.flight_route">
                 <p>{{convertTime(booking.flight_route.tripDate || '')}} / {{booking.flight_route.departureTime || ''}}</p>
                 <div class="fromto">
                   <p class="loc">{{booking.flight_route.routeFrom || ''}}</p>
@@ -108,7 +108,7 @@ export default {
 }
 .status {
   height: 36px;
-  width: 141px;
+  width: 200px;
   border-radius: 6px;
   background-color: #4FCF4D;
   padding-top: 4%;

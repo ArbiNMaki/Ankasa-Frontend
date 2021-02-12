@@ -17,7 +17,7 @@
                   <div class="allhistory" v-for="booking in getMyBooking" :key="booking.id">
                 <div class="history" v-if="booking.flight_route">
                 <p>{{convertTime(booking.flight_route.tripDate || '')}} / {{booking.flight_route.departureTime || ''}}</p>
-                <div class="fromto">
+                <div class="fromto" v-if="booking.flight_route">
                   <p class="loc">{{booking.flight_route.routeFrom || ''}}</p>
                   <i class="fas fa-plane"></i>
                   <p class="loc">{{booking.flight_route.routeTo || ''}}</p>

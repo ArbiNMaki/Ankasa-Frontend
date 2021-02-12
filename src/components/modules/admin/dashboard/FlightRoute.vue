@@ -49,7 +49,7 @@
                       <i v-for="(facilities, index) in route.Facilities" :key="index">
                         <i class="fas fa-suitcase" v-if="facilities.facility === 'luggage'"></i>
                         <i class="fas fa-wifi" v-if="facilities.facility === 'wi-fi'"></i>
-                        <i class="fas fa-utensils" v-if="facilities.facility === 'meal'"></i>
+                        <i class="fas fa-utensils" v-if="facilities.facility === 'in-flight meal'"></i>
                       </i>
                     </div>
                     <div class="col4">
@@ -151,7 +151,7 @@
                           <option disabled value="">Select One Class</option>
                           <option value="ekonomi">Ekonomi</option>
                           <option value="business">Business</option>
-                          <option value="first-class">Frist-Class</option>
+                          <option value="first-class">First-Class</option>
                         </select>
                         </div>
                     </div>

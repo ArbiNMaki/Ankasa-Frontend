@@ -196,7 +196,7 @@
                       <div class="facilitypic" v-if="index.facility === 'luggage'">
                         <i class="fas fa-suitcase"></i>
                       </div>
-                      <div class="facilitypic" v-if="index.facility === 'meal'">
+                      <div class="facilitypic" v-if="index.facility === 'in-flight meal'">
                         <i class="fas fa-utensils"></i>
                       </div>
                       <div class="facilitypic" v-if="index.facility === 'wi-fi'">
@@ -228,6 +228,7 @@ import { mapGetters, mapActions, mapMutations } from 'vuex'
 import VueSlider from 'vue-slider-component'
 import 'vue-slider-component/theme/antd.css'
 import mixin from '../../mixins/index'
+import Swal from 'sweetalert2'
 export default {
   name: 'SearchResultComp',
   mixins: [mixin],
@@ -346,12 +347,15 @@ export default {
         tripDate: this.$route.query.departuredate,
         sort: sort
       }
-      console.log('payload :>> ', payload)
+      // console.log('payload :>> ', payload)
       this.sorting(payload)
-        .then((result) => {
-          console.log('result :>> ', result)
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        .then(() => {
+        }).catch(() => {
+          Swal.fire({
+            title: 'Problem with Databse',
+            icon: 'error'
+          })
+          // console.log('err :>> ', err)
         })
     }
   },

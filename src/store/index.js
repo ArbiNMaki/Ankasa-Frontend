@@ -63,7 +63,7 @@ export default new Vuex.Store({
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/find?routeFrom=${payload.routeFrom}&routeTo=${payload.routeTo}&flightClass=${payload.flightClass}&tripType=${payload.triptype}&tripDate=${payload.tripdate}&facilities=${payload.facilities}&price=${payload.price}&airline=${payload.airlines}&departureTime=${payload.departureTime}&timeArrived=${payload.timeArrived}&transit=${payload.transit}`)
           .then((res) => {
             context.commit('SET_FINDTICKETS', res.data.result)
-            resolve(res.data.result)
+            resolve(res)
           })
           .catch((err) => {
             reject(err)
@@ -74,8 +74,8 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/data-lookup/city`)
           .then((res) => {
-            resolve(res)
             context.commit('SET_CITY', res.data.result)
+            resolve(res)
           })
           .catch((err) => {
             reject(err)
@@ -87,6 +87,7 @@ export default new Vuex.Store({
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/user/detail`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((res) => {
             context.commit('SET_MYPROFILE', res.data.data)
+            resolve(res)
           })
           .catch((err) => {
             reject(err)
@@ -98,9 +99,10 @@ export default new Vuex.Store({
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/user/my-booking`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((res) => {
             context.commit('SET_MYBOOKING', res.data.data)
+            resolve(res)
           })
           .catch((err) => {
-            console.log(err.response)
+            reject(err)
           })
       })
     },
@@ -109,9 +111,10 @@ export default new Vuex.Store({
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/detail/${localStorage.getItem('orderid')}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
           .then((res) => {
             context.commit('SET_ORDERDETAIL', res.data.result)
+            resolve(res)
           })
           .catch((err) => {
-            console.log(err.response)
+            reject(err)
           })
       })
     },
@@ -120,10 +123,10 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/ticketing/find?routeFrom=${routeFrom}&routeTo=${routeTo}&flightClass=${flightClass}&tripType=${tripType}&tripDate=${tripDate}&sort=${sort}`)
           .then((result) => {
-            console.log('result sorting:>> ', result.data.result)
             commit('SET_FINDTICKETS', result.data.result)
+            resolve(result)
           }).catch((err) => {
-            console.log('err :>> ', err)
+            reject(err)
           })
       })
     }

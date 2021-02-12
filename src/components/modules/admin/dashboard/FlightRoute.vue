@@ -452,7 +452,7 @@ export default {
     },
     async handleGetCity () {
       const resultCity = await this.getCity()
-      console.log('resultCity :>> ', resultCity)
+      // console.log('resultCity :>> ', resultCity)
       this.city.data = resultCity
     },
     async showModalUpdateFlightRoute (id) {

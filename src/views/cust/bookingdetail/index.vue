@@ -35,7 +35,7 @@
                   <b class="small text-muted">Code</b>
                   <p class="small">{{getOrderDetail.booking_code}}</p>
                 </b-col>
-                <b-col>
+                <b-col v-if="getOrderDetail.flight_route">
                   <b class="small text-muted">Class</b>
                   <p class="small">{{getOrderDetail.flight_route.flightClass}}</p>
                 </b-col>

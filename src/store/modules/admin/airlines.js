@@ -97,7 +97,7 @@ const airlines = {
         dispatch('interceptorRequest', null, { root: true })
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/airlines/amount`)
           .then((result) => {
-            console.log('result dari index :>> ', result)
+            // console.log('result dari index :>> ', result)
             resolve(result.data)
           }).catch((err) => {
             reject(err)

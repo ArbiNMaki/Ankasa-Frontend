@@ -117,6 +117,7 @@
 import moment from 'moment'
 import { mapGetters, mapActions } from 'vuex'
 import mixin from '../../mixins/index'
+import Swal from 'sweetalert2'
 export default {
   name: 'FlightDetailComp',
   mixins: [mixin],
@@ -166,8 +167,11 @@ export default {
       this.getDataAirLinesById(id)
         .then((result) => {
           this.order.airLine = result
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        }).catch(() => {
+          Swal.fire({
+            title: 'Problem with Databse',
+            icon: 'error'
+          })
         })
     },
     async handleUpdateOrderDetail () {
@@ -184,8 +188,12 @@ export default {
         .then((result) => {
           this.$awn.success('Order has been updated, please complete your payment 😉 ')
           this.$router.push({ path: '/cust/mybooking' })
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        }).catch(() => {
+          Swal.fire({
+            title: 'Problem with Databse',
+            icon: 'error'
+          })
+          // console.log('err :>> ', err)
         })
     },
     convertTripDate (date) {

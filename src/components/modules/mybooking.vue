@@ -15,9 +15,9 @@
               </div>
               <div class="history-box">
                   <div class="allhistory" v-for="booking in getMyBooking" :key="booking.id">
-                <div class="history">
+                <div class="history" v-if="booking.flight_route">
                 <p>{{convertTime(booking.flight_route.tripDate || '')}} / {{booking.flight_route.departureTime || ''}}</p>
-                <div class="fromto">
+                <div class="fromto" v-if="booking.flight_route">
                   <p class="loc">{{booking.flight_route.routeFrom || ''}}</p>
                   <i class="fas fa-plane"></i>
                   <p class="loc">{{booking.flight_route.routeTo || ''}}</p>
@@ -74,7 +74,9 @@ export default {
 
 <style lang="scss" scoped>
 .history-box {
-    height: max-content;
+    // height: max-content;
+    // border: 2px solid black;
+    height: 600px;
     overflow: auto;
 }
 .allhistory {
@@ -108,7 +110,7 @@ export default {
 }
 .status {
   height: 36px;
-  width: 141px;
+  width: 200px;
   border-radius: 6px;
   background-color: #4FCF4D;
   padding-top: 4%;

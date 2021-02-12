@@ -250,8 +250,11 @@ export default {
         .then(async (result) => {
           this.airLinesData = await result.airlines
           this.airLinesDataPagination = await result.pagination
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        }).catch(() => {
+          Swal.fire({
+            title: 'Problem with Databse',
+            icon: 'error'
+          })
         })
     },
     changePhoto () {

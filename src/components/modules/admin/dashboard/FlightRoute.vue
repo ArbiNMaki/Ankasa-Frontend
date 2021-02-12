@@ -151,7 +151,7 @@
                           <option disabled value="">Select One Class</option>
                           <option value="ekonomi">Ekonomi</option>
                           <option value="business">Business</option>
-                          <option value="first-class">Frist-Class</option>
+                          <option value="first-class">First-Class</option>
                         </select>
                         </div>
                     </div>

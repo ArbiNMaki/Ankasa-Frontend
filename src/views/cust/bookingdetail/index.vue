@@ -18,11 +18,11 @@
             <div class="booking-left col-sm-6">
               <b-row>
                 <b-col>
-                  <div class="airline-logo">
+                  <div class="airline-logo" v-if="getOrderDetail.flight_route">
                     <img :src="getOrderDetail.flight_route.AirLine.logo" alt="logo garuda">
                   </div>
                 </b-col>
-                <b-col class="d-flex">
+                <b-col class="d-flex" v-if="getOrderDetail.flight_route">
                   <b class="departure font-weight-bold mr-2" v-if="getOrderDetail.flight_route.routeFrom">{{getOrderDetail.flight_route.routeFrom}}</b>
                     <div class="wrapper-plane-icon">
                     <img src="../../../assets/img/greysmallplane.png" alt="gray-small-plane"/>

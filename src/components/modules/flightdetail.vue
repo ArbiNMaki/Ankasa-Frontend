@@ -167,8 +167,11 @@ export default {
       this.getDataAirLinesById(id)
         .then((result) => {
           this.order.airLine = result
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        }).catch(() => {
+          Swal.fire({
+            title: 'Problem with Databse',
+            icon: 'error'
+          })
         })
     },
     async handleUpdateOrderDetail () {

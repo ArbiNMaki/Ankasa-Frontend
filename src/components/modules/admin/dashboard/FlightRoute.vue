@@ -49,7 +49,7 @@
                       <i v-for="(facilities, index) in route.Facilities" :key="index">
                         <i class="fas fa-suitcase" v-if="facilities.facility === 'luggage'"></i>
                         <i class="fas fa-wifi" v-if="facilities.facility === 'wi-fi'"></i>
-                        <i class="fas fa-utensils" v-if="facilities.facility === 'meal'"></i>
+                        <i class="fas fa-utensils" v-if="facilities.facility === 'in-flight meal'"></i>
                       </i>
                     </div>
                     <div class="col4">
@@ -220,16 +220,16 @@
                       <label for="">Facilities :</label>
                       <div class="form-group col-md-12 d-flex justify-content-between">
                           <div class="form-check form-check-inline">
-                          <input class="form-check-input" v-model="input.facilities" type="checkbox" id="" value="wi-fi">
+                          <input class="form-check-input" v-model="input.facilities" type="checkbox" id="inlineCheckbox1" value="wi-fi">
                           <label class="form-check-label" for="inlineCheckbox1">Wi-Fi</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" v-model="input.facilities" type="checkbox" id="" value="in-flight meal">
+                          <input class="form-check-input" v-model="input.facilities" type="checkbox" id="inlineCheckbox2" value="in-flight meal">
                           <label class="form-check-label" for="inlineCheckbox2">In-Flight Meal</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" v-model="input.facilities" type="checkbox" id="inlineCheckbox2" value="luggage">
-                          <label class="form-check-label" for="inlineCheckbox2">Luggage</label>
+                          <input class="form-check-input" v-model="input.facilities" type="checkbox" id="inlineCheckbox3" value="luggage">
+                          <label class="form-check-label" for="inlineCheckbox3">Luggage</label>
                         </div>
                         </div>
                     </div>
@@ -342,16 +342,16 @@
                       <label for="">Facilities :</label>
                       <div class="form-group col-md-12 d-flex justify-content-between">
                           <div class="form-check form-check-inline">
-                          <input class="form-check-input" v-model="inputUpdate.facilities" type="checkbox" id="" value="wi-fi">
-                          <label class="form-check-label" for="inlineCheckbox1">Wi-Fi</label>
+                          <input class="form-check-input" v-model="inputUpdate.facilities" type="checkbox" id="inlineCheckboxUpdate1" value="wi-fi">
+                          <label class="form-check-label" for="inlineCheckboxUpdate1">Wi-Fi</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" v-model="inputUpdate.facilities" type="checkbox" id="" value="in-flight meal">
-                          <label class="form-check-label" for="inlineCheckbox2">In-Flight Meal</label>
+                          <input class="form-check-input" v-model="inputUpdate.facilities" type="checkbox" id="inlineCheckboxUpdate2" value="in-flight meal">
+                          <label class="form-check-label" for="inlineCheckboxUpdate2">In-Flight Meal</label>
                         </div>
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" v-model="inputUpdate.facilities" type="checkbox" id="inlineCheckbox2" value="luggage">
-                          <label class="form-check-label" for="inlineCheckbox2">Luggage</label>
+                          <input class="form-check-input" v-model="inputUpdate.facilities" type="checkbox" id="inlineCheckboxUpdate3" value="luggage">
+                          <label class="form-check-label" for="inlineCheckboxUpdate3">Luggage</label>
                         </div>
                         </div>
                     </div>
@@ -582,31 +582,31 @@ export default {
       this.input.class = ''
       this.input.airLines = ''
       this.input.departureTime = ''
-      this.input.direct = ''
-      this.input.duration = ''
+      this.input.direct = 0
+      this.input.duration = 0
       this.input.price = ''
       this.input.routeFrom = ''
       this.input.routeTo = ''
       this.input.timeArrived = ''
-      this.input.transit = ''
+      this.input.transit = 0
       this.input.tripDate = ''
       this.input.tripType = ''
-      this.input.facilities = ''
+      this.input.facilities = []
     },
     clearInputUpdate () {
       this.inputUpdate.class = ''
       this.inputUpdate.airLines = ''
       this.inputUpdate.departureTime = ''
-      this.inputUpdate.direct = ''
-      this.inputUpdate.duration = ''
+      this.inputUpdate.direct = 0
+      this.inputUpdate.duration = 0
       this.inputUpdate.price = ''
       this.inputUpdate.routeFrom = ''
       this.inputUpdate.routeTo = ''
       this.inputUpdate.timeArrived = ''
-      this.inputUpdate.transit = ''
+      this.inputUpdate.transit = 0
       this.inputUpdate.tripDate = ''
       this.inputUpdate.tripType = ''
-      this.inputUpdate.facilities = ''
+      this.inputUpdate.facilities = []
     },
     async handleSearch () {
       const self = this

@@ -74,9 +74,9 @@
                 <div class="ticket">
                   <div class="top-ticket">
                     <div class="airline-logo">
-                      <!-- <img :src="route.AirLine.logo" alt=""> -->
+                      <img :src="route.AirLine.logo" alt="">
                   </div>
-                  <!-- <p>{{route.AirLine.name}} || {{route.flightClass}}</p> -->
+                  <p>{{route.AirLine.name}} || {{route.flightClass}}</p>
                   </div>
                   <div class="center">
                       <div class="col1">
@@ -618,6 +618,7 @@ export default {
         self.searchFlightRoute(payload),
         resp => {
           self.search.data = resp
+          console.log('resp :>> ', resp)
           self.handleGetAllFlightRoute()
           self.$awn.success('FlightRoute has been updated')
         },
@@ -712,6 +713,8 @@ export default {
 }
 .airline-logo img {
     width: 100%;
+    height:100%;
+    object-fit:contain;
 }
 .ticket {
     height: max-content;

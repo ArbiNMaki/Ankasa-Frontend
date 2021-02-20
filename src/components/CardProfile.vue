@@ -83,7 +83,8 @@ export default {
                   self.getUser()
                     .then((result) => {
                       self.$awn.success('Photo profile has been updated')
-                    }).catch(() => {
+                    }).catch((err) => {
+                      console.log('err :>> ', err)
                     })
                 }
               )

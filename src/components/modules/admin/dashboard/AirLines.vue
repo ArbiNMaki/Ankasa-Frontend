@@ -250,8 +250,8 @@ export default {
         .then(async (result) => {
           this.airLinesData = await result.airlines
           this.airLinesDataPagination = await result.pagination
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        }).catch(() => {
+          this.$awn.error('Looks like server having trouble')
         })
     },
     changePhoto () {

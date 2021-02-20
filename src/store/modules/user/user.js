@@ -41,6 +41,7 @@ const actions = {
         .then((response) => {
           resolve(response.data.message)
         }).catch((err) => {
+          console.log('err :>> ', err)
           reject(err)
         })
     })

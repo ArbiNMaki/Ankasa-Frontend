@@ -101,7 +101,6 @@ const flightRoute = {
         dispatch('interceptorRequest', null, { root: true })
         axios.get(`${process.env.VUE_APP_SERVICE_API}/api/flightroute/amount`)
           .then((result) => {
-            console.log('result dari index :>> ', result)
             resolve(result.data)
           }).catch((err) => {
             reject(err)
@@ -123,10 +122,6 @@ const flightRoute = {
       axios.interceptors.response.use(function (response) {
         return response
       }, function (error) {
-        const errorStatusCode = error.response.data.statusCode
-        const errorMessage = error.response.data.err.message
-        console.log('errorStatusCode :>> ', errorStatusCode)
-        console.log('errorMessage :>> ', errorMessage)
         return Promise.reject(error)
       })
     }

@@ -87,7 +87,6 @@ export default {
             title: 'Data Successfully Updated',
             icon: 'success'
           })
-          console.log('res :>> ', res)
           this.getUserProfile()
           this.$awn.success('Profile has been updated')
         }).catch(() => {

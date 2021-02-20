@@ -346,12 +346,10 @@ export default {
         tripDate: this.$route.query.departuredate,
         sort: sort
       }
-      console.log('payload :>> ', payload)
       this.sorting(payload)
-        .then((result) => {
-          console.log('result :>> ', result)
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        .then(() => {
+        }).catch(() => {
+          this.$awn.error('Looks like server having trouble')
         })
     }
   },

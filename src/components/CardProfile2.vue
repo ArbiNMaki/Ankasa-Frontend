@@ -82,7 +82,7 @@ export default {
         post_code: this.input.postCode
       }
       this.updateProfile(payload)
-        .then((res) => {
+        .then(() => {
           Swal.fire({
             title: 'Data Successfully Updated',
             icon: 'success'

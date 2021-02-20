@@ -117,6 +117,7 @@
 import moment from 'moment'
 import { mapGetters, mapActions } from 'vuex'
 import mixin from '../../mixins/index'
+
 export default {
   name: 'FlightDetailComp',
   mixins: [mixin],

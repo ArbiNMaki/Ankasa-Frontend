@@ -117,6 +117,7 @@
 import moment from 'moment'
 import { mapGetters, mapActions } from 'vuex'
 import mixin from '../../mixins/index'
+
 export default {
   name: 'FlightDetailComp',
   mixins: [mixin],
@@ -166,8 +167,8 @@ export default {
       this.getDataAirLinesById(id)
         .then((result) => {
           this.order.airLine = result
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        }).catch(() => {
+          this.$awn.error('Looks like server having trouble')
         })
     },
     async handleUpdateOrderDetail () {
@@ -184,8 +185,8 @@ export default {
         .then((result) => {
           this.$awn.success('Order has been updated, please complete your payment 😉 ')
           this.$router.push({ path: '/cust/mybooking' })
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        }).catch(() => {
+          this.$awn.error('Looks like server having trouble')
         })
     },
     convertTripDate (date) {

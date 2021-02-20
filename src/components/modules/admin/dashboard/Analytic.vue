@@ -15,7 +15,7 @@
             <div class="d-flex flex-column m-auto">
               <div class="stats-small__data text-center">
                 <span class="stats-small__label text-capitalize text-center">AirLines</span>
-                <h6 class="stats-small__value count my-3">{{ airLines.amount }}</h6>
+                <h6 class="stats-small__value count my-3">{{ flightRoutes.amount }}</h6>
               </div>
             </div>
           </div>
@@ -27,7 +27,7 @@
             <div class="d-flex flex-column m-auto">
               <div class="stats-small__data text-center">
                 <span class="stats-small__label text-capitalize text-center">Flight Route</span>
-                <h6 class="stats-small__value count my-3">{{ flightRoutes.amount }}</h6>
+                <h6 class="stats-small__value count my-3">{{ airLines.amount }}</h6>
               </div>
             </div>
           </div>

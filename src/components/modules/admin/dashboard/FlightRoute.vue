@@ -17,7 +17,7 @@
                     <i v-if="input.search" class="fa fa-times" @click="clearSearch"></i>
             </div>
             </div>
-               <input v-model="input.search" @keyup.enter="handleSearch" class="navbar-search border-0 form-control search-input shadow-none rounded" type="text" placeholder="Search for something..." aria-label="Search">
+               <input v-model="input.search" @keyup.enter="handleSearch" class="navbar-search border-0 form-control search-input shadow-none rounded" type="text" placeholder="search here by class ..." aria-label="Search">
             </div>
             </div>
           </div>
@@ -74,9 +74,9 @@
                 <div class="ticket">
                   <div class="top-ticket">
                     <div class="airline-logo">
-                      <!-- <img :src="route.AirLine.logo" alt=""> -->
+                      <img :src="route.AirLine.logo" alt="">
                   </div>
-                  <!-- <p>{{route.AirLine.name}} || {{route.flightClass}}</p> -->
+                  <p>{{route.AirLine.name}} || {{route.flightClass}}</p>
                   </div>
                   <div class="center">
                       <div class="col1">
@@ -151,7 +151,7 @@
                           <option disabled value="">Select One Class</option>
                           <option value="ekonomi">Ekonomi</option>
                           <option value="business">Business</option>
-                          <option value="first-class">Frist-Class</option>
+                          <option value="first-class">First-Class</option>
                         </select>
                         </div>
                     </div>
@@ -452,7 +452,6 @@ export default {
     },
     async handleGetCity () {
       const resultCity = await this.getCity()
-      console.log('resultCity :>> ', resultCity)
       this.city.data = resultCity
     },
     async showModalUpdateFlightRoute (id) {
@@ -507,8 +506,8 @@ export default {
           $('#modalUpdateFlightRoute .close').click()
           this.$awn.success('Airlines has been deleted')
         },
-        (err) => {
-          console.log('err :>> ', err)
+        () => {
+          this.$awn.error('Looks like server having trouble')
         }
       )
     },
@@ -539,8 +538,8 @@ export default {
               self.handleGetAllFlightRoute()
               self.$awn.success('Airlines has been deleted')
             },
-            (err) => {
-              console.log('err :>> ', err)
+            () => {
+              self.$awn.error('Looks like server having trouble')
             }
           )
         }
@@ -569,7 +568,7 @@ export default {
         () => {
           self.handleGetAllFlightRoute()
           $('#modalNewFlightRoute .close').click()
-          self.$awn.success('FlightRoute has been updated')
+          self.$awn.success('FlightRoute has been added')
           // clear input
           self.clearInputNewInsert()
         },
@@ -619,7 +618,7 @@ export default {
         resp => {
           self.search.data = resp
           self.handleGetAllFlightRoute()
-          self.$awn.success('FlightRoute has been updated')
+          self.$awn.success('Data has been found')
         },
         () => {
           self.$awn.error('Looks like server having trouble')
@@ -712,6 +711,8 @@ export default {
 }
 .airline-logo img {
     width: 100%;
+    height:100%;
+    object-fit:contain;
 }
 .ticket {
     height: max-content;

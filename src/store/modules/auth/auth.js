@@ -82,7 +82,6 @@ const actions = {
           resolve(result.data.message)
         })
         .catch(err => {
-          console.log('err :>> ', err)
           reject(err.message)
         })
     })
@@ -141,7 +140,6 @@ const actions = {
           router.push({ name: 'Login' })
         }
       } else if (error.response.status === 404) {
-        console.log('error.response.data.err.message :>> ', error.response.data.err.message)
         if (error.response.data.err.message === 'Wrong Password') {
           return error.response.data.err.message
         }

@@ -63,7 +63,7 @@
                       </div>
                       <div class="opt">
                         <label for="meal">In-flight Meal</label>
-                        <input type="checkbox" id="meal" name="facilities" v-model="facilities" value="meal" @change="filter"/>
+                        <input type="checkbox" id="meal" name="facilities" v-model="facilities" value="in-flight meal" @change="filter"/>
                       </div>
                       <div class="opt">
                         <label for="wifi">Wi-fi</label>
@@ -196,7 +196,7 @@
                       <div class="facilitypic" v-if="index.facility === 'luggage'">
                         <i class="fas fa-suitcase"></i>
                       </div>
-                      <div class="facilitypic" v-if="index.facility === 'meal'">
+                      <div class="facilitypic" v-if="index.facility === 'in-flight meal'">
                         <i class="fas fa-utensils"></i>
                       </div>
                       <div class="facilitypic" v-if="index.facility === 'wi-fi'">
@@ -293,7 +293,7 @@ export default {
         transit: (this.transit).toString() || '',
         price: ''
       }
-      if (payload.airlines) { this.getAllTickets(payload) }
+      if (payload.routeFrom) { this.getAllTickets(payload) }
     },
     resetFilter () {
       this.value = [1000000, 3000000]
@@ -346,12 +346,10 @@ export default {
         tripDate: this.$route.query.departuredate,
         sort: sort
       }
-      console.log('payload :>> ', payload)
       this.sorting(payload)
-        .then((result) => {
-          console.log('result :>> ', result)
-        }).catch((err) => {
-          console.log('err :>> ', err)
+        .then(() => {
+        }).catch(() => {
+          this.$awn.error('Looks like server having trouble')
         })
     }
   },

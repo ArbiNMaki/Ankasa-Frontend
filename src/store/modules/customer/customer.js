@@ -68,8 +68,6 @@ const customer = {
       }, function (error) {
         const errorStatusCode = error.response.data.statusCode
         const errorMessage = error.response.data.err.message
-        console.log('errorStatusCode :>> ', errorStatusCode)
-        console.log('errorMessage :>> ', errorMessage)
         if (errorStatusCode === 404) {
           if (errorMessage === 'Data not found') {
             return Promise.reject(errorMessage)

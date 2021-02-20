@@ -31,6 +31,7 @@
               </router-link>
             </li>
             <li> <b-icon-star-fill class="text-secondary mr-3"></b-icon-star-fill> My Review</li>
+            <li v-if="authData.role_id === 1 " @click="toAdminPage"> <b-icon-person-lines-fill class="text-secondary mr-3"></b-icon-person-lines-fill> To Admin Page</li>
             <li> <b-icon-gear-fill class="text-secondary mr-3"></b-icon-gear-fill> Settings</li>
             <li class="text-danger" style="cursor: pointer;" @click="handleLogout"> <b-icon-box-arrow-right class="mr-3"></b-icon-box-arrow-right>Logout</li>
           </ul>
@@ -100,13 +101,17 @@ export default {
       this.LOGOUT_AUTH()
       this.alert('success', 'See you later 👋', '', false)
       this.$router.push({ path: '/login' })
+    },
+    toAdminPage () {
+      return this.$router.push({ path: '/admin' })
     }
   },
   mounted () {
     this.detectChangeImage()
   },
   computed: {
-    ...mapGetters('user', ['getUserData'])
+    ...mapGetters('user', ['getUserData']),
+    ...mapGetters({ authData: 'auth/getUserData' })
   }
 }
 </script>
